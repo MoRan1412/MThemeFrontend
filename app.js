@@ -18,6 +18,7 @@ app.use(express.static(__dirname + "/public")); // Client can access '/public' d
 app.use(cookieParser());
 
 // app.set("view engine", "ejs"); //Make supporting ejs
+app.set('view engine', 'ejs');
 app.set("views", path.join(__dirname, "views"));
 
 const status = {
