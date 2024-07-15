@@ -17,7 +17,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded bodies
 app.use(express.static(__dirname + "/public")); // Client can access '/public' directly
 app.use(cookieParser());
 
-app.set("view engine", "ejs"); //Make supporting ejs
+// app.set("view engine", "ejs"); //Make supporting ejs
+app.set("views", path.join(__dirname, "views"));
 
 const status = {
   OK: 200,
