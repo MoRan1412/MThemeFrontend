@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTheme - Login</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="./js/myscript.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <div class="loginContainer">
+        <div class="loginTitle">
+            <img class="logoLong" src="../img/logoLong.png" alt="">
+            <!-- <h1>Welcome to MTheme!</h1> -->
+        </div>
+        <form action="/loginProcess" method="post" class="loginForm">
+            <input type="text" name="username" id="username" placeholder="Username">
+            <input type="password" name="password" id="password" placeholder="Password">
+            <input type="email" name="email" id="email" placeholder="Email">
+            <a href="/login">Already have an account?</a>
+            <div class="loginBtn">
+                <input type="submit" value="Sign Up">
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
