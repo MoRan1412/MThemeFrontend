@@ -31,8 +31,46 @@ label {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #74615f;
     border-radius: 10px;
+}
+
+.loginContainer {
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Login Width */
+.loginForm, .loginTitle {
+    width: 25%;
+}
+
+.loginTitle {
+    display: flex;
+    flex-direction: column;
+}
+
+.loginTitle > .logoLong {
+    width: 40%;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.loginForm > input {
+    width: 100%;
+    background-color: rgb(219, 219, 219);
+    border: none;
+    height: 25px;
+    border-radius: 5px;
 }
 
 @media screen and (max-width: 1324px) {
