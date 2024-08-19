@@ -1,15 +1,24 @@
 "use strict";
 
 const express = require("express");
+const session = require("express-session");
 const bodyParser = require("body-parser");
 const cookieParser = require('cookie-parser')
 const app = express();
 const crypto = require('crypto');
-const path = require('path')
- 
+const path = require('path');
+const { title } = require("process");
+const e = require("express");
+
 app.use(bodyParser.json()); // Used to parse JSON bodies
 app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded bodies
 app.use(express.static(__dirname + '/public')); // Client can access '/public' directly
+app.use(session({
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}));
 app.use(cookieParser())
 
 app.set('view engine', 'ejs'); //Make supporting ejs
@@ -18,8 +27,10 @@ app.set("views", path.join(__dirname, "views"));
 const status = {
   OK: 200,
   CREATED: 201,
-  NOT_MODIFIED: 304,
+  UNAUTHORIZED: 401,
+  FORBIDDEN: 403,
   NOT_FOUND: 404,
+  CONFLICT: 409,
   INTERNAL_SERVER_ERROR: 500,
 };
 
@@ -29,7 +40,7 @@ const signUpHolding = []
 const API = "http://localhost:10888"
 
 app.get('/login', (req, res) => {
-  res.render("login", {title: "Login"})
+  res.render("login", { title: "Login" })
 })
 
 app.post('/loginProcess', (req, res) => {
@@ -43,9 +54,14 @@ app.post('/loginProcess', (req, res) => {
   };
   const url = `${API}/user/loginVerify`;
 
-  fetch(url, options).then((res) => {
+  fetch(url, options)
+    .then((res) => {
       if (res.status === status.OK) {
         return res.json();
+      } else if (res.status === status.UNAUTHORIZED) {
+        throw new Error("Incorrect username or password");
+      } else {
+        console.log(`[${res.status}] Failed to authenticate user`);
       }
     })
     .then((jsonData) => {
@@ -56,25 +72,116 @@ app.post('/loginProcess', (req, res) => {
         res.cookie("email", jsonData["email"], { maxAge: cookieMaxAge, httpOnly: true });
         res.status(status.OK).redirect("/")
       } else {
-        throw new Error("Incorrect username or password");
+        throw new Error("Login failed");
       }
     })
     .catch((err) => {
-      console.error(`[ERR] ${req.originalUrl} \n${err}`);
-      res.status(status.INTERNAL_SERVER_ERROR).render("login", { error: err });
+      console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
+      res.status(status.UNAUTHORIZED).render("login", { title: "Login", error: err.message });
     });
 })
 
 app.get('/signup', (req, res) => {
-  res.render("signup", {title: "Sign Up"})
+  res.render("signup", { title: "Sign Up" })
 })
 
 app.post('/signup/sendVerifyCode', (req, res) => {
-  
+  req.session.username = req.body.username;
+  req.session.password = req.body.password;
+  req.session.email = req.body.email;
+  const addUserOptions = {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      username: req.body.username,
+      email: req.body.email
+    })
+  };
+  const url = `${API}/user/sendEmailVerifyCode`;
+
+  fetch(url, addUserOptions)
+    .then((res) => {
+      if (res.status === status.OK) {
+        return res.json();
+      } else if (res.status === status.CONFLICT) {
+        throw new Error("Email already exists");
+      } else {
+        console.log(`[${res.status}] Failed to send verification code`);
+      }
+    })
+    .then((jsonData) => {
+      console.log(`[OK] Verification code has been sent to ${req.body.email}.`);
+      res.status(status.OK).render("verifyCode", { title: "Verification", message: "Verification code has been sent." })
+    })
+    .catch((err) => {
+      console.error(`[ERR] ${req.originalUrl} \n${err}`);
+      res.status(status.INTERNAL_SERVER_ERROR).render("signup", { title:"Sign Up", error: err });
+    });
+})
+
+app.post('/signupProcess', (req, res) => {
+  const options = {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      email: req.session.email,
+      code: req.body.verifyCode
+    })
+  };
+  const url = `${API}/user/emailVerify`;
+
+  fetch(url, options)
+    .then((res) => {
+      if (res.status === status.OK) {
+        return res.json();
+      } else if (res.status === status.UNAUTHORIZED) {
+        throw new Error("Incorrect verification code");
+      } else {
+        console.log(`[${res.status}] Failed to verify email`);
+      }
+    })
+    .then((jsonData) => {
+      console.log(`[OK] ${req.session.email} verification successfull.`);
+      const addUserOptions = {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          username: req.session.username,
+          password: req.session.password,
+          email: req.session.email
+        })
+      };
+      const addUserUrl = `${API}/user/add`;
+
+      fetch(addUserUrl, addUserOptions)
+        .then((res) => {
+          if (res.status === status.OK) {
+            return res.json();
+          } else {
+            console.log(`[${res.status}] Failed to add user`);
+          }
+        })
+        .then((jsonData) => {
+          console.log(`[OK] ${req.session.username} has been added.`);
+          res.status(status.CREATED).redirect("/login")
+        })
+        .catch((err) => {
+          console.error(`[ERR] ${req.originalUrl} \n${err}`);
+          res.status(status.INTERNAL_SERVER_ERROR).redirect("/signup", { error: err });
+        });
+    })
+    .catch((err) => {
+      console.error(`[ERR] ${req.originalUrl} \n${err}`);
+      res.status(status.UNAUTHORIZED).redirect("/signup", { error: err });
+    });
 })
 
 app.get("/", (req, res) => {
-  res.render("index");
+  if (req.cookies.accessToken) {
+    res.render("index", { title: "Home" });
+  } else {
+    res.redirect("/login");
+  }
 });
 
 const port = 3000; // Replit doesn’t matter which port is using

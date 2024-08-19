@@ -54,16 +54,15 @@ label {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    align-items: center;
 }
 
 .loginTitle > .logoLong {
-    width: 45%;
+    width: 30%;
 }
 
-/* .loginTitle > h1 {
+.loginTitle > h1 {
     font-size: 20px;
-} */
+}
 
 .loginForm {
     display: flex;

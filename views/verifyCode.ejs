@@ -14,15 +14,12 @@
     <div class="loginContainer">
         <div class="loginTitle">
             <img class="logoLong" src="../img/logoLong.png" alt="">
-            <!-- <h1>Welcome to MTheme!</h1> -->
+            <h1><%= message %></h1>
         </div>
-        <form action="/loginProcess" method="post" class="loginForm">
-            <input type="text" name="username" id="username" placeholder="Username">
-            <input type="password" name="password" id="password" placeholder="Password">
-            <a href="">Forget password or username</a>
+        <form action="/signupProcess" method="post" class="loginForm">
+            <input type="text" name="verifyCode" id="verifyCode" placeholder="Code">
             <div class="loginBtn">
-                <input type="submit" value="Login">
-                <input type="button" value="Sign Up" onclick="location.href='/signup'">
+                <input type="submit" value="Verify">
             </div>
         </form>
     </div>

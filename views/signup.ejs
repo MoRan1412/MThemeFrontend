@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MTheme - Login</title>
+    <title>MTheme - <%= title %></title>
     <link rel="stylesheet" href="../css/style.css">
     <script src="./js/myscript.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -16,16 +16,31 @@
             <img class="logoLong" src="../img/logoLong.png" alt="">
             <!-- <h1>Welcome to MTheme!</h1> -->
         </div>
-        <form action="/loginProcess" method="post" class="loginForm">
-            <input type="text" name="username" id="username" placeholder="Username">
-            <input type="password" name="password" id="password" placeholder="Password">
-            <input type="email" name="email" id="email" placeholder="Email">
+        <form action="/signup/sendVerifyCode" method="post" class="loginForm" onsubmit="return validateForm()">
+            <input type="text" name="username" id="username" placeholder="Username" required>
+            <input type="password" name="password" id="password" placeholder="Password" required>
+            <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" required>
+            <input type="email" name="email" id="email" placeholder="Email" required>
             <a href="/login">Already have an account?</a>
             <div class="loginBtn">
                 <input type="submit" value="Sign Up">
             </div>
         </form>
     </div>
+
+    <script>
+        function validateForm() {
+            const password = document.getElementById("password").value;
+            const confirm_password = document.getElementById("confirmPassword").value;
+        
+            if (password !== confirm_password) {
+                alert("Passwords do not match. Please try again.");
+                return false; 
+            }
+        
+            return true; 
+        }
+        </script>
 </body>
 
 </html>
