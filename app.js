@@ -30,7 +30,7 @@ const status = {
 
 const cookieMaxAge = 60000 * 30;
 
-const API = "http://localhost:10888"
+const API = "http://ooklibaioo.com:10888"
 
 let storage = multer.diskStorage({
   destination: function (req, file, callback) {
@@ -61,10 +61,11 @@ app.post('/loginProcess', (req, res) => {
     })
   };
   const url = `${API}/user/loginVerify`;
-  fetch(url, options)
-    .then((res) => {
+  fetch(url, options).then((res) => {
       if (res.status === status.OK) {
         return res.json();
+      } else {
+        throw new Error("API failed")
       }
     })
     .then((jsonData) => {
