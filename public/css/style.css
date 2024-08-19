@@ -42,7 +42,7 @@ label {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 20px;
+    gap: 35px;
 }
 
 /* Login Width */
@@ -53,11 +53,17 @@ label {
 .loginTitle {
     display: flex;
     flex-direction: column;
+    gap: 15px;
+    align-items: center;
 }
 
 .loginTitle > .logoLong {
-    width: 40%;
+    width: 45%;
 }
+
+/* .loginTitle > h1 {
+    font-size: 20px;
+} */
 
 .loginForm {
     display: flex;
@@ -69,8 +75,37 @@ label {
     width: 100%;
     background-color: rgb(219, 219, 219);
     border: none;
-    height: 25px;
-    border-radius: 5px;
+    height: 35px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.loginForm a {
+    font-size: 15px;
+    color: black;
+    text-align: right;
+}
+
+.loginBtn {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.loginBtn > input {
+    width: 100%;
+    height: 35px;
+    border-radius: 10px;
+    border: none;
+    margin-top: 30px;
+    cursor: pointer;
+    font-size: small;
+}
+
+.loginBtn > input[type="submit"] {
+    background-color: black;
+    color: white;
 }
 
 @media screen and (max-width: 1324px) {
