@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MTheme - Login</title>
+    <title>MTheme - <%= title %></title>
     <link rel="stylesheet" href="../css/style.css">
     <script src="./js/myscript.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -19,10 +19,10 @@
         <form action="/loginProcess" method="post" class="loginForm">
             <input type="text" name="username" id="username" placeholder="Username">
             <input type="password" name="password" id="password" placeholder="Password">
-            <a href="">Forget password or username</a>
+            <a href="/signup">Forget password or username</a>
             <div class="loginBtn">
                 <input type="submit" value="Login">
-                <input type="button" value="Sign Up">
+                <input type="button" value="Sign Up" onclick="location.href='/signup'">
             </div>
         </form>
     </div>
