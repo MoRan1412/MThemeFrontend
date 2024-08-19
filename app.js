@@ -51,6 +51,45 @@ app.get('/login', (req, res) => {
   res.render("login")
 })
 
+app.post('/loginProcess', (req, res) => {
+  const options = {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      username: req.body.username,
+      password: hashPassword(req.body.password),
+    }),
+  };
+  const url = `${API}/user/loginVerify`;
+  fetch(url, options)
+    .then((res) => {
+      if (res.status === status.OK) {
+        return res.json(); 
+      } else {
+        console.log(`[ERR] Failed to login user`);
+      }
+    })
+    .then((jsonData) => {
+      if (jsonData.accessToken) {
+        res.cookie("accessToken", jsonData["accessToken"], {maxAge: cookieMaxAge, httpOnly: true});
+        res.cookie("role", jsonData["role"], {maxAge: cookieMaxAge,httpOnly: true});
+        res.cookie("email", jsonData["email"], {maxAge: cookieMaxAge,httpOnly: true});
+        console.log("[OK] Login success with token: " + jsonData["accessToken"]);
+        if (jsonData.role === "admin") {
+          res.status(status.OK).redirect("/admin/");
+        } else {
+          res.status(status.OK).redirect("/user/");
+        }
+      } else {
+        throw new Error("Incorrect username or password");
+      }
+    })
+    .catch((err) => {
+      console.error(`[ERR] Failed to login user: ${err}`);
+      res.status(status.INTERNAL_SERVER_ERROR).render("login", { error: err });
+    });
+})
+
 app.get("/", (req, res) => {
   res.render("index");
 });
