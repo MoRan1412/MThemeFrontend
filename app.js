@@ -24,11 +24,12 @@ const status = {
 };
 
 const cookieMaxAge = 60000 * 30;
+const signUpHolding = []
 
 const API = "http://localhost:10888"
 
 app.get('/login', (req, res) => {
-  res.render("login")
+  res.render("login", {title: "Login"})
 })
 
 app.post('/loginProcess', (req, res) => {
@@ -37,17 +38,14 @@ app.post('/loginProcess', (req, res) => {
     headers: { "content-type": "application/json" },
     body: JSON.stringify({
       username: req.body.username,
-      password: hashPassword(req.body.password)
+      password: req.body.password
     })
   };
   const url = `${API}/user/loginVerify`;
 
   fetch(url, options).then((res) => {
-    console.log(res.status)
       if (res.status === status.OK) {
         return res.json();
-      } else {
-        throw new Error("API call failed")
       }
     })
     .then((jsonData) => {
@@ -67,6 +65,14 @@ app.post('/loginProcess', (req, res) => {
     });
 })
 
+app.get('/signup', (req, res) => {
+  res.render("signup", {title: "Sign Up"})
+})
+
+app.post('/signup/sendVerifyCode', (req, res) => {
+  
+})
+
 app.get("/", (req, res) => {
   res.render("index");
 });
@@ -84,7 +90,3 @@ function formatDate(date) {
 
   return `${year}-${month}-${day}`;
 }
-
-const hashPassword = (passwd) => {
-  return crypto.createHash("sha256").update(passwd).digest("hex");
-};
