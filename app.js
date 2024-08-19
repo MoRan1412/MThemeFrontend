@@ -2,22 +2,17 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
-const cookieParser = require("cookie-parser");
+const cookieParser = require('cookie-parser')
 const app = express();
-
-const path = require("path");
-const multer = require("multer");
-const fs = require("fs");
-const crypto = require("crypto");
-const { name, render } = require("ejs");
-const exp = require("constants");
-
+const crypto = require('crypto');
+const path = require('path')
+ 
 app.use(bodyParser.json()); // Used to parse JSON bodies
 app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded bodies
-app.use(express.static(__dirname + "/public")); // Client can access '/public' directly
-app.use(cookieParser());
+app.use(express.static(__dirname + '/public')); // Client can access '/public' directly
+app.use(cookieParser())
 
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs'); //Make supporting ejs
 app.set("views", path.join(__dirname, "views"));
 
 const status = {
@@ -30,22 +25,7 @@ const status = {
 
 const cookieMaxAge = 60000 * 30;
 
-const API = "http://ooklibaioo.com:10888"
-
-let storage = multer.diskStorage({
-  destination: function (req, file, callback) {
-    let folderPath = "./public/source/image/products";
-    if (!fs.existsSync(folderPath)) {
-      fs.mkdirSync(folderPath, { recursive: true });
-    }
-    callback(null, folderPath);
-  },
-  filename: function (req, file, callback) {
-    const uniqueSuffix = Math.random().toString(36).substring(2, 9);
-    const extname = path.extname(file.originalname);
-    callback(null, uniqueSuffix + extname);
-  },
-});
+const API = "http://localhost:10888"
 
 app.get('/login', (req, res) => {
   res.render("login")
@@ -61,11 +41,13 @@ app.post('/loginProcess', (req, res) => {
     })
   };
   const url = `${API}/user/loginVerify`;
+
   fetch(url, options).then((res) => {
+    console.log(res.status)
       if (res.status === status.OK) {
         return res.json();
       } else {
-        throw new Error("API failed")
+        throw new Error("API call failed")
       }
     })
     .then((jsonData) => {
@@ -75,17 +57,12 @@ app.post('/loginProcess', (req, res) => {
         res.cookie("role", jsonData["role"], { maxAge: cookieMaxAge, httpOnly: true });
         res.cookie("email", jsonData["email"], { maxAge: cookieMaxAge, httpOnly: true });
         res.status(status.OK).redirect("/")
-        // if (jsonData.role === "admin") {
-        //   res.status(status.OK).redirect("/admin/");
-        // } else {
-        //   res.status(status.OK).redirect("/user/");
-        // }
       } else {
         throw new Error("Incorrect username or password");
       }
     })
     .catch((err) => {
-      console.error(`[ERR] Failed to login user \n${err}`);
+      console.error(`[ERR] ${req.originalUrl} \n${err}`);
       res.status(status.INTERNAL_SERVER_ERROR).render("login", { error: err });
     });
 })
