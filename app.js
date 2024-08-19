@@ -47,20 +47,9 @@ let storage = multer.diskStorage({
   },
 });
 
-let profileStorage = multer.diskStorage({
-  destination: function (req, file, callback) {
-    let folderPath = "./public/source/image/profile/avatar";
-    if (!fs.existsSync(folderPath)) {
-      fs.mkdirSync(folderPath, { recursive: true });
-    }
-    callback(null, folderPath);
-  },
-  filename: function (req, file, callback) {
-    const uniqueSuffix = Math.random().toString(36).substring(2, 9);
-    const extname = path.extname(file.originalname);
-    callback(null, uniqueSuffix + extname);
-  },
-});
+app.get('/login', (req, res) => {
+  res.render("login")
+})
 
 app.get("/", (req, res) => {
   res.render("index");
