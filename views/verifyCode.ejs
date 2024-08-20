@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>MTheme - <%= title %></title>
+    <link rel="icon" type="image/x-icon" href="<%= faviconPath %>">
     <link rel="stylesheet" href="../css/style.css">
     <script src="./js/myscript.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -13,7 +14,7 @@
 <body>
     <div class="loginContainer">
         <div class="loginTitle">
-            <img class="logoLong" src="../img/logoLong.png" alt="logoLong" onclick="location.href='/'">
+            <div class="logoLong" alt="logoLong" onclick="location.href='/'"></div>
             <h1><%= message %></h1>
         </div>
         <form action="/signupProcess" method="post" class="loginForm">

@@ -34,6 +34,12 @@ const status = {
   INTERNAL_SERVER_ERROR: 500,
 };
 
+const setDynamicFavicon = (req, res, next) => {
+  res.locals.faviconPath = '../favicon.png';
+  next();
+};
+app.use(setDynamicFavicon);
+
 const cookieMaxAge = 60000 * 30;
 
 const API = "http://localhost:10888"

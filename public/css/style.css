@@ -18,6 +18,8 @@ div,
 input,
 label,
 span,
+ul,
+li,
 button {
     font-family: "Roboto", sans-serif;
     padding: 0;
@@ -34,6 +36,12 @@ button {
 
 ::-webkit-scrollbar-thumb {
     border-radius: 10px;
+}
+
+
+/* Header */
+header ul {
+    list-style-type: none;
 }
 
 
@@ -104,6 +112,11 @@ button {
 
 .loginTitle>.logoLong {
     width: 45%;
+    height: 50px;
+    background-image: url(../img/logoLong.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left;
 }
 
 .loginTitle>h1 {

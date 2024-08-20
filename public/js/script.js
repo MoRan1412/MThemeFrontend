@@ -1,3 +1,4 @@
+
 // Sign Up
 function signupValidateForm() {
     const errWindow = document.getElementById("alertWindow")
