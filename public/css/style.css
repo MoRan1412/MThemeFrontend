@@ -36,6 +36,7 @@ button {
     border-radius: 10px;
 }
 
+
 /* Alert Window */
 .alertWindow {
     display: none;
@@ -83,7 +84,6 @@ button {
 .loginContainer {
     width: 100vw;
     height: 100vh;
-    background-color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -163,7 +163,7 @@ button {
     color: rgb(100, 100, 100);
 }
 
-.errMsg {
+.loginErrMsg {
     color: rgb(255, 0, 128); 
     font-weight: 700;
     font-size: 12px;
