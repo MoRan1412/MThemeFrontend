@@ -182,7 +182,11 @@ app.post('/signupProcess', (req, res) => {
         })
         .then((jsonData) => {
           console.log(`[OK] ${username} has been added.`);
-          res.redirect("/login")
+          res.render("window", { 
+            title:"Success", 
+            message:"Registration successful", 
+            linkBtn:"/login" 
+          })
         })
         .catch((err) => {
           console.error(`[ERR] ${req.originalUrl} \n${err.message}`);

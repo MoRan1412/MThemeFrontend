@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>MTheme - <%= title %></title>
+    <title>MTheme - <%= title %>
+    </title>
     <link rel="stylesheet" href="../css/style.css">
-    <script src="./js/myscript.js"></script>
+    <script src="./js/script.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
@@ -14,33 +15,41 @@
     <div class="loginContainer">
         <div class="loginTitle">
             <img class="logoLong" src="../img/logoLong.png" alt="">
-            <!-- <h1>Welcome to MTheme!</h1> -->
         </div>
-        <form action="/signup/sendVerifyCode" method="post" class="loginForm" onsubmit="return validateForm()">
+        <form action="/signup/sendVerifyCode" method="post" class="loginForm" onsubmit="return signupValidateForm()">
             <input type="text" name="username" id="username" placeholder="Username" required>
+            <% if (typeof error !=='undefined' && error == "Username already exists" ) { %>
+            <p class="errMsg">
+                <%- error %>
+            </p>
+            <% } %>
+            <span>
+                - At least 3 characters long. <br>
+                - Start with a letter. <br>
+                - Only contain letters, numbers, underscores, and hyphens.
+            </span>
             <input type="password" name="password" id="password" placeholder="Password" required>
-            <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" required>
+            <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password"
+                required>
+            <span>
+                - At least 8 characters long. <br>
+                - At least one digit. <br>
+                - At least one special character (!@#$%^&*).
+            </span>
             <input type="email" name="email" id="email" placeholder="Email" required>
+
+            <% if (typeof error !=='undefined' && error == "Email already exists" ) { %>
+                <p class="errMsg">
+                    <%- error %>
+                </p>
+            <% } %>
             <a href="/login">Already have an account?</a>
             <div class="loginBtn">
                 <input type="submit" value="Sign Up">
             </div>
         </form>
     </div>
-
-    <script>
-        function validateForm() {
-            const password = document.getElementById("password").value;
-            const confirm_password = document.getElementById("confirmPassword").value;
-        
-            if (password !== confirm_password) {
-                alert("Passwords do not match. Please try again.");
-                return false; 
-            }
-        
-            return true; 
-        }
-        </script>
+    <%- include('error') %>
 </body>
 
 </html>

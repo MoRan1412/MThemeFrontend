@@ -16,7 +16,9 @@ p,
 a,
 div,
 input,
-label {
+label,
+span,
+button {
     font-family: "Roboto", sans-serif;
     padding: 0;
     margin: 0;
@@ -34,6 +36,50 @@ label {
     border-radius: 10px;
 }
 
+/* Alert Window */
+.alertWindow {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.alertContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 25%;
+    gap: 15px;
+    padding: 20px;
+    background-color: white;
+}
+
+.alertContainer > h1 {
+    font-size: 20px;
+}
+
+.alertContainer > p {
+    font-size: 13px;
+}
+
+.alertContainer > button {
+    width: fit-content;
+    margin-left: auto;
+    padding: 7px 25px;
+    border: none;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+/* Login Page */
 .loginContainer {
     width: 100vw;
     height: 100vh;
@@ -45,7 +91,6 @@ label {
     gap: 35px;
 }
 
-/* Login Width */
 .loginForm,
 .loginTitle {
     width: 25%;
@@ -113,10 +158,25 @@ label {
     color: rgb(20, 20, 20);
 }
 
+.loginForm>span {
+    font-size: 11px;
+    color: rgb(100, 100, 100);
+}
+
+.errMsg {
+    color: rgb(255, 0, 128); 
+    font-weight: 700;
+    font-size: 12px;
+}
+
 @media screen and (max-width: 1324px) {}
 
 @media screen and (max-width: 720px) {
-    /* Login Width */
+    /* Alert Window */
+    .alertContainer {
+        width: 80%;
+    }
+    /* Login Page */
     .loginForm,
     .loginTitle {
         width: 80%;

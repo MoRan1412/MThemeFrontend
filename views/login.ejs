@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>MTheme - <%= title %></title>
     <link rel="stylesheet" href="../css/style.css">
-    <script src="./js/myscript.js"></script>
+    <script src="./js/script.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
@@ -14,12 +14,16 @@
     <div class="loginContainer">
         <div class="loginTitle">
             <img class="logoLong" src="../img/logoLong.png" alt="">
-            <!-- <h1>Welcome to MTheme!</h1> -->
         </div>
         <form action="/loginProcess" method="post" class="loginForm">
             <input type="text" name="username" id="username" placeholder="Username">
             <input type="password" name="password" id="password" placeholder="Password">
-            <a href="">Forget password or username</a>
+            <% if (typeof error !=='undefined') { %>
+                <p class="errMsg">
+                    <%- error %>
+                </p>
+                <% } %>
+            <a href="">Forget password or username?</a>
             <div class="loginBtn">
                 <input type="submit" value="Login">
                 <input type="button" value="Sign Up" onclick="location.href='/signup'">
