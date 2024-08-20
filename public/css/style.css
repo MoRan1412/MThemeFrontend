@@ -108,13 +108,21 @@ label {
     color: white;
 }
 
+.loginBtn>input[type="button"] {
+    background-color: rgb(240, 240, 240);
+    color: rgb(20, 20, 20);
+}
+
 @media screen and (max-width: 1324px) {}
 
 @media screen and (max-width: 720px) {
-
     /* Login Width */
     .loginForm,
     .loginTitle {
         width: 80%;
+    }
+
+    .loginTitle>.logoLong {
+        width: 45%;
     }
 }
