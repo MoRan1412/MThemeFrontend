@@ -33,20 +33,20 @@ function signupValidateForm() {
     - At least one special character (!@#$%^&*).
     `
     // 
-    if (password !== confirm_password) {
+    if (!/[!@#$%^&*]/.test(password) || !/\d/.test(password) || password.length < 8) {
         errWindow.style.display = "flex"
         errWindow.style.zIndex = "1"
-        errMessage.innerHTML = "Passwords do not match. Please try again."
+        errMessage.innerHTML = passRequire
         errConfirm.addEventListener("click", function () {
             errWindow.style.display = "none";
         });
         return false;
     }
     // 
-    if (!/[!@#$%^&*]/.test(password) || !/\d/.test(password) || password.length < 8) {
+    if (password !== confirm_password) {
         errWindow.style.display = "flex"
         errWindow.style.zIndex = "1"
-        errMessage.innerHTML = passRequire
+        errMessage.innerHTML = "Passwords do not match. Please try again."
         errConfirm.addEventListener("click", function () {
             errWindow.style.display = "none";
         });
