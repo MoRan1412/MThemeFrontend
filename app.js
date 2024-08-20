@@ -85,7 +85,7 @@ app.post('/loginProcess', (req, res) => {
     })
     .catch((err) => {
       console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
-      res.status(status.UNAUTHORIZED).render("login", { title: "Login", error: err.message });
+      res.status(status.UNAUTHORIZED).render("login", { title: "Login", username: username, error: err.message });
     });
 })
 
@@ -131,7 +131,7 @@ app.post('/signup/sendVerifyCode', (req, res) => {
     })
     .catch((err) => {
       console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
-      res.render("signup", { title:"Sign Up", error: err.message });
+      res.render("signup", { title:"Sign Up", username: username, email: email, error: err.message });
     });
 })
 
@@ -194,12 +194,12 @@ app.post('/signupProcess', (req, res) => {
         })
         .catch((err) => {
           console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
-          res.render("signup", { title:"Sign Up", error: err.message });
+          res.render("verifyCode", { title:"Sign Up", error: err.message, message:"Verify failed." });
         });
     })
     .catch((err) => {
       console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
-      res.render("signup", { title:"Sign Up", error: err.message });
+      res.render("verifyCode", { title:"Sign Up", error: err.message, message:"Please enter the correct verification code." });
     });
 })
 

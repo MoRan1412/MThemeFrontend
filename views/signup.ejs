@@ -17,7 +17,7 @@
             <img class="logoLong" src="../img/logoLong.png" alt="">
         </div>
         <form action="/signup/sendVerifyCode" method="post" class="loginForm" onsubmit="return signupValidateForm()">
-            <input type="text" name="username" id="username" placeholder="Username" required>
+            <input type="text" name="username" id="username" placeholder="Username" value="<% if (typeof username !=='undefined') { %><%- username %><% } %>" required>
             <% if (typeof error !=='undefined' && error == "Username already exists" ) { %>
             <p class="loginErrMsg">
                 <%- error %>
@@ -36,7 +36,7 @@
                 - At least one digit. <br>
                 - At least one special character (!@#$%^&*).
             </span>
-            <input type="email" name="email" id="email" placeholder="Email" required>
+            <input type="email" name="email" id="email" placeholder="Email" value="<% if (typeof email !=='undefined') { %><%- email %><% } %>" required>
 
             <% if (typeof error !=='undefined' && error == "Email already exists" ) { %>
                 <p class="loginErrMsg">
