@@ -74,7 +74,11 @@ app.post('/loginProcess', (req, res) => {
         res.cookie("accessToken", jsonData["accessToken"], { maxAge: cookieMaxAge, httpOnly: true });
         res.cookie("role", jsonData["role"], { maxAge: cookieMaxAge, httpOnly: true });
         res.cookie("email", jsonData["email"], { maxAge: cookieMaxAge, httpOnly: true });
-        res.status(status.OK).redirect("/")
+        res.status(status.OK).render("window", { 
+          title:"Success", 
+          message:"Login successful", 
+          linkBtn:"/" 
+        })
       } else {
         throw new Error("Login failed");
       }
