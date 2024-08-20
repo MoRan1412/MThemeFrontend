@@ -19,7 +19,7 @@
         <form action="/signup/sendVerifyCode" method="post" class="loginForm" onsubmit="return signupValidateForm()">
             <input type="text" name="username" id="username" placeholder="Username" required>
             <% if (typeof error !=='undefined' && error == "Username already exists" ) { %>
-            <p class="errMsg">
+            <p class="loginErrMsg">
                 <%- error %>
             </p>
             <% } %>
@@ -39,7 +39,7 @@
             <input type="email" name="email" id="email" placeholder="Email" required>
 
             <% if (typeof error !=='undefined' && error == "Email already exists" ) { %>
-                <p class="errMsg">
+                <p class="loginErrMsg">
                     <%- error %>
                 </p>
             <% } %>
