@@ -16,10 +16,10 @@
             <img class="logoLong" src="../img/logoLong.png" alt="">
         </div>
         <form action="/loginProcess" method="post" class="loginForm">
-            <input type="text" name="username" id="username" placeholder="Username">
-            <input type="password" name="password" id="password" placeholder="Password">
+            <input type="text" name="username" id="username" placeholder="Username" required>
+            <input type="password" name="password" id="password" placeholder="Password" required>
             <% if (typeof error !=='undefined') { %>
-                <p class="errMsg">
+                <p class="loginErrMsg">
                     <%- error %>
                 </p>
                 <% } %>
