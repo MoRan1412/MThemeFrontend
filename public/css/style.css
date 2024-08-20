@@ -43,7 +43,7 @@ button {
 
 /* Header */
 header {
-    box-shadow: 0px 0px 2px red;
+    box-shadow: 0px 0px 5px black;
     background-color: antiquewhite;
     display: flex;
     padding: 0 2.5%;
@@ -231,10 +231,51 @@ header .headerIcon {
 @media screen and (max-width: 1324px) {}
 
 @media screen and (max-width: 720px) {
+    /* Header */
+    header {
+        box-shadow: none;
+        padding: 0;
+    }
+
+    header .logo {
+        display: none;
+    }
+
+    header .headerIcon,
+    header .headerMenu {
+        position: fixed;
+        gap: 0;
+    }
+
+    header .headerMenu {
+        bottom: 0;
+        width: 100vw;
+        box-shadow: 0px 0px 5px black;
+    }
+
+    header .headerIcon {
+        top: 0;
+        right: 0;
+    }
+
+    header .headerMenu li {
+        padding: 0;
+        width: 100%;
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    header .headerIcon li {
+        height: 80px;
+    }
+
     /* Alert Window */
     .alertContainer {
         width: 80%;
     }
+
     /* Login Page */
     .loginForm,
     .loginTitle {
