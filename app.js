@@ -35,7 +35,6 @@ const status = {
 };
 
 const cookieMaxAge = 60000 * 30;
-const signUpHolding = []
 
 const API = "http://localhost:10888"
 
@@ -44,12 +43,15 @@ app.get('/login', (req, res) => {
 })
 
 app.post('/loginProcess', (req, res) => {
+  // 參數
+  const username = req.body.username
+  const password = req.body.password
   const options = {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({
-      username: req.body.username,
-      password: req.body.password
+      username: username,
+      password: password
     })
   };
   const url = `${API}/user/loginVerify`;
@@ -59,9 +61,11 @@ app.post('/loginProcess', (req, res) => {
       if (res.status === status.OK) {
         return res.json();
       } else if (res.status === status.UNAUTHORIZED) {
-        throw new Error("Incorrect username or password");
+        return res.json().then((errData) => {
+          throw new Error(errData.message);
+        })
       } else {
-        console.log(`[${res.status}] Failed to authenticate user`);
+        console.log(`Failed to authenticate user`);
       }
     })
     .then((jsonData) => {
@@ -86,93 +90,108 @@ app.get('/signup', (req, res) => {
 })
 
 app.post('/signup/sendVerifyCode', (req, res) => {
-  req.session.username = req.body.username;
-  req.session.password = req.body.password;
-  req.session.email = req.body.email;
+  // 參數
+  const username = req.body.username
+  const password = req.body.password
+  const email = req.body.email
+
+  // 暫存到中間件
+  req.session.username = username;
+  req.session.password = password;
+  req.session.email = email;
+
   const addUserOptions = {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({
-      username: req.body.username,
-      email: req.body.email
+      username: username,
+      email: email
     })
   };
   const url = `${API}/user/sendEmailVerifyCode`;
 
   fetch(url, addUserOptions)
-    .then((res) => {
+    .then(async (res) => {
       if (res.status === status.OK) {
         return res.json();
       } else if (res.status === status.CONFLICT) {
-        throw new Error("Email already exists");
+        const errData = await res.json();
+        throw new Error(errData.message);
       } else {
-        console.log(`[${res.status}] Failed to send verification code`);
+        throw new Error(`Failed to send verification code`);
       }
     })
     .then((jsonData) => {
-      console.log(`[OK] Verification code has been sent to ${req.body.email}.`);
-      res.status(status.OK).render("verifyCode", { title: "Verification", message: "Verification code has been sent." })
+      console.log(`[OK] Verification code has been sent to ${email}.`);
+      res.render("verifyCode", { title: "Verification", message: jsonData.message })
     })
     .catch((err) => {
-      console.error(`[ERR] ${req.originalUrl} \n${err}`);
-      res.status(status.INTERNAL_SERVER_ERROR).render("signup", { title:"Sign Up", error: err });
+      console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
+      res.render("signup", { title:"Sign Up", error: err.message });
     });
 })
 
 app.post('/signupProcess', (req, res) => {
+  // 參數
+  const username = req.session.username
+  const password = req.session.password
+  const email = req.session.email
+  const code = req.body.verifyCode
+
   const options = {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({
-      email: req.session.email,
-      code: req.body.verifyCode
+      email: email,
+      code: code
     })
   };
   const url = `${API}/user/emailVerify`;
 
   fetch(url, options)
-    .then((res) => {
+    .then(async (res) => {
       if (res.status === status.OK) {
         return res.json();
       } else if (res.status === status.UNAUTHORIZED) {
-        throw new Error("Incorrect verification code");
+        const errData = await res.json();
+        throw new Error(errData.message);
       } else {
-        console.log(`[${res.status}] Failed to verify email`);
+        throw new Error(`Failed to verify email`);
       }
     })
     .then((jsonData) => {
-      console.log(`[OK] ${req.session.email} verification successfull.`);
+      console.log(`[OK] ${email} verification successfull.`);
       const addUserOptions = {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
-          username: req.session.username,
-          password: req.session.password,
-          email: req.session.email
+          username: username,
+          password: password,
+          email: email
         })
       };
       const addUserUrl = `${API}/user/add`;
 
       fetch(addUserUrl, addUserOptions)
         .then((res) => {
-          if (res.status === status.OK) {
+          if (res.status === status.CREATED) {
             return res.json();
           } else {
-            console.log(`[${res.status}] Failed to add user`);
+            throw new Error(`Failed to add user`);
           }
         })
         .then((jsonData) => {
-          console.log(`[OK] ${req.session.username} has been added.`);
-          res.status(status.CREATED).redirect("/login")
+          console.log(`[OK] ${username} has been added.`);
+          res.redirect("/login")
         })
         .catch((err) => {
-          console.error(`[ERR] ${req.originalUrl} \n${err}`);
-          res.status(status.INTERNAL_SERVER_ERROR).redirect("/signup", { error: err });
+          console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
+          res.render("signup", { title:"Sign Up", error: err.message });
         });
     })
     .catch((err) => {
-      console.error(`[ERR] ${req.originalUrl} \n${err}`);
-      res.status(status.UNAUTHORIZED).redirect("/signup", { error: err });
+      console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
+      res.render("signup", { title:"Sign Up", error: err.message });
     });
 })
 
