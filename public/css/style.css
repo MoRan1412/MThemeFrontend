@@ -38,11 +38,57 @@ button {
     border-radius: 10px;
 }
 
+/* Content Width */
+
 
 /* Header */
-header ul {
-    list-style-type: none;
+header {
+    box-shadow: 0px 0px 2px red;
+    background-color: antiquewhite;
+    display: flex;
+    padding: 0 2.5%;
+    position: fixed;
+    top: 0;
+    width: 100vw;
 }
+
+header .headerMenu,
+header .headerIcon {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: aqua;
+    gap: 10px;
+}
+
+header .headerMenu li {
+    background-color: blue;
+    padding: 30px 40px;
+}
+
+header .headerIcon li {
+    background-color: blue;
+    height: 100%;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header .logo {
+    width: 140px;
+    height: 35px;
+    background-image: url(../img/logoLong.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left;
+}
+
+header .headerIcon {
+    margin-left: auto;
+}
+
 
 
 /* Alert Window */
