@@ -58,7 +58,7 @@ label {
 }
 
 .loginTitle>.logoLong {
-    width: 30%;
+    width: 45%;
 }
 
 .loginTitle>h1 {
@@ -120,9 +120,5 @@ label {
     .loginForm,
     .loginTitle {
         width: 80%;
-    }
-
-    .loginTitle>.logoLong {
-        width: 45%;
     }
 }
