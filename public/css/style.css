@@ -262,7 +262,7 @@ header .active {
     header .headerMenu {
         bottom: 0;
         width: 100vw;
-        box-shadow: none;
+        border-collapse: collapse;
     }
 
     header .headerIcon {
@@ -275,10 +275,11 @@ header .active {
     header .headerMenu li {
         padding: 0;
         width: 100%;
-        height: 60px;
+        height: 45px;
         display: flex;
         justify-content: center;
         align-items: center;
+        border: solid 1px rgba(0, 0, 0, 0.2);
     }
 
     header .headerIcon li {
