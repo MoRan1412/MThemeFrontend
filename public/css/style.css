@@ -106,11 +106,10 @@ header .active {
 /* Home Page */
 .homePage {
     width: 100%;
-    height: calc(100vh - 60px);
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 25px;
     flex-direction: column;
 }
 
@@ -121,10 +120,11 @@ header .active {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+    margin-top: 200px;
 }
 
 .homePage h1 {
-    font-size: 25px;
+    font-size: 20px;
 }
 
 
@@ -322,8 +322,8 @@ header .active {
         padding-top: 85px;
     }
 
-    .homePage {
-        height: calc(100vh - 85px);
+    .homePage .logo {
+        margin-top: 225px;
     }
 
     /* Alert Window */
