@@ -322,6 +322,10 @@ header .active {
         padding-top: 85px;
     }
 
+    .homePage {
+        height: calc(100vh - 85px);
+    }
+
     /* Alert Window */
     .alertContainer {
         width: 80%;
