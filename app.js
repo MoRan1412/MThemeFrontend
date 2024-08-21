@@ -219,7 +219,31 @@ app.get("/", (req, res) => {
 
 app.get("/theme", (req, res) => {
   if (req.cookies.accessToken) {
-    res.render("index", { title: "Theme" });
+    const options = {
+      method: "GET",
+      headers: { "content-type": "application/json" },
+    };
+    const url = `${API}/theme/get`;
+    fetch(url, options)
+      .then((res) => {
+        if (res.status === status.OK) {
+          return res.json();
+        } else {
+          throw new Error(`Failed to get theme`);
+        }
+      })
+      .then((jsonData) => {
+        console.log(jsonData);
+        res.render("index", { title: "Theme", theme: jsonData });
+      })
+      .catch((err) => {
+        console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
+        res.render("window", {
+          title: "Error",
+          message: "Failed to get theme",
+          linkBtn: "/theme"
+        });
+      });
   } else {
     res.redirect("/login");
   }

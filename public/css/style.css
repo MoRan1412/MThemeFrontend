@@ -115,7 +115,7 @@ header .headerMenu li .material-icons{
 /* Page */
 .page {
     width: 100vw;
-    padding: 60px 2.5% 0 2.5%;
+    padding: 60px 2.5vw 0 2.5vw;
     overflow: auto;
 }
 
@@ -163,16 +163,17 @@ header .headerMenu li .material-icons{
 }
 
 .themeContainer {
-    height: 250px;
-    width: calc((100% - 2.5vw * 3)/4);
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 }
 
 .themeCover {
-    width: 100%;
-    height: 100%;
-    background-color: blueviolet;
+    width: calc(((100vw - 5vw) - 4 * 2.5vw) / 5);
+    height: calc(((100vw - 5vw) - 4 * 2.5vw) / 5);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .themeContent {
@@ -421,8 +422,9 @@ header .headerMenu li .material-icons{
         gap: 5vw;
     }
 
-    .themeContainer {
-        width: calc(100%/2 - 2.5vw);
+    .themeCover {
+        width: calc(((100vw - 10vw) - 1 * 5vw) / 2);
+        height: calc(((100vw - 10vw) - 1 * 5vw) / 2);
     }
 
     .themeContent {
