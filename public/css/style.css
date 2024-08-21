@@ -245,6 +245,7 @@ header .headerIcon {
     header .headerIcon .logo {
         display: block;
         margin-right: auto;
+        margin-left: 5vw;
     }
 
     header .headerIcon,
@@ -262,7 +263,8 @@ header .headerIcon {
     header .headerIcon {
         top: 0;
         right: 0;
-        width: 95vw;
+        width: 100vw;
+        background-color: rgb(255, 255, 255);
     }
 
     header .headerMenu li {
