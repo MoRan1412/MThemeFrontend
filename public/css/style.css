@@ -402,18 +402,19 @@ header .headerMenu li .material-icons{
 
     /* Page */
     .page {
-        padding: 85px 5vw calc(45px + 5vw) 5vw;
+        padding: 85px 5vw calc(55px) 5vw;
     }
 
     /* Home Page */
     .homePage {
-        height: calc(100vh - 85px - 45px);
+        height: calc(100vh - 85px - 55px);
     }
 
     /* Theme Page */
     .themePage {
         width: 100%;
         margin: 0;
+        padding-bottom: 55px;
     }
 
     .themeList {
