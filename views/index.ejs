@@ -14,7 +14,13 @@
 <body>
     <%- include('header') %>
     <div class="page">
-        <%- include('home') %>
+        <% if (typeof title !=='undefined' && title == 'Home') { %>
+            <%- include('home') %>
+        <% } else if (typeof title !=='undefined' && title == 'Theme') { %>
+            <%- include('theme') %>
+        <% } else if (typeof title !=='undefined' && title == 'Help') { %>
+            <%- include('help') %>
+        <% } %>
     </div>
 </body>
 

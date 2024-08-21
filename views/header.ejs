@@ -1,15 +1,15 @@
 <header>
     <ul class="headerMenu">
         <div class="logo" onclick="location.href='/'"></div>
-        <li class="active">
+        <li class="<% if (typeof title !=='undefined' && title == 'Home') { %>active<% } %>" onclick="location.href='/'">
             <i class="material-icons">home</i>
             <p>Home</p>
         </li>
-        <li class="">
+        <li class="<% if (typeof title !=='undefined' && title == 'Theme') { %>active<% } %>" onclick="location.href='/theme'">
             <i class="material-icons">widgets</i>
             <p>Theme</p>
         </li>
-        <li class="">
+        <li class="<% if (typeof title !=='undefined' && title == 'Help') { %>active<% } %>" onclick="location.href='/help'">
             <i class="material-icons">help</i>
             <p>Help</p>
         </li>

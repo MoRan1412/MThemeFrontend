@@ -217,6 +217,22 @@ app.get("/", (req, res) => {
   }
 });
 
+app.get("/theme", (req, res) => {
+  if (req.cookies.accessToken) {
+    res.render("index", { title: "Theme" });
+  } else {
+    res.redirect("/login");
+  }
+});
+
+app.get("/help", (req, res) => {
+  if (req.cookies.accessToken) {
+    res.render("index", { title: "Help" });
+  } else {
+    res.redirect("/login");
+  }
+});
+
 const port = 3000; // Replit doesn’t matter which port is using
 app.listen(port, () => {
   console.log(`Connected on port ${port}`);

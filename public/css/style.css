@@ -68,6 +68,7 @@ header .headerMenu li {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    cursor: pointer;
 }
 
 header .headerIcon li {
