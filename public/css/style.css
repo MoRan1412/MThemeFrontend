@@ -77,6 +77,7 @@ header .headerIcon li {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 header .logo {
@@ -145,6 +146,58 @@ header .headerMenu li .material-icons{
 .homePage p {
     font-size: 15px;
 }
+
+/* Theme Page */
+.themePage {
+    width: 100%;
+    margin: 2.5vw 0;
+}
+
+.themeList {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: 2.5vw;
+}
+
+.themeContainer {
+    height: 250px;
+    width: calc((100% - 2.5vw * 3)/4);
+    display: flex;
+    flex-direction: column;
+}
+
+.themeCover {
+    width: 100%;
+    height: 100%;
+    background-color: blueviolet;
+}
+
+.themeContent {
+    width: 100%;
+    background-color: black;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.themeContent h1,
+.themeContent p {
+    color: white;
+}
+
+.themeContent h1 {
+    font-size: 17px;
+}
+
+.themeContent p {
+    font-size: 12px;
+}
+
+
 
 
 /* Alert Window */
@@ -313,6 +366,7 @@ header .headerMenu li .material-icons{
         bottom: 0;
         width: 100vw;
         border-collapse: collapse;
+        background-color: white;
     }
 
     header .headerIcon {
@@ -348,11 +402,26 @@ header .headerMenu li .material-icons{
 
     /* Page */
     .page {
-        padding: 85px 5vw 0 5vw;
+        padding: 85px 5vw calc(45px + 5vw) 5vw;
     }
 
+    /* Home Page */
     .homePage {
         height: calc(100vh - 85px - 45px);
+    }
+
+    /* Theme Page */
+    .themePage {
+        width: 100%;
+        margin: 0;
+    }
+
+    .themeList {
+        gap: 5vw;
+    }
+
+    .themeContainer {
+        width: calc(100%/2 - 2.5vw);
     }
 
     /* Alert Window */
