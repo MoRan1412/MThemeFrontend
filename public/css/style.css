@@ -6,8 +6,9 @@
     box-sizing: border-box;
 }
 
-body {
+body, html {
     background-color: #ffffff;
+    overflow: auto;
 }
 
 h1,
@@ -28,7 +29,7 @@ button {
 }
 
 ::-webkit-scrollbar {
-    width: 2px;
+    width: 0;
 }
 
 ::-webkit-scrollbar-track {
@@ -50,6 +51,7 @@ header {
     position: fixed;
     top: 0;
     width: 100vw;
+    background-color: white;
 }
 
 header .headerMenu,
@@ -59,8 +61,6 @@ header .headerIcon {
     flex-direction: row;
     align-items: center;
 }
-
-header
 
 header .headerMenu li {
     padding: 20px 40px;
@@ -94,6 +94,37 @@ header .headerIcon {
 header .active {
     background-color: black;
     color: white;
+}
+
+/* Page */
+.page {
+    width: 100vw;
+    padding: 60px 2.5% 0 2.5%;
+    overflow: auto;
+}
+
+/* Home Page */
+.homePage {
+    width: 100%;
+    height: calc(100vh - 60px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.homePage .logo {
+    background-image: url(../img/logo.png);
+    width: 100px;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.homePage h1 {
+    font-size: 25px;
 }
 
 
@@ -241,6 +272,7 @@ header .active {
     header {
         box-shadow: none;
         padding: 0;
+        background-color: #00000000;
     }
 
     header .headerMenu .logo {
@@ -279,11 +311,15 @@ header .active {
         display: flex;
         justify-content: center;
         align-items: center;
-        border: solid 1px rgba(0, 0, 0, 0.2);
     }
 
     header .headerIcon li {
         height: 80px;
+    }
+
+    /* Page */
+    .page {
+        padding-top: 85px;
     }
 
     /* Alert Window */
