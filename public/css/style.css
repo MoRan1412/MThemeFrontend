@@ -424,6 +424,17 @@ header .headerMenu li .material-icons{
         width: calc(100%/2 - 2.5vw);
     }
 
+    .themeContent {
+        gap: 5px;
+    }
+
+    .themeContent h1 {
+        font-size: 13px;
+    }
+    .themeContent p {
+        font-size: 10px;
+    }
+
     /* Alert Window */
     .alertContainer {
         width: 80%;
