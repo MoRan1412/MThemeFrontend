@@ -90,6 +90,10 @@ header .headerIcon {
     margin-left: auto;
 }
 
+header .active {
+    background-color: black;
+    color: white;
+}
 
 
 /* Alert Window */
@@ -270,11 +274,10 @@ header .headerIcon {
     header .headerMenu li {
         padding: 0;
         width: 100%;
-        height: 70px;
+        height: 60px;
         display: flex;
         justify-content: center;
         align-items: center;
-        border: solid 1px rgba(0, 0, 0, 0.2);
     }
 
     header .headerIcon li {
