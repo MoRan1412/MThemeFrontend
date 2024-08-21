@@ -64,6 +64,10 @@ header .headerIcon {
 
 header .headerMenu li {
     padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 header .headerIcon li {
@@ -75,7 +79,8 @@ header .headerIcon li {
 }
 
 header .logo {
-    width: 140px;
+    /* width: 140px; */
+    width: 180px;
     height: 35px;
     background-image: url(../img/logoLong.svg);
     background-repeat: no-repeat;
@@ -93,7 +98,16 @@ header .headerIcon {
 
 header .active {
     background-color: black;
+}
+
+header .active p,
+header .active i {
     color: white;
+    display: block;
+}
+
+header .headerMenu li .material-icons{
+    display: none;
 }
 
 /* Page */
@@ -319,6 +333,15 @@ header .active {
 
     header .headerIcon li {
         height: 80px;
+    }
+
+    header .headerMenu li .material-icons {
+        display: block;
+        font-size: 20px;
+    }
+
+    header .headerMenu li p {
+        font-size: 9px;
     }
 
     /* Page */
