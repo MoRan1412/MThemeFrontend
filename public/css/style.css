@@ -58,11 +58,12 @@ header .headerIcon {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 10px;
 }
 
+header
+
 header .headerMenu li {
-    padding: 30px 40px;
+    padding: 20px 40px;
 }
 
 header .headerIcon li {
