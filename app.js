@@ -40,7 +40,6 @@ const API = "http://localhost:10888"
 
 const setDynamicFavicon = (req, res, next) => {
   res.locals.faviconPath = '../favicon.png';
-  res.locals.webUrl = "http://localhost:3000"
   next();
 };
 
