@@ -42,7 +42,7 @@ button {
 
 :root {
     --pcHeaderWidthPadding: 2.5vw;
-    --mobileHeaderWidthPadding: 10vw
+    --mobileHeaderWidthPadding: 10vw;
 }
 
 /* Content Width */
@@ -203,9 +203,6 @@ header .headerMenu li .material-icons{
     font-size: 12px;
 }
 
-
-
-
 /* Alert Window */
 .alertWindow {
     display: none;
@@ -343,6 +340,38 @@ header .headerMenu li .material-icons{
     font-size: 12px;
 }
 
+
+
+/* Detail Page */
+nav {
+    width: 100vw;
+    height: 10vh;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0 var(--pcHeaderWidthPadding);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+nav h1 {
+    position: absolute;
+    color: white;
+    width: 40vw;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 20px;
+}
+
+nav .material-icons {
+    margin-right: auto;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 1324px) {}
 
 @media screen and (max-width: 720px) {
@@ -456,5 +485,10 @@ header .headerMenu li .material-icons{
     .loginForm,
     .loginTitle {
         width: 80%;
+    }
+
+    /* Detail Page */
+    nav {
+        padding: 0 var(--mobileHeaderWidthPadding);
     }
 }

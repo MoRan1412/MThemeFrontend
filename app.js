@@ -44,10 +44,7 @@ const cookieMaxAge = 60000 * 30;
 
 const API = "http://localhost:10888"
 
-app.get('/login', (req, res) => {
-  res.render("login", { title: "Login" })
-})
-
+// Login & Sign Up System
 app.post('/loginProcess', (req, res) => {
   // 參數
   const username = req.body.username
@@ -80,10 +77,10 @@ app.post('/loginProcess', (req, res) => {
         res.cookie("accessToken", jsonData["accessToken"], { maxAge: cookieMaxAge, httpOnly: true });
         res.cookie("role", jsonData["role"], { maxAge: cookieMaxAge, httpOnly: true });
         res.cookie("email", jsonData["email"], { maxAge: cookieMaxAge, httpOnly: true });
-        res.status(status.OK).render("window", { 
-          title:"Success", 
-          message:"Login successful", 
-          linkBtn:"/" 
+        res.status(status.OK).render("window", {
+          title: "Success",
+          message: "Login successful",
+          linkBtn: "/"
         })
       } else {
         throw new Error("Login failed");
@@ -91,12 +88,12 @@ app.post('/loginProcess', (req, res) => {
     })
     .catch((err) => {
       console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
-      res.status(status.UNAUTHORIZED).render("login", { title: "Login", username: username, error: err.message });
+      res.status(status.UNAUTHORIZED).render("login", { 
+        title: "Login", 
+        username: username, 
+        error: err.message 
+      });
     });
-})
-
-app.get('/signup', (req, res) => {
-  res.render("signup", { title: "Sign Up" })
 })
 
 app.post('/signup/sendVerifyCode', (req, res) => {
@@ -133,11 +130,19 @@ app.post('/signup/sendVerifyCode', (req, res) => {
     })
     .then((jsonData) => {
       console.log(`[OK] Verification code has been sent to ${email}.`);
-      res.render("verifyCode", { title: "Verification", message: jsonData.message })
+      res.render("verifyCode", { 
+        title: "Verification", 
+        message: jsonData.message 
+      })
     })
     .catch((err) => {
       console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
-      res.render("signup", { title:"Sign Up", username: username, email: email, error: err.message });
+      res.render("signup", { 
+        title: "Sign Up", 
+        username: username, 
+        email: email, 
+        error: err.message 
+      });
     });
 })
 
@@ -192,23 +197,65 @@ app.post('/signupProcess', (req, res) => {
         })
         .then((jsonData) => {
           console.log(`[OK] ${username} has been added.`);
-          res.render("window", { 
-            title:"Success", 
-            message:"Registration successful", 
-            linkBtn:"/login" 
+          req.session.destroy()
+          res.render("window", {
+            title: "Success",
+            message: "Registration successful",
+            linkBtn: "/login"
           })
         })
         .catch((err) => {
           console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
-          res.render("verifyCode", { title:"Sign Up", error: err.message, message:"Verify failed." });
+          res.render("verifyCode", {
+            title: "Sign Up",
+            error: err.message,
+            message: "Verify failed."
+          });
         });
     })
     .catch((err) => {
       console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
-      res.render("verifyCode", { title:"Sign Up", error: err.message, message:"Please enter the correct verification code." });
+      res.render("verifyCode", {
+        title: "Sign Up",
+        error: err.message,
+        message: "Please enter the correct verification code."
+      });
     });
 })
 
+app.get('/klwp/detail/:id', (req, res) => {
+  if (req.cookies.accessToken) {
+    const klwpId = req.params.id
+    const options = {
+      method: "GET",
+      headers: { "content-type": "application/json" },
+    }
+    const url = `${API}/klwp/get/${klwpId}`;
+    fetch(url, options)
+      .then((res) => {
+        if (res.status === status.OK) {
+          return res.json();
+        } else {
+          throw new Error(`Failed to get klwp detail`);
+        }
+      })
+      .then((jsonData) => {
+        res.render("detail", { title: jsonData.name, klwpData: jsonData });
+      })
+      .catch((err) => {
+        console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
+        res.render("window", {
+          title: "Error",
+          message: err.message,
+          linkBtn: "/"
+        });
+      });
+  } else {
+    res.redirect("/login");
+  }
+})
+
+// Page
 app.get("/", (req, res) => {
   if (req.cookies.accessToken) {
     res.render("index", { title: "Home" });
@@ -255,6 +302,14 @@ app.get("/help", (req, res) => {
     res.redirect("/login");
   }
 });
+
+app.get('/login', (req, res) => {
+  res.render("login", { title: "Login" })
+})
+
+app.get('/signup', (req, res) => {
+  res.render("signup", { title: "Sign Up" })
+})
 
 const port = 3000; // Replit doesn’t matter which port is using
 app.listen(port, () => {
