@@ -375,7 +375,6 @@ header .headerMenu li .material-icons{
 @media screen and (max-width: 720px) {
     /* Header */
     header {
-        box-shadow: none;
         padding: 0;
         background-color: #00000000;
     }
