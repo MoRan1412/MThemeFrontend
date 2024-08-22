@@ -40,6 +40,11 @@ button {
     border-radius: 10px;
 }
 
+:root {
+    --pcHeaderWidthPadding: 2.5vw;
+    --mobileHeaderWidthPadding: 10vw
+}
+
 /* Content Width */
 
 
@@ -47,7 +52,7 @@ button {
 header {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
     display: flex;
-    padding: 0 2.5%;
+    padding: 0 var(--pcHeaderWidthPadding);
     position: fixed;
     top: 0;
     width: 100vw;
@@ -115,7 +120,7 @@ header .headerMenu li .material-icons{
 /* Page */
 .page {
     width: 100vw;
-    padding: 60px 2.5vw 0 2.5vw;
+    padding: 60px var(--pcHeaderWidthPadding) 0 var(--pcHeaderWidthPadding);
     overflow: auto;
 }
 
@@ -150,7 +155,7 @@ header .headerMenu li .material-icons{
 /* Theme Page */
 .themePage {
     width: 100%;
-    margin: 2.5vw 0;
+    margin: var(--pcHeaderWidthPadding) 0;
 }
 
 .themeList {
@@ -159,7 +164,7 @@ header .headerMenu li .material-icons{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: start;
-    gap: 2.5vw;
+    gap: var(--pcHeaderWidthPadding);
 }
 
 .themeContainer {
@@ -169,8 +174,8 @@ header .headerMenu li .material-icons{
 }
 
 .themeCover {
-    width: calc(((100vw - 5vw) - 4 * 2.5vw) / 5);
-    height: calc(((100vw - 5vw) - 4 * 2.5vw) / 5);
+    width: calc(((100vw - var(--pcHeaderWidthPadding) * 2) - 4 * var(--pcHeaderWidthPadding)) / 5);
+    height: calc(((100vw - var(--pcHeaderWidthPadding) * 2) - 4 * var(--pcHeaderWidthPadding)) / 5);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -373,7 +378,7 @@ header .headerMenu li .material-icons{
     header .headerIcon {
         top: 0;
         right: 0;
-        padding: 0 10vw;
+        padding: 0 var(--mobileHeaderWidthPadding);
         width: 100vw;
         background-color: rgb(255, 255, 255);
     }
@@ -407,7 +412,7 @@ header .headerMenu li .material-icons{
 
     /* Page */
     .page {
-        padding: 100px 10vw calc(55px) 10vw;
+        padding: 100px var(--mobileHeaderWidthPadding) calc(55px) var(--mobileHeaderWidthPadding);
     }
 
     /* Home Page */
@@ -423,12 +428,12 @@ header .headerMenu li .material-icons{
     }
 
     .themeList {
-        gap: 10vw;
+        gap: var(--mobileHeaderWidthPadding);
     }
 
     .themeCover {
-        width: calc(((100vw - 20vw) - 1 * 10vw) / 2);
-        height: calc(((100vw - 20vw) - 1 * 10vw) / 2);
+        width: calc(((100vw - var(--mobileHeaderWidthPadding) * 2) - 1 * var(--mobileHeaderWidthPadding)) / 2);
+        height: calc(((100vw - var(--mobileHeaderWidthPadding) * 2) - 1 * var(--mobileHeaderWidthPadding)) / 2);
     }
 
     .themeContent {
