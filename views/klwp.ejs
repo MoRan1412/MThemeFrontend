@@ -2,7 +2,7 @@
     <div class="themeList">
 
         <% for( let i = 0; i < klwp.length; i++ ) { %>
-            <div class="themeContainer" onclick='location.href="<%= webUrl %>/klwp/detail/<%= klwp[i].id %>"'>
+            <div class="themeContainer" onclick='location.href="/klwp/detail/<%= klwp[i].id %>"'>
                 <div class="themeCover" style='background-image: url("<%= klwp[i].image[0] %>");'></div>
                 <div class="themeContent">
                     <h1><%= klwp[i].name %></h1>
