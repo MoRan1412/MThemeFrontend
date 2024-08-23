@@ -21,6 +21,7 @@ label,
 span,
 ul,
 li,
+strong,
 button {
     font-family: "Roboto", sans-serif;
     padding: 0;
@@ -59,6 +60,7 @@ header {
     width: 100vw;
     height: var(--pcHeaderHight);
     background-color: white;
+    z-index: 100;
 }
 
 header .headerMenu,
@@ -373,35 +375,59 @@ header .headerMenu li .material-icons{
 /* KLWP Detail Page */
 .klwpDetailPage {
     width: 100%;
-    padding: var(--pcHeaderWidthPadding);
+    padding: var(--pcHeaderWidthPadding) 0 0 0;
 }
 
 .klwpDetailHeader {
     width: 100%;
-    background-color: aquamarine;
+    background-color: rgb(0, 0, 0);
     display: flex;
     flex-direction: row;
     gap: var(--pcHeaderWidthPadding);
+    padding: var(--pcHeaderWidthPadding);
 }
 
 .klwpDetailCover {
-    width: 30vw;
-    height: 30vw;
-    background-color: black;
+    width: 25vw;
+    height: 25vw;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .klwpDetailData {
-    background-color: rgb(253, 255, 127);
-    width: calc(100vw - var(--pcHeaderWidthPadding) * 6 - 30vw);
-    gap: 20px;
+    width: calc(100vw - var(--pcHeaderWidthPadding) * 5 - 25vw);
+    gap: 10px;
     display: flex;
     flex-direction: column;
 }
 
+
+
 .klwpDetailData h1 {
+    font-size: 23px;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 15px;
+}
+
+.klwpDetailData h1 p {
+    font-weight: 500;
+}
+
+.klwpDetailData p,
+.klwpDetailData h1,
+.klwpDetailData strong {
+    color: white;
+}
+
+.klwpDetailData p {
+    font-size: 15px;
+}
+
+.klwpDetailData strong {
+    margin-top: 10px;
     font-size: 25px;
 }
 
@@ -412,7 +438,6 @@ header .headerMenu li .material-icons{
     header {
         padding: 0;
         height: var(--mobileTopHeaderHeight);
-        z-index: 5;
     }
 
     header .headerMenu .logo {
@@ -530,7 +555,7 @@ header .headerMenu li .material-icons{
 
     /* KLWP Detail Page */
     .klwpDetailPage {
-        padding: 0;
+        padding: 0 0 var(--mobileHeaderHeight) 0;
         position: absolute;
         top: var(--mobileTopHeaderHeight);
         left: 0;
@@ -540,6 +565,7 @@ header .headerMenu li .material-icons{
         flex-direction: column;
         align-items: center;
         gap: var(--mobileHeaderWidthPadding);
+        padding: 0 0 var(--mobileHeaderWidthPadding) 0;
     }
 
     .klwpDetailCover {
