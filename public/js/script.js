@@ -86,3 +86,27 @@ function loadPage(route, loadTarget, TargetEle) {
     xhttp.open("GET", "/" + route, true)
     xhttp.send()
 }
+
+function showKLWPDetail() {
+    const klwpDetail = document.getElementById("klwpDetailContent")
+    const klwpComment = document.getElementById("klwpDetailComment")
+    const klwpDetailSelect = document.getElementById("klwpDetailSelect")
+    const klwpCommentSelect = document.getElementById("klwpCommentSelect")
+    klwpCommentSelect.classList.remove('klwpDetailSelect')
+    klwpDetailSelect.classList.add('klwpDetailSelect')
+    klwpDetail.classList.remove('hidden')
+    klwpComment.classList.add('hidden')
+    console.log("showKLWPDetail")
+}
+
+function showKLWPComment() {
+    const klwpComment = document.getElementById("klwpDetailComment")
+    const klwpDetail = document.getElementById("klwpDetailContent")
+    const klwpDetailSelect = document.getElementById("klwpDetailSelect")
+    const klwpCommentSelect = document.getElementById("klwpCommentSelect")
+    klwpCommentSelect.classList.add('klwpDetailSelect')
+    klwpDetailSelect.classList.remove('klwpDetailSelect')
+    klwpComment.classList.remove('hidden')
+    klwpDetail.classList.add('hidden')
+    console.log("showKLWPComment")
+}

@@ -20,13 +20,14 @@
     </header>
     <div class="page">
         <div class="klwpDetailPage">
+
             <div class="klwpDetailHeader">
                 <div class="klwpDetailCover" style='background-image: url("../<%= klwpData.image[0] %>");'></div>
                 <div class="klwpDetailData">
                     <div>
                         <h1>
                             <%= klwpData.name %>
-                                <p>By <%= klwpData.author %>
+                                <p><%= klwpData.author %>
                                 </p>
                         </h1>
                         <p>
@@ -36,6 +37,15 @@
                     <strong>$<%= klwpData.price %></strong>
                 </div>
             </div>
+
+            <div class="klwpDetailMenu">
+                <ul>
+                    <li onclick="showKLWPDetail()" id="klwpDetailSelect" class="klwpDetailSelect">Detail</li>
+                    <li onclick="showKLWPComment()" id="klwpCommentSelect">Comment</li>
+                </ul>
+            </div>
+            <div id="klwpDetailContent" class="klwpDetailContent">Detail</div>
+            <div id="klwpDetailComment" class="klwpDetailContent hidden">Comment</div>
         </div>
     </div>
 </body>
