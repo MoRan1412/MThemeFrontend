@@ -16,6 +16,18 @@
         <i class="material-icons" onclick="goBack()">arrow_back_ios</i>
         <h1><%= title %></h1>
     </header>
+    <div class="page">
+        <div class="klwpDetailPage">
+            <div class="klwpDetailHeader">
+                <div class="klwpDetailCover" style='background-image: url("../<%= klwpData.image[0] %>");'></div>
+                <div class="klwpDetailData">
+                    <h1><%= klwpData.name %></h1>
+                    <p><%= klwpData.author %></p>
+                    <p><%= klwpData.desc %></p>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
