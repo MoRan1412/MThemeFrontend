@@ -14,15 +14,25 @@
 <body>
     <header class="headerDetail">
         <i class="material-icons" onclick="goBack()">arrow_back_ios</i>
-        <h1><%= title %></h1>
+        <h1>
+            <%= title %>
+        </h1>
     </header>
     <div class="page">
         <div class="klwpDetailPage">
             <div class="klwpDetailHeader">
                 <div class="klwpDetailCover" style='background-image: url("../<%= klwpData.image[0] %>");'></div>
                 <div class="klwpDetailData">
-                    <h1><%= klwpData.name %><p>By <%= klwpData.author %></p></h1>
-                    <p><%= klwpData.desc %></p>
+                    <div>
+                        <h1>
+                            <%= klwpData.name %>
+                                <p>By <%= klwpData.author %>
+                                </p>
+                        </h1>
+                        <p>
+                            <%= klwpData.desc %>
+                        </p>
+                    </div>
                     <strong>$<%= klwpData.price %></strong>
                 </div>
             </div>
