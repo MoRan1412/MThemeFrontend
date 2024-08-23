@@ -46,7 +46,7 @@ button {
     --mobileHeaderWidthPadding: 10vw;
     --pcHeaderHight: 80px;
     --mobileHeaderHeight: 55px;
-    --mobileTopHeaderHeight: calc(var(--mobileHeaderHeight) + 25px);
+    --mobileTopHeaderHeight: calc(var(--mobileHeaderHeight) + 20px);
 }
 
 
@@ -575,6 +575,21 @@ header .headerMenu li .material-icons{
 
     .klwpDetailData {
         width: calc(100vw - var(--mobileHeaderWidthPadding) * 2);
+    }
+
+    .klwpDetailData h1 {
+        font-size: 15px;
+    }
+
+    .klwpDetailData h1 p {
+        font-size: 10px;
+    }
+
+    .klwpDetailData p {
+        font-size: 12px;
+    }
+    .klwpDetailData strong {
+        font-size: 15px;
     }
 
 }
