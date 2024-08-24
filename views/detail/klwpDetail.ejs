@@ -1,0 +1,42 @@
+<div class="klwpDetailPage">
+
+    <div class="klwpDetailHeader">
+        <div class="klwpDetailCover">
+            <div class="swiper-wrapper">
+                <% for( let i=0; i < klwpData.image.length; i++ ) { %>
+                    <div class="swiper-slide">
+                        <img src="../<%= klwpData.image[i] %>" alt="<%= klwpData.name %>">
+                    </div>
+                    <% } %>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <div class="klwpDetailData">
+            <div>
+                <div class="klwpDetailTitle">
+                    <h1>
+                        <%= klwpData.name %>
+                    </h1>
+                    <p>
+                        <%= klwpData.author %>
+                    </p>
+                </div>
+                <p>
+                    <%= klwpData.desc %>
+                </p>
+            </div>
+            <strong>$<%= klwpData.price %></strong>
+        </div>
+    </div>
+
+    <div class="klwpDetailMenu">
+        <ul>
+            <li onclick="showKLWPDetail()" id="klwpDetailSelect" class="klwpDetailSelect">Detail</li>
+            <li onclick="showKLWPComment()" id="klwpCommentSelect">Comment</li>
+        </ul>
+    </div>
+    <div id="klwpDetailContent" class="klwpDetailContent">Detail</div>
+    <div id="klwpDetailComment" class="klwpDetailContent hidden">
+        <%- include('comment') %>
+    </div>
+</div>

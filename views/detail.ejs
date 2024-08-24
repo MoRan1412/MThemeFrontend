@@ -15,55 +15,28 @@
 </head>
 
 <body>
+
+    <!--  -->
     <header class="headerDetail">
         <i class="material-icons" onclick="goBack()">arrow_back_ios</i>
         <h1>
             <%= title %>
         </h1>
     </header>
+
+    <!--  -->
     <div class="page">
-        <div class="klwpDetailPage">
+        <%- include('./detail/klwpDetail') %>
+    </div>
 
-            <div class="klwpDetailHeader">
-                <div class="klwpDetailCover">
-                    <div class="swiper-wrapper">
-                        <% for( let i=0; i < klwpData.image.length; i++ ) { %>
-                            <div class="swiper-slide"><img src="../<%= klwpData.image[i] %>"
-                                    alt="<%= klwpData.image[i] %>"></div>
-                            <% } %>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-                <div class="klwpDetailData">
-                    <div>
-                        <h1>
-                            <%= klwpData.name %>
-                                <p>
-                                    <%= klwpData.author %>
-                                </p>
-                        </h1>
-                        <p>
-                            <%= klwpData.desc %>
-                        </p>
-                    </div>
-                    <strong>$<%= klwpData.price %></strong>
-                </div>
-            </div>
+    <!--  -->
+    <div class="mobileDetailFeature">
 
-            <div class="klwpDetailMenu">
-                <ul>
-                    <li onclick="showKLWPDetail()" id="klwpDetailSelect" class="klwpDetailSelect">Detail</li>
-                    <li onclick="showKLWPComment()" id="klwpCommentSelect">Comment</li>
-                </ul>
-            </div>
-            <div id="klwpDetailContent" class="klwpDetailContent">Detail</div>
-            <div id="klwpDetailComment" class="klwpDetailContent hidden">Comment</div>
-        </div>
     </div>
 
     <!-- Initialize Swiper -->
     <script>
-        var swiper3 = new Swiper(".klwpDetailCover", {
+        const swiper3 = new Swiper(".klwpDetailCover", {
             loop: true,
             grabCursor: true,
             effect: "creative",
