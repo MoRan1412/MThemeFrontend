@@ -110,3 +110,8 @@ function showKLWPComment() {
     productDetail.classList.add('hidden')
     console.log("Show Product Comment")
 }
+
+function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    section.scrollIntoView({ behavior: 'smooth' });
+}

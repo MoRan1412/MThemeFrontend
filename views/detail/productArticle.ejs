@@ -29,13 +29,13 @@
         </div>
     </div>
 
-    <div class="productDetailMenu">
+    <div id="productDetailMenu" class="productDetailMenu" ontouchstart="scrollToSection('productDetailMenu')">
         <ul>
             <li onclick="showKLWPDetail()" id="productDetailSelect" class="productDetailSelect">Detail</li>
             <li onclick="showKLWPComment()" id="productCommentSelect">Comment</li>
         </ul>
     </div>
-    <div id="productDetailContent" class="productDetailContent">
+    <div id="productDetailContent" class="productDetailContent" ontouchstart="scrollToSection('productDetailMenu')">
         <div class="productDetailRequirement">
             <h2>Requirement</h2>
             <table>
