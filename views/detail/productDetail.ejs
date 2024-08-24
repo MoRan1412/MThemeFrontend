@@ -48,7 +48,9 @@
             </table>
         </div>
         <article>
-            <img src="../<%= productData.article %>" alt="">
+            <% for( let j = 0; j < productData.article.length; j++ ) { %>
+                <img src="../<%= productData.article[j] %>" alt="">
+            <% } %>
         </article>
     </div>
     <div id="productDetailComment" class="productDetailContent hidden">
