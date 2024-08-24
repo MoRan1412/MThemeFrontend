@@ -568,11 +568,12 @@ header .headerMenu li .material-icons {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    background-color: #e9e9e9;
 }
 
 .productDetailRequirement h2 {
     color: rgb(0, 0, 0);
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .productDetailRequirement table {
@@ -581,12 +582,13 @@ header .headerMenu li .material-icons {
 }
 
 .productDetailRequirement tr,
+.productDetailRequirement th,
 .productDetailRequirement td {
     border: 1px solid #4b4b4b;
     padding: 8px;
     text-align: left;
     color: rgb(0, 0, 0);
-    font-size: 15px;
+    font-size: 12px;
 }
 
 .productDetailContent article {
