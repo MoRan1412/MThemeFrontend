@@ -534,13 +534,23 @@ header .headerMenu li .material-icons {
 
 .mobileDetailFeature {
     display: none;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
     height: var(--mobileHeaderFeatureHeight);
+    padding: 0 var(--mobileHeaderWidthPadding);
     position: fixed;
     bottom: 0;
     left: 0;
-    background-color: white;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    background-color: black;
+}
+
+.mobileDetailFeature h1,
+.mobileDetailFeature .material-icons {
+    color: white;
+    font-size: 20px;
+    font-style: italic;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 1324px) {}
