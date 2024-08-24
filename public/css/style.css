@@ -562,6 +562,42 @@ header .headerMenu li .material-icons {
     cursor: pointer;
 }
 
+.productDetailRequirement {
+    width: 100%;
+    padding: var(--pcHeaderWidthPadding);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.productDetailRequirement h2 {
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+}
+
+.productDetailRequirement table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.productDetailRequirement tr,
+.productDetailRequirement td {
+    border: 1px solid #4b4b4b;
+    padding: 8px;
+    text-align: left;
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+}
+
+.productDetailContent article {
+    width: 100%;
+}
+
+.productDetailContent article img {
+    width: 100%;
+}
+
+
 @media screen and (max-width: 1324px) {}
 
 @media screen and (max-width: 720px) {
@@ -769,6 +805,10 @@ header .headerMenu li .material-icons {
 
     .mobileProductDetailFeature {
         display: flex;
+    }
+    
+    .productDetailRequirement {
+        padding: var(--mobileHeaderWidthPadding);
     }
 
 }
