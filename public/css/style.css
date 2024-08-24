@@ -473,7 +473,15 @@ header .headerMenu li .material-icons {
 .productDetailMenu li {
     list-style-type: none;
     cursor: pointer;
-    padding: calc(var(--pcHeaderWidthPadding) - 1.5vw) var(--pcHeaderWidthPadding);
+    padding: 0 var(--pcHeaderWidthPadding);
+    display: flex;
+    align-items: center;
+    height: calc(var(--pcHeaderHight) - 1.5vw);
+}
+
+.productDetailContent {
+    overflow: auto;
+    height: calc(100vh - var(--pcHeaderHight) * 2 - (var(--pcHeaderHight) - 1.5vw));
 }
 
 .CommentContainer {
@@ -481,6 +489,7 @@ header .headerMenu li .material-icons {
     display: flex;
     flex-direction: row;
     border-top: solid 1px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
 }
 
 .CommentContainer:nth-child(1) {
@@ -726,7 +735,12 @@ header .headerMenu li .material-icons {
     .productDetailMenu li {
         list-style-type: none;
         cursor: pointer;
-        padding: calc(var(--mobileHeaderWidthPadding) - 6vw) var(--mobileHeaderWidthPadding);
+        height: calc(var(--mobileHeaderHeight) - 1.5vw);
+        padding: 0 var(--mobileHeaderWidthPadding);
+    }
+
+    .productDetailContent {
+        height: calc(100vh - var(--mobileHeaderFeatureHeight) - var(--mobileTopHeaderHeight) - (var(--mobileHeaderHeight) - 1.5vw));
     }
 
     .CommentAvatar img {
