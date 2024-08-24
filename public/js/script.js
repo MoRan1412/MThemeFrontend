@@ -88,25 +88,25 @@ function loadPage(route, loadTarget, TargetEle) {
 }
 
 function showKLWPDetail() {
-    const klwpDetail = document.getElementById("klwpDetailContent")
-    const klwpComment = document.getElementById("klwpDetailComment")
-    const klwpDetailSelect = document.getElementById("klwpDetailSelect")
-    const klwpCommentSelect = document.getElementById("klwpCommentSelect")
-    klwpCommentSelect.classList.remove('klwpDetailSelect')
-    klwpDetailSelect.classList.add('klwpDetailSelect')
-    klwpDetail.classList.remove('hidden')
-    klwpComment.classList.add('hidden')
-    console.log("showKLWPDetail")
+    const productDetail = document.getElementById("productDetailContent")
+    const productComment = document.getElementById("productDetailComment")
+    const productDetailSelect = document.getElementById("productDetailSelect")
+    const productCommentSelect = document.getElementById("productCommentSelect")
+    productCommentSelect.classList.remove('productDetailSelect')
+    productDetailSelect.classList.add('productDetailSelect')
+    productDetail.classList.remove('hidden')
+    productComment.classList.add('hidden')
+    console.log("Show Product Detail")
 }
 
 function showKLWPComment() {
-    const klwpComment = document.getElementById("klwpDetailComment")
-    const klwpDetail = document.getElementById("klwpDetailContent")
-    const klwpDetailSelect = document.getElementById("klwpDetailSelect")
-    const klwpCommentSelect = document.getElementById("klwpCommentSelect")
-    klwpCommentSelect.classList.add('klwpDetailSelect')
-    klwpDetailSelect.classList.remove('klwpDetailSelect')
-    klwpComment.classList.remove('hidden')
-    klwpDetail.classList.add('hidden')
-    console.log("showKLWPComment")
+    const productComment = document.getElementById("productDetailComment")
+    const productDetail = document.getElementById("productDetailContent")
+    const productDetailSelect = document.getElementById("productDetailSelect")
+    const productCommentSelect = document.getElementById("productCommentSelect")
+    productCommentSelect.classList.add('productDetailSelect')
+    productDetailSelect.classList.remove('productDetailSelect')
+    productComment.classList.remove('hidden')
+    productDetail.classList.add('hidden')
+    console.log("Show Product Comment")
 }

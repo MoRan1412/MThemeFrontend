@@ -1,0 +1,62 @@
+<div class="productDetailPage">
+
+    <div class="productDetailHeader">
+        <div class="productDetailCover">
+            <div class="swiper-wrapper">
+                <% for( let i=0; i < productData.image.length; i++ ) { %>
+                    <div class="swiper-slide">
+                        <img src="../<%= productData.image[i] %>" alt="<%= productData.name %>">
+                    </div>
+                    <% } %>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <div class="productDetailData">
+            <div>
+                <div class="productDetailTitle">
+                    <h1>
+                        <%= productData.name %>
+                    </h1>
+                    <p>
+                        <%= productData.author %>
+                    </p>
+                </div>
+                <p>
+                    <%= productData.desc %>
+                </p>
+            </div>
+            <strong>$<%= productData.price %></strong>
+        </div>
+    </div>
+
+    <div class="productDetailMenu">
+        <ul>
+            <li onclick="showKLWPDetail()" id="productDetailSelect" class="productDetailSelect">Detail</li>
+            <li onclick="showKLWPComment()" id="productCommentSelect">Comment</li>
+        </ul>
+    </div>
+    <div id="productDetailContent" class="productDetailContent">Detail</div>
+    <div id="productDetailComment" class="productDetailContent hidden">
+        <%- include('productComment') %>
+    </div>
+</div>
+
+<!-- Initialize Swiper -->
+<script>
+    const swiper3 = new Swiper(".productDetailCover", {
+        loop: true,
+        grabCursor: true,
+        effect: "creative",
+        creativeEffect: {
+            prev: {
+                translate: ["-20%", 0, -1],
+            },
+            next: {
+                translate: ["100%", 0, 0],
+            },
+        },
+        pagination: {
+            el: ".swiper-pagination",
+        }
+    });
+</script>

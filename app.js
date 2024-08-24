@@ -224,24 +224,24 @@ app.post('/signupProcess', (req, res) => {
     });
 })
 
-app.get('/klwp/detail/:id', (req, res) => {
+app.get('/product/detail/:id', (req, res) => {
   if (req.cookies.accessToken) {
-    const klwpId = req.params.id
+    const productId = req.params.id
     const options = {
       method: "GET",
       headers: { "content-type": "application/json" },
     }
-    const url = `${API}/klwp/get/${klwpId}`;
+    const url = `${API}/product/get/${productId}`;
     fetch(url, options)
       .then((res) => {
         if (res.status === status.OK) {
           return res.json();
         } else {
-          throw new Error(`Failed to get klwp detail`);
+          throw new Error(`Failed to get product detail`);
         }
       })
       .then((jsonData) => {
-        res.render("detail", { title: jsonData.name, klwpData: jsonData });
+        res.render("detail", { title: jsonData.name, productData: jsonData });
       })
       .catch((err) => {
         console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
@@ -265,29 +265,29 @@ app.get("/", (req, res) => {
   }
 });
 
-app.get("/klwp", (req, res) => {
+app.get("/product", (req, res) => {
   if (req.cookies.accessToken) {
     const options = {
       method: "GET",
       headers: { "content-type": "application/json" },
     };
-    const url = `${API}/klwp/get`;
+    const url = `${API}/product/get`;
     fetch(url, options)
       .then((res) => {
         if (res.status === status.OK) {
           return res.json();
         } else {
-          throw new Error(`Failed to get klwp`);
+          throw new Error(`Failed to get product`);
         }
       })
       .then((jsonData) => {
-        res.render("index", { title: "KLWP", klwp: jsonData });
+        res.render("index", { title: "Product", product: jsonData });
       })
       .catch((err) => {
         console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
         res.render("window", {
           title: "Error",
-          message: "Failed to get klwp",
+          message: "Failed to get product",
           linkBtn: "/"
         });
       });

@@ -57,7 +57,7 @@ button {
     display: none;
 }
 
-.klwpDetailSelect {
+.productDetailSelect {
     background: linear-gradient(to top, black 5%, #00000000 5%, #00000000)
 }
 
@@ -385,12 +385,12 @@ header .headerMenu li .material-icons {
 }
 
 /* KLWP Detail Page */
-.klwpDetailPage {
+.productDetailPage {
     width: 100%;
     padding: var(--pcHeaderWidthPadding) 0 var(--pcHeaderHight) 0;
 }
 
-.klwpDetailHeader {
+.productDetailHeader {
     width: 100%;
     background-color: rgb(0, 0, 0);
     display: flex;
@@ -399,7 +399,7 @@ header .headerMenu li .material-icons {
     padding: var(--pcHeaderWidthPadding);
 }
 
-.klwpDetailCover {
+.productDetailCover {
     width: 25vw;
     height: 25vw;
     overflow: hidden;
@@ -416,61 +416,61 @@ header .headerMenu li .material-icons {
     object-fit: cover;
 }
 
-.klwpDetailData {
+.productDetailData {
     width: calc(100vw - var(--pcHeaderWidthPadding) * 5 - 25vw);
     gap: 10px;
     display: flex;
     flex-direction: column;
 }
 
-.klwpDetailData>div {
+.productDetailData>div {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.klwpDetailTitle {
+.productDetailTitle {
     display: flex;
     flex-direction: column;
     align-items: baseline;
     gap: 15px;
 }
 
-.klwpDetailData h1 {
+.productDetailData h1 {
     font-size: 23px;
 }
 
-.klwpDetailData h1 p {
+.productDetailData h1 p {
     font-weight: 500;
 }
 
-.klwpDetailData p,
-.klwpDetailData h1,
-.klwpDetailData strong {
+.productDetailData p,
+.productDetailData h1,
+.productDetailData strong {
     color: white;
 }
 
-.klwpDetailData p {
+.productDetailData p {
     font-size: 15px;
 }
 
-.klwpDetailData strong {
+.productDetailData strong {
     margin-top: 10px;
     font-size: 25px;
 }
 
-.klwpDetailMenu {
+.productDetailMenu {
     width: 100%;
     background-color: white;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
-.klwpDetailMenu ul {
+.productDetailMenu ul {
     display: flex;
     flex-direction: row;
 }
 
-.klwpDetailMenu li {
+.productDetailMenu li {
     list-style-type: none;
     cursor: pointer;
     padding: calc(var(--pcHeaderWidthPadding) - 1.5vw) var(--pcHeaderWidthPadding);
@@ -532,7 +532,7 @@ header .headerMenu li .material-icons {
     margin-left: auto;
 }
 
-.mobileDetailFeature {
+.mobileProductDetailFeature {
     display: none;
     align-items: center;
     justify-content: space-between;
@@ -545,8 +545,8 @@ header .headerMenu li .material-icons {
     background-color: black;
 }
 
-.mobileDetailFeature h1,
-.mobileDetailFeature .material-icons {
+.mobileProductDetailFeature h1,
+.mobileProductDetailFeature .material-icons {
     color: white;
     font-size: 20px;
     font-style: italic;
@@ -678,67 +678,67 @@ header .headerMenu li .material-icons {
     }
 
     /* KLWP Detail Page */
-    .klwpDetailPage {
+    .productDetailPage {
         padding: 0 0 var(--mobileHeaderFeatureHeight) 0;
         position: absolute;
         top: var(--mobileTopHeaderHeight);
         left: 0;
     }
 
-    .klwpDetailHeader {
+    .productDetailHeader {
         flex-direction: column;
         align-items: center;
         gap: var(--mobileHeaderWidthPadding);
         padding: 0 0 var(--mobileHeaderWidthPadding) 0;
     }
 
-    .klwpDetailCover {
+    .productDetailCover {
         width: 100vw;
         height: 100vw;
     }
 
-    .klwpDetailData {
+    .productDetailData {
         width: calc(100vw - var(--mobileHeaderWidthPadding) * 2);
         flex-direction: row;
         justify-content: space-between;
     }
 
-    .klwpDetailData h1 {
+    .productDetailData h1 {
         font-size: 17px;
     }
 
-    .klwpDetailData h1 p {
+    .productDetailData h1 p {
         font-size: 10px;
     }
 
-    .klwpDetailData p {
+    .productDetailData p {
         font-size: 12px;
     }
 
-    .klwpDetailData strong {
+    .productDetailData strong {
         font-size: 20px;
     }
 
-    .klwpDetailTitle {
+    .productDetailTitle {
         flex-direction: row;
     }
 
-    .klwpDetailMenu li {
+    .productDetailMenu li {
         list-style-type: none;
         cursor: pointer;
         padding: calc(var(--mobileHeaderWidthPadding) - 6vw) var(--mobileHeaderWidthPadding);
     }
 
     .CommentAvatar img {
-        width: 10vw;
-        height: 10vw;
-        margin: 3vw;
+        width: 15vw;
+        height: 15vw;
+        margin: 5vw;
     }
 
     .CommentContent {
-        margin: 3vw 0;
+        margin: 5vw 0;
         gap: 5px;
-        width: calc(100vw - 3vw * 3 - 10vw);
+        width: calc(100vw - 5vw * 3 - 15vw);
     }
 
     .CommentData h1 {
@@ -753,7 +753,7 @@ header .headerMenu li .material-icons {
         font-size: 12px;
     }
 
-    .mobileDetailFeature {
+    .mobileProductDetailFeature {
         display: flex;
     }
 

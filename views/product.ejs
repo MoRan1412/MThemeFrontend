@@ -1,0 +1,15 @@
+<div class="themePage">
+    <div class="themeList">
+
+        <% for( let i = 0; i < product.length; i++ ) { %>
+            <div class="themeContainer" onclick='location.href="/product/detail/<%= product[i].id %>"'>
+                <div class="themeCover" style='background-image: url("<%= product[i].image[0] %>");'></div>
+                <div class="themeContent">
+                    <h1><%= product[i].name %></h1>
+                    <p><%= product[i].author %></p>
+                </div>
+            </div>
+        <% } %>
+
+    </div>
+</div>
