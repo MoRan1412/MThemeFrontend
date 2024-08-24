@@ -110,20 +110,3 @@ function showKLWPComment() {
     productDetail.classList.add('hidden')
     console.log("Show Product Comment")
 }
-
-let touchStartY = 0;
-
-function handleTouchStart(event) {
-    touchStartY = event.touches[0].clientY;
-}
-
-function handleTouchMove(event, sectionId) {
-    const touchEndY = event.touches[0].clientY;
-    const deltaY = touchStartY - touchEndY;
-    console.log(deltaY)
-
-    if (deltaY >= 10) {
-        const section = document.getElementById(sectionId);
-        section.scrollIntoView({ behavior: 'smooth' });
-    }
-}
