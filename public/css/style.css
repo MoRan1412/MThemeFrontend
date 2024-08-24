@@ -49,7 +49,7 @@ button {
     --mobileHeaderWidthPadding: 10vw;
     --pcHeaderHight: 80px;
     --mobileHeaderHeight: 55px;
-    --mobileHeaderFeatureHeight: 80px;
+    --mobileHeaderFeatureHeight: 60px;
     --mobileTopHeaderHeight: calc(var(--mobileHeaderHeight) + 20px);
 }
 
