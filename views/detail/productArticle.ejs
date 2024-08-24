@@ -1,6 +1,6 @@
 <div class="productDetailPage">
 
-    <div class="productDetailHeader">
+    <div class="productDetailHeader" ontouchstart="handleTouchStart(event)" ontouchmove="handleTouchMove(event, 'productDetailMenu')">
         <div class="productDetailCover">
             <div class="swiper-wrapper">
                 <% for( let i=0; i < productData.image.length; i++ ) { %>
@@ -29,13 +29,13 @@
         </div>
     </div>
 
-    <div id="productDetailMenu" class="productDetailMenu" ontouchstart="scrollToSection('productDetailMenu')">
+    <div id="productDetailMenu" class="productDetailMenu">
         <ul>
             <li onclick="showKLWPDetail()" id="productDetailSelect" class="productDetailSelect">Detail</li>
             <li onclick="showKLWPComment()" id="productCommentSelect">Comment</li>
         </ul>
     </div>
-    <div id="productDetailContent" class="productDetailContent" ontouchstart="scrollToSection('productDetailMenu')">
+    <div id="productDetailContent" class="productDetailContent">
         <div class="productDetailRequirement">
             <h2>Requirement</h2>
             <table>

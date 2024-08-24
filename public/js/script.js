@@ -111,7 +111,19 @@ function showKLWPComment() {
     console.log("Show Product Comment")
 }
 
-function scrollToSection(sectionId) {
-    const section = document.getElementById(sectionId);
-    section.scrollIntoView({ behavior: 'smooth' });
+let touchStartY = 0;
+
+function handleTouchStart(event) {
+    touchStartY = event.touches[0].clientY;
+}
+
+function handleTouchMove(event, sectionId) {
+    const touchEndY = event.touches[0].clientY;
+    const deltaY = touchStartY - touchEndY;
+    console.log(deltaY)
+
+    if (deltaY >= 10) {
+        const section = document.getElementById(sectionId);
+        section.scrollIntoView({ behavior: 'smooth' });
+    }
 }
