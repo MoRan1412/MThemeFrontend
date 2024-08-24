@@ -3,11 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
     <title>MTheme</title>
     <link rel="icon" type="image/x-icon" href="../../<%= faviconPath %>">
     <link rel="stylesheet" type="text/css" href="../../css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="../../js/script.js"></script>
 </head>
 
@@ -22,12 +24,21 @@
         <div class="klwpDetailPage">
 
             <div class="klwpDetailHeader">
-                <div class="klwpDetailCover" style='background-image: url("../<%= klwpData.image[0] %>");'></div>
+                <div class="klwpDetailCover">
+                    <div class="swiper-wrapper">
+                        <% for( let i=0; i < klwpData.image.length; i++ ) { %>
+                            <div class="swiper-slide"><img src="../<%= klwpData.image[i] %>"
+                                    alt="<%= klwpData.image[i] %>"></div>
+                            <% } %>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
                 <div class="klwpDetailData">
                     <div>
                         <h1>
                             <%= klwpData.name %>
-                                <p><%= klwpData.author %>
+                                <p>
+                                    <%= klwpData.author %>
                                 </p>
                         </h1>
                         <p>
@@ -48,6 +59,29 @@
             <div id="klwpDetailComment" class="klwpDetailContent hidden">Comment</div>
         </div>
     </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper3 = new Swiper(".klwpDetailCover", {
+            grabCursor: true,
+            effect: "creative",
+            creativeEffect: {
+                prev: {
+                    shadow: true,
+                    translate: ["-20%", 0, -1],
+                },
+                next: {
+                    translate: ["100%", 0, 0],
+                },
+            },
+            pagination: {
+                el: ".swiper-pagination",
+            }
+        });
+    </script>
 </body>
 
 </html>

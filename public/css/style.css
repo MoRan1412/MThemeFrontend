@@ -6,7 +6,8 @@
     box-sizing: border-box;
 }
 
-body, html {
+body,
+html {
     background-color: #ffffff;
     overflow: auto;
 }
@@ -126,7 +127,7 @@ header .active i {
     display: block;
 }
 
-header .headerMenu li .material-icons{
+header .headerMenu li .material-icons {
     display: none;
 }
 
@@ -240,15 +241,15 @@ header .headerMenu li .material-icons{
     background-color: white;
 }
 
-.alertContainer > h1 {
+.alertContainer>h1 {
     font-size: 20px;
 }
 
-.alertContainer > p {
+.alertContainer>p {
     font-size: 13px;
 }
 
-.alertContainer > button {
+.alertContainer>button {
     width: fit-content;
     margin-left: auto;
     padding: 7px 25px;
@@ -348,7 +349,7 @@ header .headerMenu li .material-icons{
 }
 
 .loginErrMsg {
-    color: rgb(255, 0, 128); 
+    color: rgb(255, 0, 128);
     font-weight: 700;
     font-size: 12px;
 }
@@ -398,9 +399,22 @@ header .headerMenu li .material-icons{
 .klwpDetailCover {
     width: 25vw;
     height: 25vw;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .klwpDetailData {
@@ -463,6 +477,7 @@ header .headerMenu li .material-icons{
 @media screen and (max-width: 1324px) {}
 
 @media screen and (max-width: 720px) {
+
     /* Header */
     header {
         padding: 0;
@@ -561,6 +576,7 @@ header .headerMenu li .material-icons{
     .themeContent h1 {
         font-size: 13px;
     }
+
     .themeContent p {
         font-size: 10px;
     }
@@ -619,6 +635,7 @@ header .headerMenu li .material-icons{
     .klwpDetailData p {
         font-size: 12px;
     }
+
     .klwpDetailData strong {
         font-size: 20px;
     }
