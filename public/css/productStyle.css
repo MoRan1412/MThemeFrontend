@@ -263,6 +263,12 @@
         background-color: rgb(240, 240, 240);
     }
 
+    .mobileProductDetailData>div {
+        gap: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+
     .mobileProductDetailData h1 {
         font-size: 17px;
     }

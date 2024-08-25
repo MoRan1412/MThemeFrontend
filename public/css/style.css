@@ -213,11 +213,11 @@ header .headerMenu li .material-icons {
 }
 
 .themeContent h1 {
-    font-size: 17px;
+    font-size: 20px;
 }
 
 .themeContent p {
-    font-size: 12px;
+    font-size: 17px;
 }
 
 /* Alert Window */
@@ -457,11 +457,11 @@ header .headerMenu li .material-icons {
     }
 
     .themeContent h1 {
-        font-size: 13px;
+        font-size: 15px;
     }
 
     .themeContent p {
-        font-size: 10px;
+        font-size: 13px;
     }
 
     /* Alert Window */
