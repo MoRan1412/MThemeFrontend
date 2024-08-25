@@ -89,10 +89,10 @@ app.post('/loginProcess', (req, res) => {
     })
     .catch((err) => {
       console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
-      res.status(status.UNAUTHORIZED).render("login", { 
-        title: "Login", 
-        username: username, 
-        error: err.message 
+      res.status(status.UNAUTHORIZED).render("login", {
+        title: "Login",
+        username: username,
+        error: err.message
       });
     });
 })
@@ -131,18 +131,18 @@ app.post('/signup/sendVerifyCode', (req, res) => {
     })
     .then((jsonData) => {
       console.log(`[OK] Verification code has been sent to ${email}.`);
-      res.render("verifyCode", { 
-        title: "Verification", 
-        message: jsonData.message 
+      res.render("verifyCode", {
+        title: "Verification",
+        message: jsonData.message
       })
     })
     .catch((err) => {
       console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
-      res.render("signup", { 
-        title: "Sign Up", 
-        username: username, 
-        email: email, 
-        error: err.message 
+      res.render("signup", {
+        title: "Sign Up",
+        username: username,
+        email: email,
+        error: err.message
       });
     });
 })
@@ -226,42 +226,28 @@ app.post('/signupProcess', (req, res) => {
 
 app.get('/product/detail/:id', (req, res) => {
   if (req.cookies.accessToken) {
-    const productId = req.params.id
+    const productId = req.params.id;
     const options = {
       method: "GET",
-      headers: { "content-type": "application/json" },
-    }
-    const url = `${API}/product/get/${productId}`;
-    fetch(url, options)
-      .then((res) => {
-        if (res.status === status.OK) {
-          return res.json();
+      headers: { "content-type": "application/json" }
+    };
+    const productUrl = `${API}/product/get/${productId}`;
+    const commentUrl = `${API}/comment/get`;
+
+    Promise.all([
+      fetch(productUrl, options),
+      fetch(commentUrl, options)
+    ])
+      .then(([productRes, commentRes]) => {
+        if (productRes.status === status.OK && commentRes.status === status.OK) {
+          return Promise.all([productRes.json(), commentRes.json()]);
         } else {
-          throw new Error(`Failed to get product detail`);
+          throw new Error(`Failed to get product or comment detail`);
         }
       })
-      .then((jsonData) => {
-        const commentUrl = `${API}/comment/get`;
-        fetch(commentUrl, options)
-          .then((res) => {
-            if (res.status === status.OK) {
-              return res.json();
-            } else {
-              throw new Error(`Failed to get comment`);
-            }
-          })
-          .then((commentData) => {
-            commentData = commentData.filter((comment) => comment.productId === productId);
-            res.render("detail", { title: jsonData.name, productData: jsonData, commentData: commentData });
-          })
-          .catch((err) => {
-            console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
-            res.render("window", {
-              title: "Error",
-              message: err.message,
-              linkBtn: "/"
-            });
-          });
+      .then(([productData, commentData]) => {
+        commentData = commentData.filter((comment) => comment.productId === productId);
+        res.render("detail", { title: productData.name, productData, commentData });
       })
       .catch((err) => {
         console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
