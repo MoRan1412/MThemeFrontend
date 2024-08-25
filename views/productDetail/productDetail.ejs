@@ -46,15 +46,16 @@
     </div>
     <div id="productDetailMenu" class="productDetailMenu">
         <ul>
-            <li onclick="showKLWPDetail()" id="productDetailSelect" class="productDetailSelect">Detail</li>
-            <li onclick="showKLWPComment()" id="productCommentSelect">Comment</li>
+            <li onclick="scrollToSection('productDetailHeader')" id="productSelect">Product</li>
+            <li onclick="scrollToSection('productDetailComment')" id="productCommentSelect">Comment</li>
+            <li onclick="scrollToSection('productDetailContent')" id="productDetailSelect">Detail</li>
         </ul>
+    </div>
+    <div id="productDetailComment" class="productDetailContent">
+        <%- include('productComment') %>
     </div>
     <div id="productDetailContent" class="productDetailContent">
         <%- include('productArticle') %>
-    </div>
-    <div id="productDetailComment" class="productDetailContent hidden">
-        <%- include('productComment') %>
     </div>
 </div>
 

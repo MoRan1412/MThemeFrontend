@@ -57,11 +57,6 @@ button {
     display: none;
 }
 
-.productDetailSelect {
-    background: linear-gradient(to top, black 5%, #00000000 5%, #00000000)
-}
-
-
 /* Header */
 header {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
@@ -453,15 +448,18 @@ header .headerMenu li .material-icons {
     }
 
     .themeContent {
-        gap: 5px;
+        gap: 7px;
     }
 
     .themeContent h1 {
         font-size: 15px;
+        font-style: italic;
+        font-weight: 900;
     }
 
     .themeContent p {
-        font-size: 13px;
+        font-size: 14px;
+        font-weight: 500;
     }
 
     /* Alert Window */

@@ -46,6 +46,14 @@ const setDynamicFavicon = (req, res, next) => {
 app.use(setDynamicFavicon);
 
 // Login & Sign Up System
+app.get('/login', (req, res) => {
+  res.render("loginAndSignup/login", { title: "Login" })
+})
+
+app.get('/signup', (req, res) => {
+  res.render("loginAndSignup/signup", { title: "Sign Up" })
+})
+
 app.post('/loginProcess', (req, res) => {
   // 參數
   const username = req.body.username
@@ -131,7 +139,7 @@ app.post('/signup/sendVerifyCode', (req, res) => {
     })
     .then((jsonData) => {
       console.log(`[OK] Verification code has been sent to ${email}.`);
-      res.render("verifyCode", {
+      res.render("loginAndSignup/verifyCode", {
         title: "Verification",
         message: jsonData.message
       })
@@ -224,53 +232,8 @@ app.post('/signupProcess', (req, res) => {
     });
 })
 
-app.get('/product/detail/:id', (req, res) => {
-  if (req.cookies.accessToken) {
-    const productId = req.params.id;
-    const options = {
-      method: "GET",
-      headers: { "content-type": "application/json" }
-    };
-    const productUrl = `${API}/product/get/${productId}`;
-    const commentUrl = `${API}/comment/get`;
 
-    Promise.all([
-      fetch(productUrl, options),
-      fetch(commentUrl, options)
-    ])
-      .then(([productRes, commentRes]) => {
-        if (productRes.status === status.OK && commentRes.status === status.OK) {
-          return Promise.all([productRes.json(), commentRes.json()]);
-        } else {
-          throw new Error(`Failed to get product or comment detail`);
-        }
-      })
-      .then(([productData, commentData]) => {
-        commentData = commentData.filter((comment) => comment.productId === productId);
-        res.render("detail", { title: productData.name, productData, commentData });
-      })
-      .catch((err) => {
-        console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
-        res.render("window", {
-          title: "Error",
-          message: err.message,
-          linkBtn: "/"
-        });
-      });
-  } else {
-    res.redirect("/login");
-  }
-})
-
-// Page
-app.get("/", (req, res) => {
-  if (req.cookies.accessToken) {
-    res.render("index", { title: "Home" });
-  } else {
-    res.redirect("/login");
-  }
-});
-
+// 
 app.get("/product", (req, res) => {
   if (req.cookies.accessToken) {
     const options = {
@@ -302,6 +265,53 @@ app.get("/product", (req, res) => {
   }
 });
 
+app.get('/product/detail/:id', (req, res) => {
+  if (req.cookies.accessToken) {
+    const productId = req.params.id;
+    const options = {
+      method: "GET",
+      headers: { "content-type": "application/json" }
+    };
+    const productUrl = `${API}/product/get/${productId}`;
+    const commentUrl = `${API}/comment/get`;
+
+    Promise.all([
+      fetch(productUrl, options),
+      fetch(commentUrl, options)
+    ])
+      .then(([productRes, commentRes]) => {
+        if (productRes.status === status.OK && commentRes.status === status.OK) {
+          return Promise.all([productRes.json(), commentRes.json()]);
+        } else {
+          throw new Error(`Failed to get product or comment detail`);
+        }
+      })
+      .then(([productData, commentData]) => {
+        commentData = commentData.filter((comment) => comment.productId === productId);
+        res.render("productDetail/detail", { title: productData.name, productData, commentData });
+      })
+      .catch((err) => {
+        console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
+        res.render("window", {
+          title: "Error",
+          message: err.message,
+          linkBtn: "/"
+        });
+      });
+  } else {
+    res.redirect("/login");
+  }
+})
+
+// Page
+app.get("/", (req, res) => {
+  if (req.cookies.accessToken) {
+    res.render("index", { title: "Home" });
+  } else {
+    res.redirect("/login");
+  }
+});
+
 app.get("/help", (req, res) => {
   if (req.cookies.accessToken) {
     res.render("index", { title: "Help" });
@@ -310,13 +320,6 @@ app.get("/help", (req, res) => {
   }
 });
 
-app.get('/login', (req, res) => {
-  res.render("login", { title: "Login" })
-})
-
-app.get('/signup', (req, res) => {
-  res.render("signup", { title: "Sign Up" })
-})
 
 const port = 3000; // Replit doesn’t matter which port is using
 app.listen(port, () => {

@@ -1,3 +1,8 @@
+
+.productDetailSelect {
+    background: linear-gradient(to top, black 5%, #00000000 5%, #00000000)
+}
+
 /* Detail Page */
 .headerDetail {
     display: flex;
@@ -104,41 +109,40 @@
 .productDetailMenu {
     width: 100%;
     background-color: white;
+    padding: 0 var(--pcHeaderWidthPadding);
+    border-bottom: solid 1px rgba(0, 0, 0, 0.2);
 }
 
 .productDetailMenu ul {
     display: flex;
     flex-direction: row;
+    gap: var(--pcHeaderWidthPadding);
+    justify-content: start;
 }
 
 .productDetailMenu li {
     list-style-type: none;
     cursor: pointer;
-    padding: 0 var(--pcHeaderWidthPadding);
     display: flex;
     align-items: center;
+    font-size: 15px;
+    font-weight: 700;
     height: calc(var(--pcHeaderHight) - 1.5vw);
 }
 
-.CommentContainer {
+.productCommentContainer {
     width: 100%;
     display: flex;
     flex-direction: row;
-    border-top: solid 1px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
 }
 
-.CommentContainer:nth-child(1) {
-    border-top: none;
-}
-
-.CommentAvatar {
+.productCommentAvatar {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.CommentAvatar img {
+.productCommentAvatar img {
     width: 5vw;
     height: 5vw;
     margin: var(--pcHeaderWidthPadding);
@@ -146,33 +150,32 @@
     border-radius: 100px;
 }
 
-.CommentContent {
+.productCommentContent {
     display: flex;
     flex-direction: column;
-    margin: var(--pcHeaderWidthPadding) 0;
     gap: 15px;
     width: calc(100vw - var(--pcHeaderWidthPadding) * 5 - 5vw);
 }
 
-.CommentContent p {
+.productCommentContent p {
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
 
-.CommentData {
+.productCommentData {
     display: flex;
     flex-direction: row;
     align-items: baseline;
     width: 100%;
 }
 
-.CommentData h1 {
+.productCommentData h1 {
     font-size: 18px;
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
 
-.CommentData p {
+.productCommentData p {
     font-size: 13px;
     margin-left: auto;
 }
@@ -219,6 +222,11 @@
     display: none;
 }
 
+.productMenuData>h2 {
+    margin: var(--pcHeaderWidthPadding);
+    font-size: 15px;
+}
+
 @media screen and (max-width: 720px) {
 
     /* Detail Page */
@@ -233,6 +241,7 @@
         position: absolute;
         top: var(--mobileTopHeaderHeight);
         left: 0;
+        background-color: rgb(240, 240, 240);
     }
 
     .productDetailHeader {
@@ -259,9 +268,7 @@
         justify-content: space-between;
         display: flex;
         align-items: center;
-        position: sticky;
-        top: calc(var(--mobileTopHeaderHeight));
-        background-color: rgb(240, 240, 240);
+        background-color: white;
     }
 
     .mobileProductDetailData>div {
@@ -292,37 +299,41 @@
 
     .productDetailMenu {
         position: sticky;
-        top: calc(var(--mobileTopHeaderHeight) + 150px);
+        margin-top: 5px;
+        top: calc(var(--mobileTopHeaderHeight));
+        padding: 0 5vw;
+    }
+
+    .productDetailMenu ul {
+        gap: 5vw;
     }
 
     .productDetailMenu li {
         list-style-type: none;
-        cursor: pointer;
         height: calc(var(--mobileHeaderHeight) - 1.5vw);
-        padding: 0 var(--mobileHeaderWidthPadding);
     }
 
-    .CommentAvatar img {
+    .productCommentAvatar img {
         width: 15vw;
         height: 15vw;
         margin: 5vw;
     }
 
-    .CommentContent {
+    .productCommentContent {
         margin: 5vw 0;
         gap: 5px;
         width: calc(100vw - 5vw * 3 - 15vw);
     }
 
-    .CommentData h1 {
+    .productCommentData h1 {
         font-size: 15px;
     }
 
-    .CommentData p {
+    .productCommentData p {
         font-size: 10px;
     }
 
-    .CommentContent p {
+    .productCommentContent p {
         font-size: 12px;
     }
 
@@ -351,8 +362,19 @@
         padding: var(--mobileHeaderWidthPadding);
     }
 
+    .productDetailContent {
+        background-color: white;
+        margin-top: 10px;
+        width: 100%;
+    }
+
     .productDetailContent article {
         padding: 0 var(--mobileHeaderWidthPadding);
+    }
+
+    .productMenuData>h2 {
+        margin: 5vw;
+        font-size: 15px;
     }
 
 }

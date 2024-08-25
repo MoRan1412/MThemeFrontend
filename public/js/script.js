@@ -87,26 +87,15 @@ function goBack() {
 //     xhttp.send()
 // }
 
-function showKLWPDetail() {
-    const productDetail = document.getElementById("productDetailContent")
-    const productComment = document.getElementById("productDetailComment")
-    const productDetailSelect = document.getElementById("productDetailSelect")
-    const productCommentSelect = document.getElementById("productCommentSelect")
-    productCommentSelect.classList.remove('productDetailSelect')
-    productDetailSelect.classList.add('productDetailSelect')
-    productDetail.classList.remove('hidden')
-    productComment.classList.add('hidden')
-    console.log("Show Product Detail")
-}
-
-function showKLWPComment() {
-    const productComment = document.getElementById("productDetailComment")
-    const productDetail = document.getElementById("productDetailContent")
-    const productDetailSelect = document.getElementById("productDetailSelect")
-    const productCommentSelect = document.getElementById("productCommentSelect")
-    productCommentSelect.classList.add('productDetailSelect')
-    productDetailSelect.classList.remove('productDetailSelect')
-    productComment.classList.remove('hidden')
-    productDetail.classList.add('hidden')
-    console.log("Show Product Comment")
+function scrollToSection(id) {
+    const element = document.getElementById(id);
+    const headerElement = document.getElementById("productDetailMenu");
+    const headerHeight = headerElement.offsetHeight;
+    const elementDistance = element.offsetTop;
+    const distance = elementDistance - headerHeight;
+    console.log(distance)
+    window.scrollTo({
+        top: distance,
+        behavior: 'smooth'
+    });
 }

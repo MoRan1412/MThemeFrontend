@@ -1,0 +1,20 @@
+<div class="productMenuData">
+<h2>Product Comment</h2>
+    <% if (commentData.length >= 1) { %>
+        <div class="productCommentContainer">
+            <div class="productCommentAvatar">
+                <img src="<%= commentData[0].avatar %>" alt="avatar">
+            </div>
+            <div class="productCommentContent">
+                <div class="productCommentData">
+                    <h1><%= commentData[0].username %></h1>
+                    <p><%= commentData[0].createdAt %></p>
+                </div>
+                <p><%= commentData[0].content %></p>
+            </div>
+        </div>
+    <% } else { %>
+        <h1>No Comment ~</h1>
+    <% } %>
+    
+</div>
