@@ -241,7 +241,7 @@ app.post('/signupProcess', (req, res) => {
 })
 
 
-// 
+// Product System
 app.get("/product", (req, res) => {
   if (req.cookies.accessToken) {
     const options = {
@@ -316,6 +316,22 @@ app.get('/product/detail/:id', (req, res) => {
   }
 })
 
+// Personal Center System
+app.get("/personalCenter", (req, res) => {
+  if (req.cookies.accessToken) {
+    if (req.cookies.role === "admin") {
+      res.render("personalCenter/adminCenter", { title: "Admin Center" });
+      console.log(`[OK] ${req.originalUrl}`);
+    } else {
+      res.render("personalCenter/userCenter", { title: "User Center" });
+      console.log(`[OK] ${req.originalUrl}`);
+    }
+  } else {
+    res.redirect("/login");
+    console.log(`[ERR] Require login account.`);
+  }
+});
+
 // Page
 app.get("/", (req, res) => {
   if (req.cookies.accessToken) {
@@ -336,6 +352,14 @@ app.get("/help", (req, res) => {
     console.log(`[ERR] Require login account.`);
   }
 });
+
+app.get('/window', (req,res) => {
+  res.render("window", { 
+    title: "Test",
+    message: "This is a test message.",
+    linkBtn: "/" 
+  })
+})
 
 
 const port = 3000; // Replit doesn’t matter which port is using

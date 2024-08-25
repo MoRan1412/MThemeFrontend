@@ -1,9 +1,8 @@
-
+/* Detail Page */
 .productDetailSelect {
     background: linear-gradient(to top, black 5%, #00000000 5%, #00000000)
 }
 
-/* Detail Page */
 .headerDetail {
     display: flex;
     flex-direction: row;
@@ -18,19 +17,19 @@
     text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: 20px;
+    font-size: var(--pcTextH1Size);
 }
 
 .headerDetail .material-icons {
     margin-right: auto;
     color: black;
-    font-size: 18px;
+    font-size: var(--pcTextISize);
     cursor: pointer;
 }
 
 .productDetailPage {
     width: 100%;
-    padding: var(--pcHeaderWidthPadding) 0 var(--pcHeaderHight) 0;
+    padding: var(--pcPadding) 0 var(--pcHeaderHight) 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,8 +39,8 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    gap: var(--pcHeaderWidthPadding);
-    padding: var(--pcHeaderWidthPadding);
+    gap: var(--pcPadding);
+    padding: var(--pcPadding);
     background-color: rgb(240, 240, 240);
 }
 
@@ -63,9 +62,9 @@
 }
 
 .productDetailData {
-    width: calc(100vw - var(--pcHeaderWidthPadding) * 5 - 25vw);
-    padding: calc(var(--pcHeaderWidthPadding));
-    gap: 10px;
+    width: calc(100vw - var(--pcPadding) * 5 - 25vw);
+    padding: calc(var(--pcPadding));
+    gap: var(--pcPadding);
     display: flex;
     flex-direction: column;
 }
@@ -77,18 +76,18 @@
 .productDetailData>div {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: var(--pcPadding);
 }
 
 .productDetailTitle {
     display: flex;
     flex-direction: column;
     align-items: baseline;
-    gap: 15px;
+    gap: var(--pcPadding);
 }
 
 .productDetailData h1 {
-    font-size: 23px;
+    font-size: var(--pcTextH1Size);
 }
 
 .productDetailData p,
@@ -98,25 +97,25 @@
 }
 
 .productDetailData p {
-    font-size: 15px;
+    font-size: var(--pcTextPSize);
 }
 
 .productDetailData strong {
-    margin-top: 10px;
-    font-size: 25px;
+    margin-top: var(--pcPadding);
+    font-size: var(--pcTextStrongSize);
 }
 
 .productDetailMenu {
     width: 100%;
     background-color: white;
-    padding: 0 var(--pcHeaderWidthPadding);
+    padding: 0 var(--pcPadding);
     border-bottom: solid 1px rgba(0, 0, 0, 0.2);
 }
 
 .productDetailMenu ul {
     display: flex;
     flex-direction: row;
-    gap: var(--pcHeaderWidthPadding);
+    gap: var(--pcPadding);
     justify-content: start;
 }
 
@@ -125,7 +124,7 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    font-size: 13px;
+    font-size: var(--pcTextH1Size);
     font-weight: 700;
     height: calc(var(--pcHeaderHight) - 1.5vw);
 }
@@ -133,7 +132,7 @@
 .productDetailContent {
     width: 100%;
     background-color: rgb(240, 240, 240);
-    margin-top: 20px;
+    margin-top: var(--pcPadding);
 }
 
 .productCommentContainer {
@@ -151,7 +150,7 @@
 .productCommentAvatar {
     width: 5vw;
     height: 5vw;
-    margin: var(--pcHeaderWidthPadding);
+    margin: var(--pcPadding);
     background-color: rgb(240, 240, 240);
     border-radius: 100px;
     background-position: center;
@@ -162,8 +161,8 @@
 .productCommentContent {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    width: calc(100vw - var(--pcHeaderWidthPadding) * 5 - 5vw);
+    gap: var(--pcPadding);
+    width: calc(100vw - var(--pcPadding) * 5 - 5vw);
 }
 
 .productCommentContent p {
@@ -179,28 +178,28 @@
 }
 
 .productCommentData h1 {
-    font-size: 18px;
+    font-size: var(--pcTextH1Size);
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
 
 .productCommentData p {
-    font-size: 13px;
+    font-size: var(--pcTextPSize);
     margin-left: auto;
 }
 
 .productDetailRequirement {
     width: 100%;
-    padding: var(--pcHeaderWidthPadding);
+    padding: var(--pcPadding);
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: var(--pcPadding);
     background-color: #303030;
 }
 
 .productDetailRequirement h2 {
     color: rgb(255, 255, 255);
-    font-size: 15px;
+    font-size: var(--pcTextH2Size);
 }
 
 .productDetailRequirement table {
@@ -212,15 +211,14 @@
 .productDetailRequirement th,
 .productDetailRequirement td {
     border: 1px solid #4b4b4b;
-    padding: 8px;
+    padding: var(--pcPadding);
     text-align: left;
     color: rgb(255, 255, 255);
-    font-size: 12px;
+    font-size: var(--pcTextPSize);
 }
 
 .productDetailContent article {
     width: 100%;
-    padding: 0 var(--pcHeaderWidthPadding);
 }
 
 .productDetailContent article img {
@@ -236,27 +234,24 @@
 }
 
 .productMenuData>h2 {
-    margin: var(--pcHeaderWidthPadding);
-    font-size: 15px;
+    margin: var(--pcPadding);
+    font-size: var(--pcTextH2Size);
 }
 
 .productMenuData>h1 {
-    margin: var(--pcHeaderWidthPadding);
-    font-size: 15px;
+    margin: var(--pcPadding);
+    font-size: var(--pcTextH1Size);
     color: #0000007e;
 }
 
 @media screen and (max-width: 720px) {
-
-    /* Detail Page */
     .headerDetail {
-        padding: 0 var(--mobileHeaderWidthPadding);
+        padding: 0 var(--mobilePadding);
         height: var(--mobileTopHeaderHeight);
     }
 
-    /* KLWP Detail Page */
     .productDetailPage {
-        padding: 0 0 var(--mobileHeaderFeatureHeight) 0;
+        padding: 0 0 var(--mobileTopHeaderHeight) 0;
         position: absolute;
         top: var(--mobileTopHeaderHeight);
         left: 0;
@@ -266,7 +261,7 @@
     .productDetailHeader {
         flex-direction: column;
         align-items: center;
-        gap: var(--mobileHeaderWidthPadding);
+        gap: var(--mobilePadding);
         padding: 0 0 0 0;
     }
 
@@ -280,7 +275,7 @@
     }
 
     .mobileProductDetailData {
-        padding: 0 var(--mobileHeaderWidthPadding);
+        padding: 0 var(--mobilePadding);
         width: 100%;
         height: 100px;
         flex-direction: row;
@@ -291,25 +286,21 @@
     }
 
     .mobileProductDetailData>div {
-        gap: 10px;
+        gap: var(--mobilePadding);
         display: flex;
         flex-direction: column;
     }
 
     .mobileProductDetailData h1 {
-        font-size: 17px;
-    }
-
-    .mobileProductDetailData h1 p {
-        font-size: 10px;
+        font-size: var(--mobileTextH1Size);
     }
 
     .mobileProductDetailData p {
-        font-size: 12px;
+        font-size: var(--mobileTextPSize);
     }
 
     .mobileProductDetailData strong {
-        font-size: 20px;
+        font-size: var(--mobileTextStrongSize);
     }
 
     .productDetailTitle {
@@ -318,42 +309,42 @@
 
     .productDetailMenu {
         position: sticky;
-        margin-top: 10px;
+        margin-top: var(--mobilePadding);
         top: calc(var(--mobileTopHeaderHeight));
-        padding: 0 var(--mobileHeaderWidthPadding);
+        padding: 0 var(--mobilePadding);
     }
 
     .productDetailMenu ul {
-        gap: var(--mobileHeaderWidthPadding);
+        gap: var(--mobilePadding);
     }
 
     .productDetailMenu li {
         list-style-type: none;
-        height: calc(var(--mobileHeaderHeight) - 1.5vw);
+        height: calc(var(--mobileBottomHeaderHeight) - 1.5vw);
     }
 
     .productCommentAvatar {
         width: 15vw;
         height: 15vw;
-        margin: var(--mobileHeaderWidthPadding);
+        margin: var(--mobilePadding);
     }
 
     .productCommentContent {
-        margin: var(--mobileHeaderWidthPadding) 0;
-        gap: 5px;
-        width: calc(100vw - var(--mobileHeaderWidthPadding) * 3 - 15vw);
+        margin: var(--mobilePadding) 0;
+        gap: var(--mobilePadding);
+        width: calc(100vw - var(--mobilePadding) * 3 - 15vw);
     }
 
     .productCommentData h1 {
-        font-size: 15px;
+        font-size: var(--mobileTextH1Size);
     }
 
     .productCommentData p {
-        font-size: 10px;
+        font-size: var(--mobileTextPSize);
     }
 
     .productCommentContent p {
-        font-size: 12px;
+        font-size: var(--mobileTextPSize);
     }
 
     .mobileProductDetailFeature {
@@ -361,8 +352,8 @@
         align-items: center;
         justify-content: space-between;
         width: 100%;
-        height: var(--mobileHeaderFeatureHeight);
-        padding: 0 var(--mobileHeaderWidthPadding);
+        height: var(--mobileTopHeaderHeight);
+        padding: 0 var(--mobilePadding);
         position: fixed;
         bottom: 0;
         left: 0;
@@ -372,32 +363,28 @@
     .mobileProductDetailFeature h1,
     .mobileProductDetailFeature .material-icons {
         color: white;
-        font-size: 20px;
+        font-size: var(--mobileTextH1Size);
         font-style: italic;
         cursor: pointer;
     }
     
     .productDetailRequirement {
-        padding: var(--mobileHeaderWidthPadding);
+        padding: var(--mobilePadding);
     }
 
     .productDetailContent {
         background-color: white;
-        margin-top: 10px;
+        margin-top: var(--mobilePadding);
         width: 100%;
     }
 
-    .productDetailContent article {
-        padding: 0 var(--mobileHeaderWidthPadding);
-    }
-
     .productMenuData>h2 {
-        margin: var(--mobileHeaderWidthPadding);
-        font-size: 15px;
+        margin: var(--mobilePadding);
+        font-size: var(--mobileTextH2Size);
     }
 
     .productMenuData>h1 {
-        margin: var(--mobileHeaderWidthPadding);
+        margin: var(--mobilePadding);
     }
 
 }

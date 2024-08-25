@@ -1,0 +1,8 @@
+/* Personal Center Page */
+.personalCenterHeader {
+    width: 100%;
+    height: var(--pcHeaderHight);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -45,12 +45,24 @@ button {
 }
 
 :root {
-    --pcHeaderWidthPadding: 2.5vw;
-    --mobileHeaderWidthPadding: 5vw;
+    --pcPadding: 1.5vw;
     --pcHeaderHight: 80px;
-    --mobileHeaderHeight: 55px;
-    --mobileHeaderFeatureHeight: 60px;
-    --mobileTopHeaderHeight: calc(var(--mobileHeaderHeight) + 20px);
+    --pcTextH1Size: 20px;
+    --pcTextH2Size: 18px;
+    --pcTextPSize: 15px;
+    --pcTextASize: 13px;
+    --pcTextSpanSize: 13px;
+    --pcTextStrongSize: 15px;
+
+    --mobilePadding: 5vw;
+    --mobileBottomHeaderHeight: 55px;
+    --mobileTopHeaderHeight: 75px;
+    --mobileTextH1Size: 15px;
+    --mobileTextH2Size: 15px;
+    --mobileTextPSize: 15px;
+    --mobileTextASize: 15px;
+    --mobileTextISize: 15px;
+    --mobileTextStrongSize: 15px;
 }
 
 .hidden {
@@ -61,7 +73,7 @@ button {
 header {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
     display: flex;
-    padding: 0 var(--pcHeaderWidthPadding);
+    padding: 0 var(--pcPadding);
     position: fixed;
     top: 0;
     width: 100vw;
@@ -80,7 +92,7 @@ header .headerIcon {
 
 header .headerMenu li {
     height: 100%;
-    padding: 0 30px;
+    padding: 0 var(--pcPadding);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -90,7 +102,6 @@ header .headerMenu li {
 
 header .headerIcon li {
     height: 100%;
-    width: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -132,7 +143,7 @@ header .headerMenu li .material-icons {
 /* Page */
 .page {
     width: 100vw;
-    padding: var(--pcHeaderHight) var(--pcHeaderWidthPadding) 0 var(--pcHeaderWidthPadding);
+    padding: var(--pcHeaderHight) var(--pcPadding) 0 var(--pcPadding);
     overflow: auto;
 }
 
@@ -143,7 +154,7 @@ header .headerMenu li .material-icons {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: var(--pcPadding);
     flex-direction: column;
 }
 
@@ -157,17 +168,17 @@ header .headerMenu li .material-icons {
 }
 
 .homePage h1 {
-    font-size: 20px;
+    font-size: var(--pcTextH1Size);
 }
 
 .homePage p {
-    font-size: 15px;
+    font-size: var(--pcTextPSize);
 }
 
 /* Theme Page */
 .themePage {
     width: 100%;
-    margin: var(--pcHeaderWidthPadding) 0;
+    margin: var(--pcPadding) 0;
 }
 
 .themeList {
@@ -176,7 +187,7 @@ header .headerMenu li .material-icons {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: start;
-    gap: var(--pcHeaderWidthPadding);
+    gap: var(--pcPadding);
 }
 
 .themeContainer {
@@ -186,8 +197,8 @@ header .headerMenu li .material-icons {
 }
 
 .themeCover {
-    width: calc(((100vw - var(--pcHeaderWidthPadding) * 2) - 4 * var(--pcHeaderWidthPadding)) / 5);
-    height: calc(((100vw - var(--pcHeaderWidthPadding) * 2) - 4 * var(--pcHeaderWidthPadding)) / 5);
+    width: calc(((100vw - var(--pcPadding) * 2) - 4 * var(--pcPadding)) / 5);
+    height: calc(((100vw - var(--pcPadding) * 2) - 4 * var(--pcPadding)) / 5);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -196,10 +207,10 @@ header .headerMenu li .material-icons {
 .themeContent {
     width: 100%;
     background-color: black;
-    padding: 15px;
+    padding: var(--pcPadding);
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: var(--pcPadding);
 }
 
 .themeContent h1,
@@ -208,11 +219,11 @@ header .headerMenu li .material-icons {
 }
 
 .themeContent h1 {
-    font-size: 20px;
+    font-size: var(--pcTextH1Size);
 }
 
 .themeContent p {
-    font-size: 17px;
+    font-size: var(--pcTextPSize);
 }
 
 /* Alert Window */
@@ -233,24 +244,24 @@ header .headerMenu li .material-icons {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 25%;
-    gap: 15px;
-    padding: 20px;
+    width: 25vw;
+    gap: var(--pcPadding);
+    padding: var(--pcPadding);
     background-color: white;
 }
 
 .alertContainer>h1 {
-    font-size: 20px;
+    font-size: var(--pcTextH1Size);
 }
 
 .alertContainer>p {
-    font-size: 13px;
+    font-size: var(--pcTextPSize);
 }
 
 .alertContainer>button {
     width: fit-content;
     margin-left: auto;
-    padding: 7px 25px;
+    padding: var(--pcPadding);
     border: none;
     background-color: black;
     color: white;
@@ -266,7 +277,7 @@ header .headerMenu li .material-icons {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 35px;
+    gap: var(--pcPadding);
 }
 
 .loginForm,
@@ -277,7 +288,7 @@ header .headerMenu li .material-icons {
 .loginTitle {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: var(--pcPadding);
 }
 
 .loginTitle>.logoLong {
@@ -290,13 +301,13 @@ header .headerMenu li .material-icons {
 }
 
 .loginTitle>h1 {
-    font-size: 20px;
+    font-size: var(--pcTextH1Size);
 }
 
 .loginForm {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: var(--pcPadding);
 }
 
 .loginForm>input {
@@ -304,12 +315,12 @@ header .headerMenu li .material-icons {
     background-color: rgb(219, 219, 219);
     border: none;
     height: 35px;
-    padding: 10px;
+    padding: var(--pcPadding);
     border-radius: 10px;
 }
 
 .loginForm a {
-    font-size: 13px;
+    font-size: var(--pcTextASize);
     color: black;
     text-align: right;
 }
@@ -318,7 +329,7 @@ header .headerMenu li .material-icons {
     width: 100%;
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    gap: var(--pcPadding);
 }
 
 .loginBtn>input {
@@ -326,7 +337,7 @@ header .headerMenu li .material-icons {
     height: 35px;
     border-radius: 10px;
     border: none;
-    margin-top: 30px;
+    margin-top: var(--pcPadding);
     cursor: pointer;
     font-size: small;
 }
@@ -342,14 +353,14 @@ header .headerMenu li .material-icons {
 }
 
 .loginForm>span {
-    font-size: 11px;
+    font-size: var(--pcTextSpanSize);
     color: rgb(100, 100, 100);
 }
 
 .loginErrMsg {
     color: rgb(255, 0, 128);
     font-weight: 700;
-    font-size: 12px;
+    font-size: var(--pcTextPSize);
 }
 
 @media screen and (max-width: 1324px) {}
@@ -381,7 +392,7 @@ header .headerMenu li .material-icons {
     header .headerMenu {
         bottom: 0;
         width: 100vw;
-        height: var(--mobileHeaderHeight);
+        height: var(--mobileBottomHeaderHeight);
         border-collapse: collapse;
         background-color: white;
     }
@@ -389,7 +400,7 @@ header .headerMenu li .material-icons {
     header .headerIcon {
         top: 0;
         right: 0;
-        padding: 0 var(--mobileHeaderWidthPadding);
+        padding: 0 var(--mobilePadding);
         width: 100vw;
         height: calc(var(--mobileTopHeaderHeight));
         background-color: rgb(255, 255, 255);
@@ -410,55 +421,55 @@ header .headerMenu li .material-icons {
 
     header .headerMenu li .material-icons {
         display: block;
-        font-size: 20px;
+        font-size: var(--mobileTextISize);
     }
 
     header .headerIcon li i {
-        font-size: 30px;
+        font-size: var(--mobileTextISize);
     }
 
     header .headerMenu li p {
-        font-size: 9px;
+        font-size: var(--mobileTextPSize);
     }
 
     /* Page */
     .page {
-        padding: var(--mobileTopHeaderHeight) var(--mobileHeaderWidthPadding) var(--mobileHeaderHeight) var(--mobileHeaderWidthPadding);
+        padding: var(--mobileTopHeaderHeight) var(--mobilePadding) var(--mobileBottomHeaderHeight) var(--mobilePadding);
     }
 
     /* Home Page */
     .homePage {
-        height: calc(100vh - var(--mobileHeaderHeight) - var(--mobileTopHeaderHeight));
+        height: calc(100vh - var(--mobileBottomHeaderHeight) - var(--mobileTopHeaderHeight));
     }
 
     /* Theme Page */
     .themePage {
         width: 100%;
         margin: 0;
-        padding: var(--mobileHeaderWidthPadding) 0 var(--mobileHeaderWidthPadding) 0;
+        padding: var(--mobilePadding) 0 var(--mobilePadding) 0;
     }
 
     .themeList {
-        gap: var(--mobileHeaderWidthPadding);
+        gap: var(--mobilePadding);
     }
 
     .themeCover {
-        width: calc(((100vw - var(--mobileHeaderWidthPadding) * 2) - 1 * var(--mobileHeaderWidthPadding)) / 2);
-        height: calc(((100vw - var(--mobileHeaderWidthPadding) * 2) - 1 * var(--mobileHeaderWidthPadding)) / 2);
+        width: calc(((100vw - var(--mobilePadding) * 2) - 1 * var(--mobilePadding)) / 2);
+        height: calc(((100vw - var(--mobilePadding) * 2) - 1 * var(--mobilePadding)) / 2);
     }
 
     .themeContent {
-        gap: 7px;
+        gap: var(--mobilePadding);
     }
 
     .themeContent h1 {
-        font-size: 15px;
+        font-size: var(--mobileTextH1Size);
         font-style: italic;
         font-weight: 900;
     }
 
     .themeContent p {
-        font-size: 14px;
+        font-size: var(--mobileTextPSize);
         font-weight: 500;
     }
 
