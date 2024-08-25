@@ -125,7 +125,7 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 700;
     height: calc(var(--pcHeaderHight) - 1.5vw);
 }
