@@ -2,8 +2,8 @@
 <h2>Product Comment</h2>
     <% if (commentData.length >= 1) { %>
         <div class="productCommentContainer">
-            <div class="productCommentAvatar">
-                <img src="<%= commentData[0].avatar %>" alt="avatar">
+            <div class="productCommentAvatarContainer">
+                <div class="productCommentAvatar" style="background-image: url('../<%= commentData[0].avatar %>');"></div>
             </div>
             <div class="productCommentContent">
                 <div class="productCommentData">
@@ -16,5 +16,4 @@
     <% } else { %>
         <h1>No Comment ~</h1>
     <% } %>
-    
 </div>

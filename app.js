@@ -38,6 +38,12 @@ const cookieMaxAge = 60000 * 30;
 
 const API = "http://localhost:10888"
 
+const commentStatus = {
+  pending: 'pending',
+  approved: 'approved',
+  rejected: 'rejected'
+}
+
 const setDynamicFavicon = (req, res, next) => {
   res.locals.faviconPath = '../favicon.png';
   next();
@@ -287,7 +293,8 @@ app.get('/product/detail/:id', (req, res) => {
         }
       })
       .then(([productData, commentData]) => {
-        commentData = commentData.filter((comment) => comment.productId === productId);
+        commentData = commentData.filter(comment => comment.productId === productId);
+        commentData = commentData.filter(comment => comment.status === commentStatus.approved);
         res.render("productDetail/detail", { title: productData.name, productData, commentData });
       })
       .catch((err) => {

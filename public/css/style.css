@@ -46,7 +46,7 @@ button {
 
 :root {
     --pcHeaderWidthPadding: 2.5vw;
-    --mobileHeaderWidthPadding: 10vw;
+    --mobileHeaderWidthPadding: 5vw;
     --pcHeaderHight: 80px;
     --mobileHeaderHeight: 55px;
     --mobileHeaderFeatureHeight: 60px;
