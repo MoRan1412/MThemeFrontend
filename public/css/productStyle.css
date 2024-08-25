@@ -208,6 +208,7 @@
 
 .productDetailContent article {
     width: 100%;
+    padding: 0 var(--pcHeaderWidthPadding);
 }
 
 .productDetailContent article img {
@@ -348,6 +349,10 @@
     
     .productDetailRequirement {
         padding: var(--mobileHeaderWidthPadding);
+    }
+
+    .productDetailContent article {
+        padding: 0 var(--mobileHeaderWidthPadding);
     }
 
 }
