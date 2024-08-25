@@ -54,10 +54,12 @@ app.use(setDynamicFavicon);
 // Login & Sign Up System
 app.get('/login', (req, res) => {
   res.render("loginAndSignup/login", { title: "Login" })
+  console.log(`[OK] ${req.originalUrl}`)
 })
 
 app.get('/signup', (req, res) => {
   res.render("loginAndSignup/signup", { title: "Sign Up" })
+  console.log(`[OK] ${req.originalUrl}`)
 })
 
 app.post('/loginProcess', (req, res) => {
@@ -257,6 +259,7 @@ app.get("/product", (req, res) => {
       })
       .then((jsonData) => {
         res.render("index", { title: "Product", product: jsonData });
+        console.log(`[OK] ${req.originalUrl}`);
       })
       .catch((err) => {
         console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
@@ -268,6 +271,7 @@ app.get("/product", (req, res) => {
       });
   } else {
     res.redirect("/login");
+    console.log(`[ERR] Require login account.`);
   }
 });
 
@@ -296,6 +300,7 @@ app.get('/product/detail/:id', (req, res) => {
         commentData = commentData.filter(comment => comment.productId === productId);
         commentData = commentData.filter(comment => comment.status === commentStatus.approved);
         res.render("productDetail/detail", { title: productData.name, productData, commentData });
+        console.log(`[OK] ${req.originalUrl}`);
       })
       .catch((err) => {
         console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
@@ -307,6 +312,7 @@ app.get('/product/detail/:id', (req, res) => {
       });
   } else {
     res.redirect("/login");
+    console.log(`[ERR] Require login account.`);
   }
 })
 
@@ -314,16 +320,20 @@ app.get('/product/detail/:id', (req, res) => {
 app.get("/", (req, res) => {
   if (req.cookies.accessToken) {
     res.render("index", { title: "Home" });
+    console.log(`[OK] ${req.originalUrl}`);
   } else {
     res.redirect("/login");
+    console.log(`[ERR] Require login account.`);
   }
 });
 
 app.get("/help", (req, res) => {
   if (req.cookies.accessToken) {
     res.render("index", { title: "Help" });
+    console.log(`[OK] ${req.originalUrl}`);
   } else {
     res.redirect("/login");
+    console.log(`[ERR] Require login account.`);
   }
 });
 
