@@ -57,12 +57,12 @@ button {
     --mobilePadding: 5vw;
     --mobileBottomHeaderHeight: 55px;
     --mobileTopHeaderHeight: 75px;
-    --mobileTextH1Size: 15px;
-    --mobileTextH2Size: 15px;
-    --mobileTextPSize: 15px;
-    --mobileTextASize: 15px;
-    --mobileTextISize: 15px;
-    --mobileTextStrongSize: 15px;
+    --mobileTextH1Size: 12px;
+    --mobileTextH2Size: 12px;
+    --mobileTextPSize: 12px;
+    --mobileTextASize: 12px;
+    --mobileTextISize: 12px;
+    --mobileTextStrongSize: 12px;
 }
 
 .hidden {

@@ -98,5 +98,21 @@
     .loginTitle {
         width: 80%;
     }
+
+    .loginTitle>h1 {
+        font-size: var(--mobileTextH1Size);
+    }
+
+    .loginContainer {
+        gap: calc(var(--mobilePadding) * 1.2);
+    }
+
+    .loginForm {
+        gap: calc(var(--mobilePadding));
+    }
+
+    .loginForm>input {
+        padding: calc(var(--mobilePadding) * 0.5);
+    }
 }
 
