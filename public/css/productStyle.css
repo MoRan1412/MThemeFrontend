@@ -68,18 +68,18 @@
     }
 
     .productContent {
-        gap: var(--mobilePadding);
+        gap: calc(var(--mobilePadding) * 0.5);
+        padding: calc(var(--mobilePadding) * 0.7);
     }
 
     .productContent h1 {
-        font-size: var(--mobileTextH1Size);
-        font-style: italic;
-        font-weight: 900;
+        font-size: calc(var(--mobileTextH1Size) * 1.3);
+        font-weight: 500;
     }
 
-    .productContent p {
-        font-size: var(--mobileTextPSize);
-        font-weight: 500;
+    .productContent strong {
+        font-size: calc(var(--mobileTextStrongSize) * 1.4);
+        font-weight: 900;
     }
 
 }

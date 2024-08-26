@@ -1,0 +1,68 @@
+/* Alert Window */
+.alertWindow {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.alertContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 25vw;
+    gap: var(--pcPadding);
+    padding: var(--pcPadding);
+    background-color: white;
+}
+
+.alertContainer>h1 {
+    font-size: var(--pcTextH1Size);
+}
+
+.alertContainer>p {
+    font-size: var(--pcTextPSize);
+}
+
+.alertContainer>button {
+    width: fit-content;
+    margin-left: auto;
+    padding: calc(var(--pcPadding) * 0.5) var(--pcPadding);
+    border: none;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    border-radius: 7px;
+    font-size: var(--pcTextPSize);
+}
+
+@media screen and (max-width: 720px) {
+    .alertContainer {
+        width: 80%;
+    }
+
+    .alertContainer {
+        gap: var(--mobilePadding);
+        padding: var(--mobilePadding);
+    }
+
+    .alertContainer>h1 {
+        font-size: var(--mobileTextH1Size);
+    }
+    
+    .alertContainer>p {
+        font-size: var(--mobileTextPSize);
+    }
+
+    .alertContainer>button {
+        padding: calc(var(--mobilePadding) * 0.5) var(--mobilePadding);
+        font-size: var(--mobileTextPSize);
+    }
+
+}

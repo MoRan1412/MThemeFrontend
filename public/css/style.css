@@ -37,7 +37,7 @@ button {
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #0000001a;
+    background-color: #00000000;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -66,77 +66,6 @@ button {
 }
 
 .hidden {
-    display: none;
-}
-
-/* Header */
-header {
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-    display: flex;
-    padding: 0 var(--pcPadding);
-    position: fixed;
-    top: 0;
-    width: 100vw;
-    height: var(--pcHeaderHight);
-    background-color: white;
-    z-index: 100;
-}
-
-header .headerMenu,
-header .headerIcon {
-    list-style-type: none;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-header .headerMenu li {
-    height: 100%;
-    padding: 0 var(--pcPadding);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-header .headerIcon li {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-}
-
-header .logo {
-    /* width: 140px; */
-    width: 180px;
-    height: 35px;
-    background-image: url(../img/logoLong.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: left;
-}
-
-header .headerIcon .logo {
-    display: none;
-}
-
-header .headerIcon {
-    margin-left: auto;
-}
-
-header .active {
-    background-color: black;
-}
-
-header .active p,
-header .active i {
-    color: white;
-    display: block;
-}
-
-header .headerMenu li .material-icons {
     display: none;
 }
 
@@ -175,117 +104,9 @@ header .headerMenu li .material-icons {
     font-size: var(--pcTextPSize);
 }
 
-/* Alert Window */
-.alertWindow {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    background-color: rgba(0, 0, 0, 0.2);
-}
-
-.alertContainer {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 25vw;
-    gap: var(--pcPadding);
-    padding: var(--pcPadding);
-    background-color: white;
-}
-
-.alertContainer>h1 {
-    font-size: var(--pcTextH1Size);
-}
-
-.alertContainer>p {
-    font-size: var(--pcTextPSize);
-}
-
-.alertContainer>button {
-    width: fit-content;
-    margin-left: auto;
-    padding: calc(var(--pcPadding) * 0.5) var(--pcPadding);
-    border: none;
-    background-color: black;
-    color: white;
-    cursor: pointer;
-    border-radius: 7px;
-}
-
 @media screen and (max-width: 1324px) {}
 
 @media screen and (max-width: 720px) {
-    /* Header */
-    header {
-        padding: 0;
-        height: var(--mobileTopHeaderHeight);
-    }
-
-    header .headerMenu .logo {
-        display: none;
-    }
-
-    header .headerIcon .logo {
-        display: block;
-        margin-right: auto;
-    }
-
-    header .headerIcon,
-    header .headerMenu {
-        position: fixed;
-        gap: 0;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    }
-
-    header .headerMenu {
-        bottom: 0;
-        width: 100vw;
-        height: var(--mobileBottomHeaderHeight);
-        border-collapse: collapse;
-        background-color: white;
-    }
-
-    header .headerIcon {
-        top: 0;
-        right: 0;
-        padding: 0 var(--mobilePadding);
-        width: 100vw;
-        height: calc(var(--mobileTopHeaderHeight));
-        background-color: rgb(255, 255, 255);
-    }
-
-    header .headerMenu li {
-        padding: 0;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    header .headerIcon li {
-        height: 100%;
-        width: 50px;
-    }
-
-    header .headerMenu li .material-icons {
-        display: block;
-        font-size: var(--mobileTextISize);
-    }
-
-    header .headerIcon li i {
-        font-size: var(--mobileTextISize);
-    }
-
-    header .headerMenu li p {
-        font-size: var(--mobileTextPSize);
-    }
-
     /* Page */
     .page {
         padding: var(--mobileTopHeaderHeight) var(--mobilePadding) var(--mobileBottomHeaderHeight) var(--mobilePadding);
@@ -296,9 +117,12 @@ header .headerMenu li .material-icons {
         height: calc(100vh - var(--mobileBottomHeaderHeight) - var(--mobileTopHeaderHeight));
     }
 
-    /* Alert Window */
-    .alertContainer {
-        width: 80%;
+    .homePage h1 {
+        font-size: var(--mobileTextH1Size);
+    }
+
+    .homePage p {
+        font-size: var(--mobileTextPSize);
     }
 
 }

@@ -1,0 +1,135 @@
+/* Header */
+header {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    padding: 0 var(--pcPadding);
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: var(--pcHeaderHight);
+    background-color: white;
+    z-index: 100;
+}
+
+header .headerMenu,
+header .headerIcon {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+header .headerMenu li {
+    height: 100%;
+    padding: 0 var(--pcPadding);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+header .headerIcon li {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+header .logo {
+    /* width: 140px; */
+    width: 180px;
+    height: 35px;
+    background-image: url(../img/logoLong.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left;
+}
+
+header .headerIcon .logo {
+    display: none;
+}
+
+header .headerIcon {
+    margin-left: auto;
+}
+
+header .active {
+    background-color: black;
+}
+
+header .active p,
+header .active i {
+    color: white;
+    display: block;
+}
+
+header .headerMenu li .material-icons {
+    display: none;
+}
+
+@media screen and (max-width: 720px) {
+    header {
+        padding: 0;
+        height: var(--mobileTopHeaderHeight);
+    }
+
+    header .headerMenu .logo {
+        display: none;
+    }
+
+    header .headerIcon .logo {
+        display: block;
+        margin-right: auto;
+    }
+
+    header .headerIcon,
+    header .headerMenu {
+        position: fixed;
+        gap: 0;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    header .headerMenu {
+        bottom: 0;
+        width: 100vw;
+        height: var(--mobileBottomHeaderHeight);
+        border-collapse: collapse;
+        background-color: white;
+    }
+
+    header .headerIcon {
+        top: 0;
+        right: 0;
+        padding: 0 var(--mobilePadding);
+        width: 100vw;
+        height: calc(var(--mobileTopHeaderHeight));
+        background-color: rgb(255, 255, 255);
+    }
+
+    header .headerMenu li {
+        padding: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    header .headerIcon li {
+        height: 100%;
+    }
+
+    header .headerMenu li .material-icons {
+        display: block;
+        font-size: calc(var(--mobileTextISize) * 1.5);
+    }
+
+    header .headerIcon li i {
+        font-size: calc(var(--mobileTextISize) * 2);
+    }
+
+    header .headerMenu li p {
+        font-size: calc(var(--mobileTextPSize) * 0.8);
+    }
+}
