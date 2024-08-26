@@ -287,13 +287,13 @@
     }
 
     .mobileProductDetailData>div {
-        gap: var(--mobilePadding);
+        gap: calc(var(--mobilePadding) * 0.5);
         display: flex;
         flex-direction: column;
     }
 
     .mobileProductDetailData h1 {
-        font-size: var(--mobileTextH1Size);
+        font-size: calc(var(--mobileTextH1Size) * 1.3);
     }
 
     .mobileProductDetailData p {
@@ -301,7 +301,7 @@
     }
 
     .mobileProductDetailData strong {
-        font-size: var(--mobileTextStrongSize);
+        font-size: calc(var(--mobileTextStrongSize) * 1.7);
     }
 
     .productDetailTitle {
@@ -310,7 +310,7 @@
 
     .productDetailMenu {
         position: sticky;
-        margin-top: var(--mobilePadding);
+        margin-top: calc(var(--mobilePadding) * 0.3);
         top: calc(var(--mobileTopHeaderHeight));
         padding: 0 var(--mobilePadding);
     }
@@ -375,7 +375,7 @@
 
     .productDetailContent {
         background-color: white;
-        margin-top: var(--mobilePadding);
+        margin-top: calc(var(--mobilePadding) * 0.3);
         width: 100%;
     }
 
