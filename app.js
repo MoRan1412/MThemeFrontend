@@ -154,7 +154,7 @@ app.post('/signup/sendVerifyCode', (req, res) => {
     })
     .catch((err) => {
       console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
-      res.render("signup", {
+      res.render("loginAndSignup/signup", {
         title: "Sign Up",
         username: username,
         email: email,

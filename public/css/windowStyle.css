@@ -53,7 +53,7 @@
     }
 
     .alertContainer>h1 {
-        font-size: var(--mobileTextH1Size);
+        font-size: calc(var(--mobileTextH1Size) * 1.5);
     }
     
     .alertContainer>p {

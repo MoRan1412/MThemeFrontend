@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>MTheme - <%= title %></title>
+    <title>MTheme - <%= title %>
+    </title>
     <link rel="icon" type="image/x-icon" href="../../<%= faviconPath %>">
     <link rel="stylesheet" type="text/css" href="../../css/style.css">
     <link rel="stylesheet" type="text/css" href="../../css/personalCenterStyle.css">
@@ -13,8 +14,50 @@
 </head>
 
 <body>
+    <!--  -->
     <div class="personalCenterHeader">
-        <h1><%= title %></h1>
+        <i class="material-icons" onclick="goBack()">arrow_back_ios</i>
+        <h1>
+            <%= title %>
+        </h1>
+    </div>
+
+    <div class="personalCenterPage">
+        <!--  -->
+        <div class="personalCenterProfile">
+            <div class="personalCenterAvatar"></div>
+            <div class="personalCenterInform">
+                <h1>Name</h1>
+                <p>UID : xxxxx</p>
+            </div>
+        </div>
+
+        <!-- My Order -->
+        <!-- <div class="personalCenterMyOrder"></div> -->
+
+         <!--  -->
+        <div class="personalCenterFeatureList">
+
+            <div class="personalCenterFeatureContainer">
+                <i class="material-icons">help</i>
+                <p>Profile</p>
+                <i class="material-icons personalCenterFeatureGo">help</i>
+            </div>
+            <hr>
+            <div class="personalCenterFeatureContainer">
+                <i class="material-icons">help</i>
+                <p>Change Password</p>
+                <i class="material-icons personalCenterFeatureGo">help</i>
+            </div>
+            <hr>
+            <div class="personalCenterFeatureContainer">
+                <i class="material-icons">help</i>
+                <p>Log Out</p>
+                <i class="material-icons personalCenterFeatureGo">help</i>
+            </div>
+
+        </div>
+
     </div>
 </body>
 

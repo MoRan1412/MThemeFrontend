@@ -45,8 +45,13 @@ button {
 }
 
 :root {
+    --firstLevelBackgroundColor: rgb(240, 240, 240);
+    --secondLevelBackgrounColor: white;
+    --firstLevelColor: black;
+    --secondLevelColor: rgb(100, 100, 100);
+
     --pcPadding: 1.5vw;
-    --pcHeaderHight: 80px;
+    --pcHeaderHeight: 80px;
     --pcTextH1Size: 18px;
     --pcTextH2Size: 15px;
     --pcTextPSize: 13px;
@@ -63,6 +68,7 @@ button {
     --mobileTextASize: 12px;
     --mobileTextISize: 12px;
     --mobileTextStrongSize: 12px;
+    --mobileTextSpanSize: 12px;
 }
 
 .hidden {
@@ -72,14 +78,16 @@ button {
 /* Page */
 .page {
     width: 100vw;
-    padding: var(--pcHeaderHight) var(--pcPadding) 0 var(--pcPadding);
+    height: calc(100vh - var(--pcHeaderHeight));
+    margin-top: var(--pcHeaderHeight);
     overflow: auto;
+    background-color: rgb(240, 240, 240);
 }
 
 /* Home Page */
 .homePage {
     width: 100%;
-    height: calc(100vh - var(--pcHeaderHight));
+    height: calc(100vh - var(--pcHeaderHeight));
     display: flex;
     justify-content: center;
     align-items: center;
@@ -107,9 +115,9 @@ button {
 @media screen and (max-width: 1324px) {}
 
 @media screen and (max-width: 720px) {
-    /* Page */
     .page {
-        padding: var(--mobileTopHeaderHeight) var(--mobilePadding) var(--mobileBottomHeaderHeight) var(--mobilePadding);
+        height: calc(100vh - var(--mobileTopHeaderHeight) - var(--mobileBottomHeaderHeight));
+        margin-top: var(--mobileTopHeaderHeight);
     }
 
     /* Home Page */

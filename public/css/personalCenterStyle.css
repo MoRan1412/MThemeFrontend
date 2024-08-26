@@ -1,8 +1,116 @@
 /* Personal Center Page */
 .personalCenterHeader {
     width: 100%;
-    height: var(--pcHeaderHight);
+    height: var(--pcHeaderHeight);
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: white;
+    border-bottom: solid 0.5px rgba(0, 0, 0, 0.2);
+}
+
+.personalCenterHeader i {
+    position: absolute;
+    left: var(--pcPadding);
+    font-size: var(--pcTextISize);
+}
+
+.personalCenterHeader h1 {
+    font-size: var(--pcTextH1Size);
+}
+
+.personalCenterPage {
+    width: 100vw;
+    height: calc(100vh - var(--pcHeaderHeight));
+    background-color: rgb(240, 240, 240);
+    overflow: auto;
+}
+
+.personalCenterProfile {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+}
+
+.personalCenterAvatar {
+    width: 20vw;
+    height: 20vw;
+    background-color: black;
+    border-radius: 100px;
+    margin: var(--pcPadding);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.personalCenterFeatureList {
+    width: 100%;
+    margin-top: var(--pcPadding);
+    background-color: white;
+}
+
+.personalCenterFeatureList hr {
+    height: 0;
+    border: none;
+    margin: 0 var(--pcPadding);
+    border-top: 0.5px solid var(--secondLevelColor);
+    opacity: 0.3;
+}
+
+.personalCenterFeatureContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: calc(var(--pcPadding) * 0.5);
+    padding: var(--pcPadding);
+}
+
+.personalCenterFeatureContainer i {
+    color: var(--secondLevelColor);
+}
+
+.personalCenterFeatureContainer p {
+    color: var(--firstLevelColor);
+}
+
+.personalCenterFeatureGo {
+    margin-left: auto;
+}
+
+
+@media screen and (max-width: 720px) {
+    .personalCenterHeader {
+        height: var(--mobileTopHeaderHeight);
+    }
+
+    .personalCenterHeader i {
+        left: var(--mobilePadding);
+        font-size: calc(var(--mobileTextISize) * 1.5);
+    }
+    
+    .personalCenterHeader h1 {
+        font-size: calc(var(--mobileTextISize) * 1.5);
+    }
+
+    .personalCenterPage {
+        height: calc(100vh - var(--mobileTopHeaderHeight));
+    }
+
+    .personalCenterAvatar {
+        margin: var(--mobilePadding);
+    }
+
+    .personalCenterFeatureList {
+        margin-top: var(--mobilePadding);
+    }
+
+    .personalCenterFeatureContainer {
+        gap: calc(var(--mobilePadding) * 0.5);
+        padding: var(--mobilePadding);
+    }
+
+    .personalCenterFeatureList hr {
+        margin: 0 var(--mobilePadding);
+    }
 }

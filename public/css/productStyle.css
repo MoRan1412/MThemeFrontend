@@ -1,7 +1,8 @@
 /* product Page */
 .productPage {
-    width: 100%;
+    width: 100vw;
     margin: var(--pcPadding) 0;
+    padding: var(--mobilePadding);
 }
 
 .productList {
@@ -51,11 +52,8 @@
 }
 
 @media screen and (max-width: 720px) {
-    /* product Page */
     .productPage {
-        width: 100%;
-        margin: 0;
-        padding: var(--mobilePadding) 0 var(--mobilePadding) 0;
+        margin-top: var(--mobileTopHeaderHeight) 0;
     }
 
     .productList {
