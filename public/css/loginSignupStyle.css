@@ -114,5 +114,25 @@
     .loginForm>input {
         padding: calc(var(--mobilePadding) * 0.5);
     }
+
+    .loginForm a {
+        font-size: var(--mobileTextASize);
+    }
+
+    .loginBtn {
+        gap: var(--mobilePadding);
+    }
+
+    .loginBtn>input {
+        margin-top: var(--mobilePadding);
+    }
+
+    .loginForm>span {
+        font-size: var(--mobileTextSpanSize);
+    }
+    
+    .loginErrMsg {
+        font-size: var(--mobileTextPSize);
+    }
 }
 
