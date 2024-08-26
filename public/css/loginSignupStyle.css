@@ -1,0 +1,102 @@
+/* Login & Sign Up Page */
+.loginContainer {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: var(--pcPadding);
+}
+
+.loginForm,
+.loginTitle {
+    width: 25%;
+}
+
+.loginTitle {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pcPadding);
+}
+
+.loginTitle>.logoLong {
+    width: 45%;
+    height: 50px;
+    background-image: url(../img/logoLong.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left;
+}
+
+.loginTitle>h1 {
+    font-size: var(--pcTextH1Size);
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pcPadding);
+}
+
+.loginForm>input {
+    width: 100%;
+    background-color: rgb(219, 219, 219);
+    border: none;
+    padding: calc(var(--pcPadding) * 0.5);
+    border-radius: 10px;
+}
+
+.loginForm a {
+    font-size: var(--pcTextASize);
+    color: black;
+    text-align: right;
+}
+
+.loginBtn {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: var(--pcPadding);
+}
+
+.loginBtn>input {
+    width: 100%;
+    height: 35px;
+    border-radius: 10px;
+    border: none;
+    margin-top: var(--pcPadding);
+    cursor: pointer;
+    font-size: small;
+}
+
+.loginBtn>input[type="submit"] {
+    background-color: black;
+    color: white;
+}
+
+.loginBtn>input[type="button"] {
+    background-color: rgb(240, 240, 240);
+    color: rgb(20, 20, 20);
+}
+
+.loginForm>span {
+    font-size: var(--pcTextSpanSize);
+    color: rgb(100, 100, 100);
+}
+
+.loginErrMsg {
+    color: rgb(255, 0, 128);
+    font-weight: 700;
+    font-size: var(--pcTextPSize);
+}
+
+
+@media screen and (max-width: 720px) {
+    /* Login Page */
+    .loginForm,
+    .loginTitle {
+        width: 80%;
+    }
+}
+

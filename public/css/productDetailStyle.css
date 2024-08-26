@@ -1,0 +1,391 @@
+/* Detail Page */
+.productDetailSelect {
+    background: linear-gradient(to top, black 5%, #00000000 5%, #00000000)
+}
+
+.headerDetail {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerDetail h1 {
+    position: absolute;
+    color: black;
+    width: 40vw;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: var(--pcTextH1Size);
+}
+
+.headerDetail .material-icons {
+    margin-right: auto;
+    color: black;
+    font-size: var(--pcTextISize);
+    cursor: pointer;
+}
+
+.productDetailPage {
+    width: 100%;
+    padding: var(--pcPadding) 0 var(--pcHeaderHight) 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.productDetailHeader {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: var(--pcPadding);
+    padding: var(--pcPadding);
+    background-color: rgb(240, 240, 240);
+}
+
+.productDetailCover {
+    width: 25vw;
+    height: 25vw;
+    overflow: hidden;
+}
+
+.swiper-slide {
+    background: #fff;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.productDetailData {
+    width: calc(100vw - var(--pcPadding) * 5 - 25vw);
+    padding: calc(var(--pcPadding));
+    gap: var(--pcPadding);
+    display: flex;
+    flex-direction: column;
+}
+
+.mobileProductDetailData {
+    display: none;
+}
+
+.productDetailData>div {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pcPadding);
+}
+
+.productDetailTitle {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    gap: var(--pcPadding);
+}
+
+.productDetailData h1 {
+    font-size: var(--pcTextH1Size);
+}
+
+.productDetailData p,
+.productDetailData h1,
+.productDetailData strong {
+    color: rgb(0, 0, 0);
+}
+
+.productDetailData p {
+    font-size: var(--pcTextPSize);
+}
+
+.productDetailData strong {
+    margin-top: var(--pcPadding);
+    font-size: calc(var(--pcTextStrongSize) * 1.5);
+}
+
+.productDetailMenu {
+    width: 100%;
+    background-color: white;
+    padding: 0 var(--pcPadding);
+    border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+}
+
+.productDetailMenu ul {
+    display: flex;
+    flex-direction: row;
+    gap: var(--pcPadding);
+    justify-content: start;
+}
+
+.productDetailMenu li {
+    list-style-type: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: calc(var(--pcTextH1Size) * 0.7);
+    font-weight: 700;
+    height: calc(var(--pcHeaderHight) - 1.5vw);
+}
+
+.productDetailContent {
+    width: 100%;
+    background-color: rgb(240, 240, 240);
+    margin-top: var(--pcPadding);
+}
+
+.productCommentContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.productCommentAvatarContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.productCommentAvatar {
+    width: 5vw;
+    height: 5vw;
+    margin: var(--pcPadding);
+    background-color: rgb(240, 240, 240);
+    border-radius: 100px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.productCommentContent {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pcPadding);
+    width: calc(100vw - var(--pcPadding) * 5 - 5vw);
+}
+
+.productCommentContent p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    font-size: calc(var(--pcTextPSize) * 0.9);
+}
+
+.productCommentData {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    width: 100%;
+}
+
+.productCommentData h1 {
+    font-size: calc(var(--pcTextH1Size) * 0.75);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.productCommentData p {
+    font-size: calc(var(--pcTextPSize) * 0.9);
+    margin-left: auto;
+}
+
+.productDetailRequirement {
+    width: 100%;
+    padding: var(--pcPadding);
+    display: flex;
+    flex-direction: column;
+    gap: var(--pcPadding);
+    background-color: #303030;
+}
+
+.productDetailRequirement h2 {
+    color: rgb(255, 255, 255);
+    font-size: var(--pcTextH2Size);
+}
+
+.productDetailRequirement table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.productDetailRequirement tr,
+.productDetailRequirement th,
+.productDetailRequirement td {
+    border: 1px solid #4b4b4b;
+    padding: var(--pcPadding);
+    text-align: left;
+    color: rgb(255, 255, 255);
+    font-size: var(--pcTextPSize);
+}
+
+.productDetailContent article {
+    width: 100%;
+}
+
+.productDetailContent article img {
+    width: 100%;
+}
+
+.mobileProductDetailFeature {
+    display: none;
+}
+
+.productMenuData {
+    width: 100%;
+}
+
+.productMenuData>h2 {
+    margin: var(--pcPadding);
+    font-size: calc(var(--pcTextH2Size) * 0.8);
+}
+
+.productMenuData>h1 {
+    margin: var(--pcPadding);
+    font-size: calc(var(--pcTextH1Size) * 0.75);
+    color: #0000007e;
+}
+
+@media screen and (max-width: 720px) {
+    .headerDetail {
+        padding: 0 var(--mobilePadding);
+        height: var(--mobileTopHeaderHeight);
+    }
+
+    .productDetailPage {
+        padding: 0 0 var(--mobileTopHeaderHeight) 0;
+        position: absolute;
+        top: var(--mobileTopHeaderHeight);
+        left: 0;
+        background-color: rgb(240, 240, 240);
+    }
+
+    .productDetailHeader {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--mobilePadding);
+        padding: 0 0 0 0;
+    }
+
+    .productDetailCover {
+        width: 100vw;
+        height: 100vw;
+    }
+
+    .productDetailData {
+        display: none;
+    }
+
+    .mobileProductDetailData {
+        padding: 0 var(--mobilePadding);
+        width: 100%;
+        height: 100px;
+        flex-direction: row;
+        justify-content: space-between;
+        display: flex;
+        align-items: center;
+        background-color: white;
+    }
+
+    .mobileProductDetailData>div {
+        gap: var(--mobilePadding);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mobileProductDetailData h1 {
+        font-size: var(--mobileTextH1Size);
+    }
+
+    .mobileProductDetailData p {
+        font-size: var(--mobileTextPSize);
+    }
+
+    .mobileProductDetailData strong {
+        font-size: var(--mobileTextStrongSize);
+    }
+
+    .productDetailTitle {
+        flex-direction: row;
+    }
+
+    .productDetailMenu {
+        position: sticky;
+        margin-top: var(--mobilePadding);
+        top: calc(var(--mobileTopHeaderHeight));
+        padding: 0 var(--mobilePadding);
+    }
+
+    .productDetailMenu ul {
+        gap: var(--mobilePadding);
+    }
+
+    .productDetailMenu li {
+        list-style-type: none;
+        height: calc(var(--mobileBottomHeaderHeight) - 1.5vw);
+    }
+
+    .productCommentAvatar {
+        width: 15vw;
+        height: 15vw;
+        margin: var(--mobilePadding);
+    }
+
+    .productCommentContent {
+        margin: var(--mobilePadding) 0;
+        gap: var(--mobilePadding);
+        width: calc(100vw - var(--mobilePadding) * 3 - 15vw);
+    }
+
+    .productCommentData h1 {
+        font-size: var(--mobileTextH1Size);
+    }
+
+    .productCommentData p {
+        font-size: var(--mobileTextPSize);
+    }
+
+    .productCommentContent p {
+        font-size: var(--mobileTextPSize);
+    }
+
+    .mobileProductDetailFeature {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: var(--mobileTopHeaderHeight);
+        padding: 0 var(--mobilePadding);
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        background-color: black;
+    }
+    
+    .mobileProductDetailFeature h1,
+    .mobileProductDetailFeature .material-icons {
+        color: white;
+        font-size: var(--mobileTextH1Size);
+        font-style: italic;
+        cursor: pointer;
+    }
+    
+    .productDetailRequirement {
+        padding: var(--mobilePadding);
+    }
+
+    .productDetailContent {
+        background-color: white;
+        margin-top: var(--mobilePadding);
+        width: 100%;
+    }
+
+    .productMenuData>h2 {
+        margin: var(--mobilePadding);
+        font-size: var(--mobileTextH2Size);
+    }
+
+    .productMenuData>h1 {
+        margin: var(--mobilePadding);
+    }
+
+}

@@ -47,12 +47,12 @@ button {
 :root {
     --pcPadding: 1.5vw;
     --pcHeaderHight: 80px;
-    --pcTextH1Size: 20px;
-    --pcTextH2Size: 18px;
-    --pcTextPSize: 15px;
+    --pcTextH1Size: 18px;
+    --pcTextH2Size: 15px;
+    --pcTextPSize: 13px;
     --pcTextASize: 13px;
     --pcTextSpanSize: 13px;
-    --pcTextStrongSize: 15px;
+    --pcTextStrongSize: 13px;
 
     --mobilePadding: 5vw;
     --mobileBottomHeaderHeight: 55px;
@@ -175,57 +175,6 @@ header .headerMenu li .material-icons {
     font-size: var(--pcTextPSize);
 }
 
-/* Theme Page */
-.themePage {
-    width: 100%;
-    margin: var(--pcPadding) 0;
-}
-
-.themeList {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: start;
-    gap: var(--pcPadding);
-}
-
-.themeContainer {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.themeCover {
-    width: calc(((100vw - var(--pcPadding) * 2) - 4 * var(--pcPadding)) / 5);
-    height: calc(((100vw - var(--pcPadding) * 2) - 4 * var(--pcPadding)) / 5);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.themeContent {
-    width: 100%;
-    background-color: black;
-    padding: var(--pcPadding);
-    display: flex;
-    flex-direction: column;
-    gap: var(--pcPadding);
-}
-
-.themeContent h1,
-.themeContent p {
-    color: white;
-}
-
-.themeContent h1 {
-    font-size: var(--pcTextH1Size);
-}
-
-.themeContent p {
-    font-size: var(--pcTextPSize);
-}
-
 /* Alert Window */
 .alertWindow {
     display: none;
@@ -261,7 +210,7 @@ header .headerMenu li .material-icons {
 .alertContainer>button {
     width: fit-content;
     margin-left: auto;
-    padding: var(--pcPadding);
+    padding: calc(var(--pcPadding) * 0.5) var(--pcPadding);
     border: none;
     background-color: black;
     color: white;
@@ -269,104 +218,9 @@ header .headerMenu li .material-icons {
     border-radius: 7px;
 }
 
-/* Login & Sign Up Page */
-.loginContainer {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: var(--pcPadding);
-}
-
-.loginForm,
-.loginTitle {
-    width: 25%;
-}
-
-.loginTitle {
-    display: flex;
-    flex-direction: column;
-    gap: var(--pcPadding);
-}
-
-.loginTitle>.logoLong {
-    width: 45%;
-    height: 50px;
-    background-image: url(../img/logoLong.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: left;
-}
-
-.loginTitle>h1 {
-    font-size: var(--pcTextH1Size);
-}
-
-.loginForm {
-    display: flex;
-    flex-direction: column;
-    gap: var(--pcPadding);
-}
-
-.loginForm>input {
-    width: 100%;
-    background-color: rgb(219, 219, 219);
-    border: none;
-    height: 35px;
-    padding: var(--pcPadding);
-    border-radius: 10px;
-}
-
-.loginForm a {
-    font-size: var(--pcTextASize);
-    color: black;
-    text-align: right;
-}
-
-.loginBtn {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    gap: var(--pcPadding);
-}
-
-.loginBtn>input {
-    width: 100%;
-    height: 35px;
-    border-radius: 10px;
-    border: none;
-    margin-top: var(--pcPadding);
-    cursor: pointer;
-    font-size: small;
-}
-
-.loginBtn>input[type="submit"] {
-    background-color: black;
-    color: white;
-}
-
-.loginBtn>input[type="button"] {
-    background-color: rgb(240, 240, 240);
-    color: rgb(20, 20, 20);
-}
-
-.loginForm>span {
-    font-size: var(--pcTextSpanSize);
-    color: rgb(100, 100, 100);
-}
-
-.loginErrMsg {
-    color: rgb(255, 0, 128);
-    font-weight: 700;
-    font-size: var(--pcTextPSize);
-}
-
 @media screen and (max-width: 1324px) {}
 
 @media screen and (max-width: 720px) {
-
     /* Header */
     header {
         padding: 0;
@@ -442,45 +296,8 @@ header .headerMenu li .material-icons {
         height: calc(100vh - var(--mobileBottomHeaderHeight) - var(--mobileTopHeaderHeight));
     }
 
-    /* Theme Page */
-    .themePage {
-        width: 100%;
-        margin: 0;
-        padding: var(--mobilePadding) 0 var(--mobilePadding) 0;
-    }
-
-    .themeList {
-        gap: var(--mobilePadding);
-    }
-
-    .themeCover {
-        width: calc(((100vw - var(--mobilePadding) * 2) - 1 * var(--mobilePadding)) / 2);
-        height: calc(((100vw - var(--mobilePadding) * 2) - 1 * var(--mobilePadding)) / 2);
-    }
-
-    .themeContent {
-        gap: var(--mobilePadding);
-    }
-
-    .themeContent h1 {
-        font-size: var(--mobileTextH1Size);
-        font-style: italic;
-        font-weight: 900;
-    }
-
-    .themeContent p {
-        font-size: var(--mobileTextPSize);
-        font-weight: 500;
-    }
-
     /* Alert Window */
     .alertContainer {
-        width: 80%;
-    }
-
-    /* Login Page */
-    .loginForm,
-    .loginTitle {
         width: 80%;
     }
 

@@ -1,12 +1,12 @@
-<div class="themePage">
-    <div class="themeList">
+<div class="productPage">
+    <div class="productList">
 
         <% for( let i = 0; i < product.length; i++ ) { %>
-            <div class="themeContainer" onclick='location.href="/product/detail/<%= product[i].id %>"'>
-                <div class="themeCover" style='background-image: url("<%= product[i].image[0] %>");'></div>
-                <div class="themeContent">
-                    <p><%= product[i].name %></p>
-                    <h1>$ <%= product[i].price %></h1>
+            <div class="productContainer" onclick='location.href="/product/detail/<%= product[i].id %>"'>
+                <div class="productCover" style='background-image: url("<%= product[i].image[0] %>");'></div>
+                <div class="productContent">
+                    <h1><%= product[i].name %></h1>
+                    <strong>$ <%= product[i].price %></strong>
                 </div>
             </div>
         <% } %>

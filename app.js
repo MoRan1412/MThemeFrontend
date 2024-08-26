@@ -232,7 +232,7 @@ app.post('/signupProcess', (req, res) => {
     })
     .catch((err) => {
       console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
-      res.render("verifyCode", {
+      res.render("loginAndSignup/verifyCode", {
         title: "Sign Up",
         error: err.message,
         message: "Please enter the correct verification code."
