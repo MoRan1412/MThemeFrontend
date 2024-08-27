@@ -51,12 +51,24 @@
     gap: var(--pcPadding);
 }
 
+.personalCenterInform>div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: calc(var(--pcPadding));
+}
+
 .personalCenterInform h1 {
     font-size: calc(var(--pcTextH1Size));
 }
 
 .personalCenterInform p {
     font-size: calc(var(--pcTextPSize));
+    font-weight: 500;
+}
+
+.personalCenterInform i {
+    font-size: calc(var(--pcTextISize));
 }
 
 .personalCenterFeatureList {
@@ -79,6 +91,7 @@
     align-items: center;
     gap: calc(var(--pcPadding) * 0.5);
     padding: var(--pcPadding);
+    background-color: var(--firstLevelBackgroundColor);
 }
 
 .personalCenterFeatureContainer i {
@@ -88,10 +101,43 @@
 
 .personalCenterFeatureContainer p {
     color: var(--firstLevelColor);
+    font-weight: 500;
 }
 
 .personalCenterFeatureGo {
     margin-left: auto;
+}
+
+.personalCenterProfileAvatarContainer {
+    width: 100%;
+    background-color: var(--firstLevelBackgroundColor);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--pcPadding));
+    padding: calc(var(--pcPadding));
+}
+
+.personalCenterProfileAvatar {
+    width: 25vw;
+    height: 25vw;
+    border-radius: 100px;
+    background-color: var(--secondLevelBackgroundColor);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.personalCenterProfileAvatarContainer p {
+    font-weight: 500;
+    font-size: var(--pcTextPSize);
+    color: var(--secondLevelColor);
+}
+
+.personalCenterProfileFeatureTitle {
+    color: var(--secondLevelColor);
+    font-size: var(--pcTextH1Size);
 }
 
 
@@ -118,15 +164,23 @@
     }
 
     .personalCenterInform {
-        gap: calc(var(--mobilePadding) * 0.3);
+        gap: calc(var(--mobilePadding) * 0.4);
+    }
+
+    .personalCenterInform>div {
+        gap: calc(var(--mobilePadding) * 0.5);
     }
 
     .personalCenterInform h1 {
-        font-size: calc(var(--mobileTextH1Size) * 1.5);
+        font-size: calc(var(--mobileTextH1Size) * 1.3);
     }
 
     .personalCenterInform p {
-        font-size: calc(var(--mobileTextPSize) * 1.2);
+        font-size: calc(var(--mobileTextPSize) * 1.1);
+    }
+
+    .personalCenterInform i {
+        font-size: calc(var(--mobileTextISize) * 1.3);
     }
 
     .personalCenterFeatureList {
@@ -140,7 +194,7 @@
 
     .personalCenterFeatureContainer i {
         color: var(--secondLevelColor);
-        font-size: calc(var(--mobileTextISize) * 1.2);
+        font-size: calc(var(--mobileTextISize) * 1.3);
     }
 
     .personalCenterFeatureContainer p {
@@ -149,5 +203,20 @@
 
     .personalCenterFeatureList hr {
         margin: 0 var(--mobilePadding);
+    }
+
+    .personalCenterProfileAvatarContainer {
+        padding: calc(var(--mobilePadding));
+        gap: calc(var(--mobilePadding));
+    }
+
+    .personalCenterProfileAvatarContainer p {
+        font-weight: 500;
+        font-size: calc(var(--mobileTextPSize) * 1.1);
+    }
+
+    .personalCenterProfileFeatureTitle {
+        font-size: calc(var(--mobileTextH1Size) * 1.1);
+        width: 20vw;
     }
 }

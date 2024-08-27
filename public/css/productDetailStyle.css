@@ -331,7 +331,7 @@
 
     .productCommentContent {
         margin: var(--mobilePadding) 0;
-        gap: var(--mobilePadding);
+        gap: calc(var(--mobilePadding) * 0.3);
         width: calc(100vw - var(--mobilePadding) * 3 - 15vw);
     }
 
@@ -339,12 +339,12 @@
         font-size: var(--mobileTextH1Size);
     }
 
-    .productCommentData p {
-        font-size: var(--mobileTextPSize);
+    .productCommentData>p {
+        font-size: calc(var(--mobileTextPSize) * 0.8);
     }
 
-    .productCommentContent p {
-        font-size: var(--mobileTextPSize);
+    .productCommentContent>p {
+        font-size: calc(var(--mobileTextPSize));
     }
 
     .mobileProductDetailFeature {

@@ -108,7 +108,7 @@ app.post('/loginProcess', (req, res) => {
     })
     .catch((err) => {
       console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
-      res.status(status.UNAUTHORIZED).render("login", {
+      res.status(status.UNAUTHORIZED).render("loginAndSignup/login", {
         title: "Login",
         username: username,
         error: err.message
@@ -342,6 +342,23 @@ app.get("/personalCenter", (req, res) => {
       title: roleCenter,
       username: req.cookies.username,
       userid: req.cookies.userid,
+      role: req.cookies.role,
+      useravatar: req.cookies.useravatar
+    });
+    console.log(`[OK] ${req.originalUrl}`);
+  } else {
+    res.redirect("/login");
+    console.log(`[ERR] Require login account.`);
+  }
+});
+
+app.get("/personalCenter/profile", (req, res) => {
+  if (req.cookies.accessToken) {
+    res.render("personalCenter/feature/profile", {
+      title: "Personal Information",
+      username: req.cookies.username,
+      userid: req.cookies.userid,
+      email: req.cookies.email,
       role: req.cookies.role,
       useravatar: req.cookies.useravatar
     });

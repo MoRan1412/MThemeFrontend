@@ -26,6 +26,7 @@ header .headerMenu li {
     justify-content: center;
     flex-direction: column;
     cursor: pointer;
+    font-weight: 500;
 }
 
 header .headerIcon li {
@@ -100,7 +101,7 @@ header .headerMenu li .material-icons {
     header .headerIcon {
         top: 0;
         right: 0;
-        padding: 0 var(--mobilePadding);
+        padding: 0 calc(var(--mobilePadding));
         width: 100vw;
         height: calc(var(--mobileTopHeaderHeight));
         background-color: rgb(255, 255, 255);
@@ -112,6 +113,7 @@ header .headerMenu li .material-icons {
         display: flex;
         justify-content: center;
         align-items: center;
+        gap: calc(var(--mobilePadding) * 0.2);
     }
 
     header .headerIcon li {
