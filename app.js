@@ -92,6 +92,8 @@ app.post('/loginProcess', (req, res) => {
       if (jsonData.accessToken) {
         console.log("[OK] Login success with token: " + jsonData["accessToken"]);
         res.cookie("accessToken", jsonData["accessToken"], { maxAge: cookieMaxAge, httpOnly: true });
+        res.cookie("username", jsonData["username"], { maxAge: cookieMaxAge, httpOnly: true });
+        res.cookie("userid", jsonData["id"], { maxAge: cookieMaxAge, httpOnly: true });
         res.cookie("role", jsonData["role"], { maxAge: cookieMaxAge, httpOnly: true });
         res.cookie("email", jsonData["email"], { maxAge: cookieMaxAge, httpOnly: true });
         res.status(status.OK).render("window", {
@@ -240,6 +242,15 @@ app.post('/signupProcess', (req, res) => {
     });
 })
 
+app.get('/signout', (req, res) => {
+  res.clearCookie('accessToken')
+  res.clearCookie('username')
+  res.clearCookie('userid')
+  res.clearCookie('role')
+  res.clearCookie('email')
+  res.redirect('/')
+})
+
 
 // Product System
 app.get("/product", (req, res) => {
@@ -320,10 +331,18 @@ app.get('/product/detail/:id', (req, res) => {
 app.get("/personalCenter", (req, res) => {
   if (req.cookies.accessToken) {
     if (req.cookies.role === "admin") {
-      res.render("personalCenter/adminCenter", { title: "Admin Center" });
+      res.render("personalCenter/adminCenter", { 
+        title: "Admin Center",
+        username: req.cookies.username,
+        userid: req.cookies.userid
+       });
       console.log(`[OK] ${req.originalUrl}`);
     } else {
-      res.render("personalCenter/userCenter", { title: "User Center" });
+      res.render("personalCenter/userCenter", { 
+        title: "User Center",
+        username: req.cookies.username,
+        userid: req.cookies.userid 
+      });
       console.log(`[OK] ${req.originalUrl}`);
     }
   } else {

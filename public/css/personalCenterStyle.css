@@ -44,6 +44,21 @@
     background-size: cover;
 }
 
+.personalCenterInform {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--pcPadding);
+}
+
+.personalCenterInform h1 {
+    font-size: calc(var(--pcTextH1Size));
+}
+
+.personalCenterInform p {
+    font-size: calc(var(--pcTextPSize));
+}
+
 .personalCenterFeatureList {
     width: 100%;
     margin-top: var(--pcPadding);
@@ -99,6 +114,18 @@
 
     .personalCenterAvatar {
         margin: var(--mobilePadding);
+    }
+
+    .personalCenterInform {
+        gap: calc(var(--mobilePadding) * 0.3);
+    }
+
+    .personalCenterInform h1 {
+        font-size: calc(var(--mobileTextH1Size) * 1.5);
+    }
+
+    .personalCenterInform p {
+        font-size: calc(var(--mobileTextPSize) * 1.2);
     }
 
     .personalCenterFeatureList {
