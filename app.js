@@ -94,6 +94,7 @@ app.post('/loginProcess', (req, res) => {
         res.cookie("accessToken", jsonData["accessToken"], { maxAge: cookieMaxAge, httpOnly: true });
         res.cookie("username", jsonData["username"], { maxAge: cookieMaxAge, httpOnly: true });
         res.cookie("userid", jsonData["id"], { maxAge: cookieMaxAge, httpOnly: true });
+        res.cookie("useravatar", jsonData["avatar"], { maxAge: cookieMaxAge, httpOnly: true });
         res.cookie("role", jsonData["role"], { maxAge: cookieMaxAge, httpOnly: true });
         res.cookie("email", jsonData["email"], { maxAge: cookieMaxAge, httpOnly: true });
         res.status(status.OK).render("window", {
@@ -245,6 +246,7 @@ app.post('/signupProcess', (req, res) => {
 app.get('/signout', (req, res) => {
   res.clearCookie('accessToken')
   res.clearCookie('username')
+  res.clearCookie('useravatar')
   res.clearCookie('userid')
   res.clearCookie('role')
   res.clearCookie('email')
@@ -334,14 +336,16 @@ app.get("/personalCenter", (req, res) => {
       res.render("personalCenter/adminCenter", { 
         title: "Admin Center",
         username: req.cookies.username,
-        userid: req.cookies.userid
+        userid: req.cookies.userid,
+        useravatar: req.cookies.useravatar
        });
       console.log(`[OK] ${req.originalUrl}`);
     } else {
       res.render("personalCenter/userCenter", { 
         title: "User Center",
         username: req.cookies.username,
-        userid: req.cookies.userid 
+        userid: req.cookies.userid,
+        useravatar: req.cookies.useravatar
       });
       console.log(`[OK] ${req.originalUrl}`);
     }

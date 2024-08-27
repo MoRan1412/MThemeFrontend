@@ -36,7 +36,7 @@
 .personalCenterAvatar {
     width: 20vw;
     height: 20vw;
-    background-color: black;
+    background-color: var(--secondLevelBackgroundColor);
     border-radius: 100px;
     margin: var(--pcPadding);
     background-position: center;

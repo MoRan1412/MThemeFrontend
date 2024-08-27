@@ -45,8 +45,8 @@ button {
 }
 
 :root {
-    --firstLevelBackgroundColor: rgb(240, 240, 240);
-    --secondLevelBackgrounColor: white;
+    --firstLevelBackgroundColor: white;
+    --secondLevelBackgroundColor: rgb(240, 240, 240);
     --firstLevelColor: black;
     --secondLevelColor: rgb(100, 100, 100);
 
