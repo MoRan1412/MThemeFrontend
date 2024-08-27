@@ -83,6 +83,7 @@
 
 .personalCenterFeatureContainer i {
     color: var(--secondLevelColor);
+    font-size: var(--pcTextISize);
 }
 
 .personalCenterFeatureContainer p {
@@ -135,6 +136,15 @@
     .personalCenterFeatureContainer {
         gap: calc(var(--mobilePadding) * 0.5);
         padding: var(--mobilePadding);
+    }
+
+    .personalCenterFeatureContainer i {
+        color: var(--secondLevelColor);
+        font-size: calc(var(--mobileTextISize) * 1.2);
+    }
+
+    .personalCenterFeatureContainer p {
+        font-size: calc(var(--mobileTextPSize) * 1.1);
     }
 
     .personalCenterFeatureList hr {
