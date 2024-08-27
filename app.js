@@ -312,7 +312,7 @@ app.get('/product/detail/:id', (req, res) => {
       .then(([productData, commentData]) => {
         commentData = commentData.filter(comment => comment.productId === productId);
         commentData = commentData.filter(comment => comment.status === commentStatus.approved);
-        res.render("productDetail/detail", { title: productData.name, productData, commentData });
+        res.render("productDetail", { title: productData.name, productData, commentData });
         console.log(`[OK] ${req.originalUrl}`);
       })
       .catch((err) => {
@@ -332,23 +332,20 @@ app.get('/product/detail/:id', (req, res) => {
 // Personal Center System
 app.get("/personalCenter", (req, res) => {
   if (req.cookies.accessToken) {
-    if (req.cookies.role === "admin") {
-      res.render("personalCenter/adminCenter", { 
-        title: "Admin Center",
-        username: req.cookies.username,
-        userid: req.cookies.userid,
-        useravatar: req.cookies.useravatar
-       });
-      console.log(`[OK] ${req.originalUrl}`);
+    let roleCenter
+    if (req.cookies.role == "admin") {
+      roleCenter = "Admin Center"
     } else {
-      res.render("personalCenter/userCenter", { 
-        title: "User Center",
-        username: req.cookies.username,
-        userid: req.cookies.userid,
-        useravatar: req.cookies.useravatar
-      });
-      console.log(`[OK] ${req.originalUrl}`);
+      roleCenter = "User Center"
     }
+    res.render("personalCenter", {
+      title: roleCenter,
+      username: req.cookies.username,
+      userid: req.cookies.userid,
+      role: req.cookies.role,
+      useravatar: req.cookies.useravatar
+    });
+    console.log(`[OK] ${req.originalUrl}`);
   } else {
     res.redirect("/login");
     console.log(`[ERR] Require login account.`);
@@ -376,11 +373,11 @@ app.get("/help", (req, res) => {
   }
 });
 
-app.get('/window', (req,res) => {
-  res.render("window", { 
+app.get('/window', (req, res) => {
+  res.render("window", {
     title: "Test",
     message: "This is a test message.",
-    linkBtn: "/" 
+    linkBtn: "/"
   })
 })
 

@@ -38,17 +38,23 @@
          <!--  -->
         <div class="personalCenterFeatureList">
 
-            <div class="personalCenterFeatureContainer">
+            <div class="personalCenterFeatureContainer" onclick="location.href='/profile'">
                 <i class="material-icons">badge</i>
-                <p>Profile</p>
+                <p>My Profile</p>
                 <i class="material-icons personalCenterFeatureGo">navigate_next</i>
             </div>
             <hr>
-            <div class="personalCenterFeatureContainer">
+            <div class="personalCenterFeatureContainer" onclick="location.href='/passwordChange'">
                 <i class="material-icons">password</i>
                 <p>Change Password</p>
                 <i class="material-icons personalCenterFeatureGo">navigate_next</i>
             </div>
+            <hr>
+            <% if (role == "admin") { %>
+                <%- include('personalCenter/admin/personalCenter') %>
+            <% } else { %>
+                <%- include('personalCenter/user/personalCenter') %>
+            <% } %>
             <hr>
             <div class="personalCenterFeatureContainer" onclick="location.href='/signout'">
                 <i class="material-icons">logout</i>
