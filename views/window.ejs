@@ -23,8 +23,12 @@
                 <%= message %>
             </p>
             <div class="buttonContainer">
-                <button onclick="goBack()">Back</button>
-                <button onclick="location.href='<%= linkBtn %>'">Confirm</button>
+                <% if ( typeof backBtn !== "undefined" && backBtn == true ) { %>
+                    
+                <button onclick="goBack()" class="windowBackBtn">Back</button>
+                 
+                <% } %>
+                <button onclick="location.href='<%= linkBtn %>'" class="windowConfirmBtn">Confirm</button>
             </div>
         </div>
     </div>

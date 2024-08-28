@@ -258,7 +258,8 @@ app.get('/passwordChangeConfirm', (req, res) => {
     res.render("window", {
       title: "Change Password",
       message: "Are you sure want to change your password?",
-      linkBtn: "/passwordChange"
+      linkBtn: "/passwordChange",
+      backBtn: true
     });
   } else {
     res.redirect("/login");
@@ -266,7 +267,7 @@ app.get('/passwordChangeConfirm', (req, res) => {
   }
 })
 
-app.post('/passwordChange', (req, res) => {
+app.get('/passwordChange', (req, res) => {
   if (req.cookies.accessToken) {
     const username = req.cookies.username
     const email = req.cookies.email

@@ -34,21 +34,26 @@
     display: flex;
     flex-direction: row;
     gap: var(--pcPadding);
+    margin-top: var(--pcPadding);
 }
 
-.alertContainer button {
+.alertContainer .windowConfirmBtn,
+.alertContainer .windowBackBtn {
     width: 100%;
     margin-left: auto;
     padding: calc(var(--pcPadding) * 0.5) var(--pcPadding);
     border: none;
-    background-color: black;
-    color: white;
     cursor: pointer;
     border-radius: 7px;
     font-size: var(--pcTextPSize);
 }
 
-.alertContainer button:nth-child(1) {
+.alertContainer .windowConfirmBtn {
+    background-color: black;
+    color: white;
+}
+
+.alertContainer .windowBackBtn {
     background-color: var(--secondLevelBackgroundColor);
     color: black;
 }
@@ -73,9 +78,11 @@
 
     .alertContainer .buttonContainer {
         gap: var(--mobilePadding);
+        margin-top: var(--mobilePadding);
     }
 
-    .alertContainer button {
+    .alertContainer .windowConfirmBtn,
+    .alertContainer .windowBackBtn {
         padding: calc(var(--mobilePadding) * 0.5) var(--mobilePadding);
         font-size: var(--mobileTextPSize);
     }
