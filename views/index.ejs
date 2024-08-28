@@ -14,14 +14,14 @@
 </head>
 
 <body>
-    <%- include('header') %>
+    <%- include('index/header') %>
     <div class="page" id="page">
         <% if (typeof title !=='undefined' && title == 'Home') { %>
-            <%- include('home') %>
+            <%- include('index/home') %>
         <% } else if (typeof title !=='undefined' && title == 'Product') { %>
-            <%- include('product') %>
+            <%- include('index/product') %>
         <% } else if (typeof title !=='undefined' && title == 'Help') { %>
-            <%- include('help') %>
+            <%- include('index/help') %>
         <% } %>
     </div>
 </body>

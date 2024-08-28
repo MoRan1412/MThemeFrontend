@@ -1,0 +1,11 @@
+<form action="/signupProcess" method="post" class="loginForm">
+        <input type="text" name="verifyCode" id="verifyCode" placeholder="Code" required>
+        <% if (typeof error !=='undefined' ) { %>
+            <p class="loginErrMsg">
+                <%- error %>
+            </p>
+            <% } %>
+                <div class="loginBtn">
+                    <input type="submit" value="Verify">
+                </div>
+    </form>

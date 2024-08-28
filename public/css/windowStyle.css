@@ -30,8 +30,14 @@
     font-size: var(--pcTextPSize);
 }
 
-.alertContainer>button {
-    width: fit-content;
+.alertContainer .buttonContainer {
+    display: flex;
+    flex-direction: row;
+    gap: var(--pcPadding);
+}
+
+.alertContainer button {
+    width: 100%;
     margin-left: auto;
     padding: calc(var(--pcPadding) * 0.5) var(--pcPadding);
     border: none;
@@ -40,6 +46,11 @@
     cursor: pointer;
     border-radius: 7px;
     font-size: var(--pcTextPSize);
+}
+
+.alertContainer button:nth-child(1) {
+    background-color: var(--secondLevelBackgroundColor);
+    color: black;
 }
 
 @media screen and (max-width: 720px) {
@@ -60,7 +71,11 @@
         font-size: var(--mobileTextPSize);
     }
 
-    .alertContainer>button {
+    .alertContainer .buttonContainer {
+        gap: var(--mobilePadding);
+    }
+
+    .alertContainer button {
         padding: calc(var(--mobilePadding) * 0.5) var(--mobilePadding);
         font-size: var(--mobileTextPSize);
     }

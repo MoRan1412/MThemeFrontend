@@ -53,12 +53,12 @@ app.use(setDynamicFavicon);
 
 // Login & Sign Up System
 app.get('/login', (req, res) => {
-  res.render("loginAndSignup/login", { title: "Login" })
+  res.render("authentication", { title: "Login" })
   console.log(`[OK] ${req.originalUrl}`)
 })
 
 app.get('/signup', (req, res) => {
-  res.render("loginAndSignup/signup", { title: "Sign Up" })
+  res.render("authentication", { title: "Sign Up" })
   console.log(`[OK] ${req.originalUrl}`)
 })
 
@@ -108,7 +108,7 @@ app.post('/loginProcess', (req, res) => {
     })
     .catch((err) => {
       console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
-      res.status(status.UNAUTHORIZED).render("loginAndSignup/login", {
+      res.status(status.UNAUTHORIZED).render("authentication", {
         title: "Login",
         username: username,
         error: err.message
@@ -150,14 +150,14 @@ app.post('/signup/sendVerifyCode', (req, res) => {
     })
     .then((jsonData) => {
       console.log(`[OK] Verification code has been sent to ${email}.`);
-      res.render("loginAndSignup/verifyCode", {
+      res.render("authentication", {
         title: "Verification",
         message: jsonData.message
       })
     })
     .catch((err) => {
       console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
-      res.render("loginAndSignup/signup", {
+      res.render("authentication", {
         title: "Sign Up",
         username: username,
         email: email,
@@ -226,7 +226,7 @@ app.post('/signupProcess', (req, res) => {
         })
         .catch((err) => {
           console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
-          res.render("verifyCode", {
+          res.render("authentication", {
             title: "Sign Up",
             error: err.message,
             message: "Verify failed."
@@ -235,7 +235,7 @@ app.post('/signupProcess', (req, res) => {
     })
     .catch((err) => {
       console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
-      res.render("loginAndSignup/verifyCode", {
+      res.render("authentication", {
         title: "Sign Up",
         error: err.message,
         message: "Please enter the correct verification code."
@@ -251,6 +251,60 @@ app.get('/signout', (req, res) => {
   res.clearCookie('role')
   res.clearCookie('email')
   res.redirect('/')
+})
+
+app.get('/passwordChangeConfirm', (req, res) => {
+  if (req.cookies.accessToken) {
+    res.render("window", {
+      title: "Change Password",
+      message: "Are you sure want to change your password?",
+      linkBtn: "/passwordChange"
+    });
+  } else {
+    res.redirect("/login");
+    console.log(`[ERR] Require login account.`);
+  }
+})
+
+app.post('/passwordChange', (req, res) => {
+  if (req.cookies.accessToken) {
+    const username = req.cookies.username
+    const email = req.cookies.email
+    const options = {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        username: username,
+        email: email
+      })
+    };
+    const url = `${API}/user/passwordVerifyCode`;
+  
+    fetch(url, options)
+      .then(async (res) => {
+        if (res.status === status.OK) {
+          return res.json();
+        } else {
+          throw new Error(`Failed to send verification code`);
+        }
+      })
+      .then((jsonData) => {
+        console.log(`[OK] Verification code has been sent to ${email}.`);
+        res.render("authentication", {
+          title: "Change Password",
+          message: jsonData.message
+        })
+      }).catch((err) => {
+        console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
+        res.render("authentication", {
+          title: "Change Password",
+          message: err.message
+        });
+      });
+  } else {
+    res.redirect("/login");
+    console.log(`[ERR] Require login account.`);
+  }
 })
 
 

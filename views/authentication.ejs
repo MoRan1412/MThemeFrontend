@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>MTheme - <%= title %></title>
+    <link rel="icon" type="image/x-icon" href="<%= faviconPath %>">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/loginSignupStyle.css">
+    <script src="./js/script.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <div class="loginContainer">
+        <div class="loginTitle">
+            <div class="logoLong" alt="logoLong" onclick="location.href='/'"></div>
+            <h1><% if (typeof message !=='undefined') { %>
+                <%= message %>
+            <% } %>
+            </h1>
+        </div>
+        <% if ( title == "Login" ) { %>
+            <%- include('authentication/login') %>
+        <% } else if ( title == "Sign Up" ) { %>
+            <%- include('authentication/signup') %>
+        <% } else if ( title == "Verification" ) { %>
+            <%- include('authentication/verifyCode') %>
+        <% } %>
+    </div>
+    
+    <% if ( title == "Sign Up" ) { %>
+        <div class="alertWindow" id="alertWindow">
+            <div class="alertContainer">
+                <h1>Error</h1>
+                <p id="errMessage"></p>
+                <button id="errConfirm">Ok</button>
+            </div>
+        </div>
+    <% } %>
+    
+</body>
+
+</html>

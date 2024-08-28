@@ -22,7 +22,10 @@
             <p>
                 <%= message %>
             </p>
-            <button onclick="location.href='<%= linkBtn %>'">Confirm</button>
+            <div class="buttonContainer">
+                <button onclick="goBack()">Back</button>
+                <button onclick="location.href='<%= linkBtn %>'">Confirm</button>
+            </div>
         </div>
     </div>
 </body>

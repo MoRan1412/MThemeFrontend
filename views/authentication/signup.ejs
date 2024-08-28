@@ -1,0 +1,33 @@
+<form action="/signup/sendVerifyCode" method="post" class="loginForm" onsubmit="return signupValidateForm()">
+    <input type="text" name="username" id="username" placeholder="Username"
+        value="<% if (typeof username !=='undefined') { %><%- username %><% } %>" required>
+    <% if (typeof error !=='undefined' && error=="Username already exists" ) { %>
+        <p class="loginErrMsg">
+            <%- error %>
+        </p>
+        <% } %>
+            <span>
+                - At least 3 characters long. <br>
+                - Start with a letter. <br>
+                - Only contain letters, numbers, underscores, and hyphens.
+            </span>
+            <input type="password" name="password" id="password" placeholder="Password" required>
+            <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" required>
+            <span>
+                - At least 8 characters long. <br>
+                - At least one digit. <br>
+                - At least one special character (!@#$%^&*).
+            </span>
+            <input type="email" name="email" id="email" placeholder="Email"
+                value="<% if (typeof email !=='undefined') { %><%- email %><% } %>" required>
+
+            <% if (typeof error !=='undefined' && error=="Email already exists" ) { %>
+                <p class="loginErrMsg">
+                    <%- error %>
+                </p>
+                <% } %>
+                    <a href="/login">Already have an account?</a>
+                    <div class="loginBtn">
+                        <input type="submit" value="Sign Up">
+                    </div>
+</form>
