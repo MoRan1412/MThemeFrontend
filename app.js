@@ -51,7 +51,7 @@ const setDynamicFavicon = (req, res, next) => {
 
 app.use(setDynamicFavicon);
 
-// Login & Sign Up System
+// Authentication System
 app.get('/login', (req, res) => {
   res.render("authentication", { title: "Login" })
   console.log(`[OK] ${req.originalUrl}`)
@@ -95,6 +95,7 @@ app.post('/loginProcess', (req, res) => {
         res.cookie("username", jsonData["username"], { maxAge: cookieMaxAge, httpOnly: true });
         res.cookie("userid", jsonData["id"], { maxAge: cookieMaxAge, httpOnly: true });
         res.cookie("useravatar", jsonData["avatar"], { maxAge: cookieMaxAge, httpOnly: true });
+        res.cookie("language", jsonData["language"], { maxAge: cookieMaxAge, httpOnly: true });
         res.cookie("role", jsonData["role"], { maxAge: cookieMaxAge, httpOnly: true });
         res.cookie("email", jsonData["email"], { maxAge: cookieMaxAge, httpOnly: true });
         res.status(status.OK).render("window", {
@@ -249,6 +250,7 @@ app.get('/signout', (req, res) => {
   res.clearCookie('useravatar')
   res.clearCookie('userid')
   res.clearCookie('role')
+  res.clearCookie('language')
   res.clearCookie('email')
   res.redirect('/')
 })
@@ -280,7 +282,7 @@ app.get('/passwordChange', (req, res) => {
       })
     };
     const url = `${API}/user/passwordVerifyCode`;
-  
+
     fetch(url, options)
       .then(async (res) => {
         if (res.status === status.OK) {
@@ -297,9 +299,10 @@ app.get('/passwordChange', (req, res) => {
         })
       }).catch((err) => {
         console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
-        res.render("authentication", {
-          title: "Change Password",
-          message: err.message
+        res.render("window", {
+          title: "Error",
+          message: err.message,
+          linkBtn: "/"
         });
       });
   } else {
@@ -308,6 +311,92 @@ app.get('/passwordChange', (req, res) => {
   }
 })
 
+app.post('/passwordChangeProcess', (req, res) => {
+  if (req.cookies.accessToken) {
+    const code = req.body.verifyCode
+    const userId = req.cookies.userid
+    const username = req.cookies.username
+    const password = req.body.password
+    const avatar = req.cookies.useravatar
+    const email = req.cookies.email
+    const language = req.cookies.language
+    const role = req.cookies.role
+    const options = {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        email: email,
+        code: code
+      })
+    };
+    const url = `${API}/user/emailVerify`;
+
+    fetch(url, options)
+      .then(async (res) => {
+        if (res.status === status.OK) {
+          return res.json();
+        } else if (res.status === status.UNAUTHORIZED) {
+          const errData = await res.json();
+          throw new Error(errData.message);
+        } else {
+          throw new Error(`Failed to verify email`);
+        }
+      })
+      .then((jsonData) => {
+        console.log(`[OK] ${email} verification successfull.`);
+
+        const updateUserOptions = {
+          method: "PUT",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            username: username,
+            password: password,
+            avatar: avatar,
+            email: email,
+            language: language,
+            role: role
+          })
+        };
+        const updateUserUrl = `${API}/user/update/${userId}`;
+        fetch(updateUserUrl, updateUserOptions)
+          .then((res) => {
+            if (res.status === status.OK) {
+              return res.json();
+            } else {
+              throw new Error(`Failed to update user`);
+            }
+          })
+          .then((jsonData) => {
+            console.log(`[OK] ${username} has been updated.`);
+            req.session.destroy()
+            res.render("window", {
+              title: "Success",
+              message: "Update successful",
+              linkBtn: "/"
+            })
+          })
+          .catch((err) => {
+            console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
+            res.render("authentication", {
+              title: "Change Password",
+              error: err.message,
+              message: "Verify failed."
+            });
+          });
+      })
+      .catch((err) => {
+        console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
+        res.render("authentication", {
+          title: "Change Password",
+          error: err.message,
+          message: "Please enter the correct verification code."
+        });
+      });
+  } else {
+    res.redirect("/login");
+    console.log(`[ERR] Require login account.`);
+  }
+})
 
 // Product System
 app.get("/product", (req, res) => {
@@ -387,14 +476,8 @@ app.get('/product/detail/:id', (req, res) => {
 // Personal Center System
 app.get("/personalCenter", (req, res) => {
   if (req.cookies.accessToken) {
-    let roleCenter
-    if (req.cookies.role == "admin") {
-      roleCenter = "Admin Center"
-    } else {
-      roleCenter = "User Center"
-    }
     res.render("personalCenter", {
-      title: roleCenter,
+      title: "Personal Center",
       username: req.cookies.username,
       userid: req.cookies.userid,
       role: req.cookies.role,
@@ -409,7 +492,7 @@ app.get("/personalCenter", (req, res) => {
 
 app.get("/personalCenter/profile", (req, res) => {
   if (req.cookies.accessToken) {
-    res.render("personalCenter/feature/profile", {
+    res.render("personalCenter", {
       title: "Personal Information",
       username: req.cookies.username,
       userid: req.cookies.userid,
@@ -423,6 +506,28 @@ app.get("/personalCenter/profile", (req, res) => {
     console.log(`[ERR] Require login account.`);
   }
 });
+
+app.get("/personalCenter/usernameChange", (req, res) => {
+  if (req.cookies.accessToken) {
+    res.render("personalCenter", {
+      title: "Change Username",
+      username: req.cookies.username
+    });
+    console.log(`[OK] ${req.originalUrl}`);
+  } else {
+    res.redirect("/login");
+    console.log(`[ERR] Require login account.`);
+  }
+})
+
+app.post("/personalCenter/usernameChangeProcess", (req, res) => {
+  if (req.cookies.accessToken) {
+
+  } else {
+    res.redirect("/login");
+    console.log(`[ERR] Require login account.`);
+  }
+})
 
 // Page
 app.get("/", (req, res) => {

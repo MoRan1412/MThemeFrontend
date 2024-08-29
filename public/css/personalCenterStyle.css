@@ -140,6 +140,28 @@
     font-size: var(--pcTextH1Size);
 }
 
+.usernameChangeForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: var(--pcPadding);
+    gap: var(--pcPadding);
+}
+
+.usernameChangeForm input {
+    padding: var(--pcPadding);
+    border-radius: 10px;
+    border: none;
+}
+
+.usernameChangeForm input[type = "text"] {
+    background-color: var(--thirdLevelBackgroundColor);
+}
+
+.usernameChangeForm input[type = "submit"] {
+    background-color: var(--firstLevelColor);
+    color: var(--firstLevelBackgroundColor);
+}
 
 @media screen and (max-width: 720px) {
     .personalCenterHeader {
@@ -218,5 +240,14 @@
     .personalCenterProfileFeatureTitle {
         font-size: calc(var(--mobileTextH1Size) * 1.1);
         width: 20vw;
+    }
+
+    .usernameChangeForm {
+        padding: var(--mobilePadding);
+        gap: var(--mobilePadding);
+    }
+
+    .usernameChangeForm input {
+        padding: calc(var(--mobilePadding) * 0.5);
     }
 }

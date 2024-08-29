@@ -8,55 +8,42 @@
     </title>
     <link rel="icon" type="image/x-icon" href="../../<%= faviconPath %>">
     <link rel="stylesheet" type="text/css" href="../../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../css/windowStyle.css">
     <link rel="stylesheet" type="text/css" href="../../css/personalCenterStyle.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="./js/script.js"></script>
+    <script src="
+    <% if ( title == 'Personal Information' || title == 'Change Username' ) { %>
+        ../js/script.js
+    <% } else { %>
+        ./js/script.js
+    <% } %>
+    "></script>
 </head>
 
 <body>
     <!--  -->
     <%- include('personalCenter/header') %>
-
     <div class="personalCenterPage">
-        <!--  -->
-        <div class="personalCenterProfile" onclick="location.href='/personalCenter/profile'">
-            <div class="personalCenterAvatar" style="background-image: url('<%= useravatar %>');"></div>
-            <div class="personalCenterInform">
-                <div>
-                    <h1><%= username %></h1>
-                    <i class="material-icons">drive_file_rename_outline</i>
-                </div>
-                <p>UID : <%= userid %></p>
-            </div>
-        </div>
-
-        <!-- My Order -->
-        <!-- <div class="personalCenterMyOrder"></div> -->
-
-         <!--  -->
-        <div class="personalCenterFeatureList">
-
-            <div class="personalCenterFeatureContainer" onclick="location.href='/passwordChangeConfirm'">
-                <i class="material-icons">password</i>
-                <p>Change Password</p>
-                <i class="material-icons personalCenterFeatureGo">navigate_next</i>
-            </div>
-            <hr>
-            <% if (role == "admin") { %>
-                <%- include('personalCenter/admin/personalCenter') %>
-            <% } else { %>
-                <%- include('personalCenter/user/personalCenter') %>
-            <% } %>
-            <hr>
-            <div class="personalCenterFeatureContainer" onclick="location.href='/signout'">
-                <i class="material-icons">logout</i>
-                <p>Log Out</p>
-                <i class="material-icons personalCenterFeatureGo">navigate_next</i>
-            </div>
-
-        </div>
-
+    <% if ( title=="Personal Center" ) { %>
+        <%- include('personalCenter/personalCenter') %>
+    <% } else if ( title=="Personal Information" ) { %>
+        <%- include('personalCenter/feature/profile') %>
+    <% } else if ( title=="Change Username" ) { %>
+        <%- include('personalCenter/feature/profile/usernameChange') %>
+    <% } %>
     </div>
+
+    <% if ( title == "Change Username" ) { %>
+        <div class="alertWindow" id="alertWindow">
+            <div class="alertContainer">
+                <h1>Error</h1>
+                <p id="errMessage"></p>
+                <div class="buttonContainer">
+                    <button id="errConfirm" class="windowConfirmBtn">Ok</button>
+                </div>
+            </div>
+        </div>
+    <% } %>
 </body>
 
 </html>

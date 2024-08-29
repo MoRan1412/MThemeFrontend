@@ -1,0 +1,9 @@
+<form action="/usernameChangeProcess" method="post" class="usernameChangeForm" onsubmit="return usernameValidateForm()">
+    <input type="text" name="username" id="username" placeholder="Username" required>
+    <% if (typeof error !=='undefined' && error=="Username already exists" ) { %>
+        <p class="usernameChangeErrMsg">
+            <%- error %>
+        </p>
+        <% } %>
+        <input type="submit" value="Save">
+</form>

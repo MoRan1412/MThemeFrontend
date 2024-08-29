@@ -1,45 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="personalCenterProfileAvatarContainer">
+    <div class="personalCenterProfileAvatar" style="background-image: url('<%= useravatar %>');"></div>
+    <p>Click here to change</p>
+</div>
+<!--  -->
+<div class="personalCenterFeatureList">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>MTheme - <%= title %>
-    </title>
-    <link rel="icon" type="image/x-icon" href="../../<%= faviconPath %>">
-    <link rel="stylesheet" type="text/css" href="../../css/style.css">
-    <link rel="stylesheet" type="text/css" href="../../css/personalCenterStyle.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="../../js/script.js"></script>
-</head>
-
-<body>
-    <!--  -->
-    <%- include('../header') %>
-
-        <div class="personalCenterPage">
-            <div class="personalCenterProfileAvatarContainer">
-                <div class="personalCenterProfileAvatar" style="background-image: url('<%= useravatar %>');"></div>
-                <p>Click here to change</p>
-            </div>
-            <!--  -->
-            <div class="personalCenterFeatureList">
-                
-                <div class="personalCenterFeatureContainer" onclick="location.href='/usernameChange'">
-                    <h1 class="personalCenterProfileFeatureTitle">Username</h1>
-                    <p>
-                        <%= username %>
-                    </p>
-                    <i class="material-icons personalCenterFeatureGo">navigate_next</i>
-                </div>
-                <hr>
-                <div class="personalCenterFeatureContainer" onclick="location.href='/usernameChange'">
+    <div class="personalCenterFeatureContainer" onclick="location.href='/personalCenter/usernameChange'">
+        <h1 class="personalCenterProfileFeatureTitle">Username</h1>
+        <p>
+            <%= username %>
+        </p>
+        <i class="material-icons personalCenterFeatureGo">navigate_next</i>
+    </div>
+    <hr>
+    <!-- <div class="personalCenterFeatureContainer" onclick="location.href='/usernameChange'">
                     <h1 class="personalCenterProfileFeatureTitle">Gender</h1>
                     <p>Male</p>
                     <i class="material-icons personalCenterFeatureGo">navigate_next</i>
-                </div>
-            </div>
-        </div>
-</body>
-
-</html>
+                </div> -->
+</div>

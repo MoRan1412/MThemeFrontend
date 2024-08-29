@@ -1,0 +1,37 @@
+    <!--  -->
+    <div class="personalCenterProfile" onclick="location.href='/personalCenter/profile'">
+        <div class="personalCenterAvatar" style="background-image: url('<%= useravatar %>');"></div>
+        <div class="personalCenterInform">
+            <div>
+                <h1><%= username %></h1>
+                <i class="material-icons">drive_file_rename_outline</i>
+            </div>
+            <p>UID : <%= userid %></p>
+        </div>
+    </div>
+
+    <!-- My Order -->
+    <!-- <div class="personalCenterMyOrder"></div> -->
+
+     <!--  -->
+    <div class="personalCenterFeatureList">
+
+        <div class="personalCenterFeatureContainer" onclick="location.href='/passwordChangeConfirm'">
+            <i class="material-icons">password</i>
+            <p>Change Password</p>
+            <i class="material-icons personalCenterFeatureGo">navigate_next</i>
+        </div>
+        <hr>
+        <% if (role == "admin") { %>
+            <%- include('admin/personalCenterFeatureList') %>
+        <% } else { %>
+            <%- include('user/personalCenterFeatureList') %>
+        <% } %>
+        <hr>
+        <div class="personalCenterFeatureContainer" onclick="location.href='/signout'">
+            <i class="material-icons">logout</i>
+            <p>Log Out</p>
+            <i class="material-icons personalCenterFeatureGo">navigate_next</i>
+        </div>
+
+    </div>
