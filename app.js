@@ -315,12 +315,8 @@ app.post('/passwordChangeProcess', (req, res) => {
   if (req.cookies.accessToken) {
     const code = req.body.verifyCode
     const userId = req.cookies.userid
-    const username = req.cookies.username
-    const password = req.body.password
-    const avatar = req.cookies.useravatar
     const email = req.cookies.email
-    const language = req.cookies.language
-    const role = req.cookies.role
+    const password = req.body.password
     const options = {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -349,12 +345,7 @@ app.post('/passwordChangeProcess', (req, res) => {
           method: "PUT",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({
-            username: username,
-            password: password,
-            avatar: avatar,
-            email: email,
-            language: language,
-            role: role
+            password: password
           })
         };
         const updateUserUrl = `${API}/user/update/${userId}`;
@@ -510,8 +501,7 @@ app.get("/personalCenter/profile", (req, res) => {
 app.get("/personalCenter/usernameChange", (req, res) => {
   if (req.cookies.accessToken) {
     res.render("personalCenter", {
-      title: "Change Username",
-      username: req.cookies.username
+      title: "Change Username"
     });
     console.log(`[OK] ${req.originalUrl}`);
   } else {
@@ -522,10 +512,44 @@ app.get("/personalCenter/usernameChange", (req, res) => {
 
 app.post("/personalCenter/usernameChangeProcess", (req, res) => {
   if (req.cookies.accessToken) {
-
+    const username = req.body.username
+    const userId = req.cookies.userid
+    const updateUserOptions = {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        username: username
+      })
+    }
+    const updateUserUrl = `${API}/user/update/${userId}`;
+    fetch(updateUserUrl, updateUserOptions)
+      .then((res) => {
+        if (res.status === status.OK) {
+          return res.json();
+        } else {
+          throw new Error(`Failed to update username`);
+        }
+      })
+      .then((jsonData) => {
+        console.log(`[OK] User's username has been updated`);
+        res.cookie("username", username);
+        res.render("window", {
+          title: "Success",
+          message: "Update username successful",
+          linkBtn: "/"
+        })
+      })
+      .catch((err) => {
+        console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
+        res.render("authentication", {
+          title: "Change Username",
+          error: err.message,
+          message: "Update failed"
+        });
+      });
   } else {
     res.redirect("/login");
-    console.log(`[ERR] Require login account.`);
+    console.log(`[ERR] Require login account`);
   }
 })
 
