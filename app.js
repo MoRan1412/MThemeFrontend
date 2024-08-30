@@ -358,7 +358,7 @@ app.post('/passwordChangeProcess', (req, res) => {
             }
           })
           .then((jsonData) => {
-            console.log(`[OK] ${username} has been updated.`);
+            console.log(`[OK] Password has been updated.`);
             req.session.destroy()
             res.render("window", {
               title: "Success",

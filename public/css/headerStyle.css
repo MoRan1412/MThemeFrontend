@@ -37,6 +37,27 @@ header .headerIcon li {
     cursor: pointer;
 }
 
+header .headerIcon li i {
+    font-size: 30px;
+    /* transition: transform 0.3s ease;  */
+}
+
+/* header .headerIcon li i:active {
+    animation: bounce 1s;
+} */
+
+/* @keyframes bounce {
+    0%, 20%, 80%, 100% {
+        transform: scale(1);
+    }
+    40% {
+        transform: scale(0.2);
+    }
+    60% {
+        transform: scale(0.8);
+    }
+} */
+
 header .logo {
     /* width: 140px; */
     width: 180px;
@@ -126,7 +147,7 @@ header .headerMenu li .material-icons {
     }
 
     header .headerIcon li i {
-        font-size: calc(var(--mobileTextISize) * 2);
+        font-size: calc(var(--mobileTextISize) * 2.6);
     }
 
     header .headerMenu li p {
