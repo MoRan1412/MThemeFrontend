@@ -15,18 +15,17 @@
 
      <!--  -->
     <div class="personalCenterFeatureList">
-
-        <div class="personalCenterFeatureContainer" onclick="location.href='/passwordChangeConfirm'">
-            <i class="material-icons">password</i>
-            <p>Change Password</p>
-            <i class="material-icons personalCenterFeatureGo">navigate_next</i>
-        </div>
-        <hr>
         <% if (role == "admin") { %>
             <%- include('admin/personalCenterFeatureList') %>
         <% } else { %>
             <%- include('user/personalCenterFeatureList') %>
         <% } %>
+        <hr>
+        <div class="personalCenterFeatureContainer" onclick="location.href='/passwordChangeConfirm'">
+            <i class="material-icons">password</i>
+            <p>Change Password</p>
+            <i class="material-icons personalCenterFeatureGo">navigate_next</i>
+        </div>
         <hr>
         <div class="personalCenterFeatureContainer" onclick="location.href='/signout'">
             <i class="material-icons">logout</i>

@@ -582,6 +582,7 @@ app.get("/help", (req, res) => {
   }
 });
 
+// Test
 app.get('/window', (req, res) => {
   res.render("window", {
     title: "Test",
@@ -589,7 +590,6 @@ app.get('/window', (req, res) => {
     linkBtn: "/"
   })
 })
-
 
 const port = 3000; // Replit doesn’t matter which port is using
 app.listen(port, () => {
