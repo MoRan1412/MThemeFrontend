@@ -13,9 +13,11 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="
     <% if ( 
-    title == 'Personal Information' ||  
-    title == 'Change Username' || 
-    title == 'User Manage' ) { %>
+        title == 'Personal Information' ||  
+        title == 'Change Username' || 
+        title == 'User Manage' ||
+        title == 'Product Manage' ||
+        title == 'Comment Manage' ) { %>
         ../js/script.js
     <% } else { %>
         ./js/script.js
@@ -35,7 +37,10 @@
         <%- include('personalCenter/feature/profile/usernameChange') %>
 
     <!-- Admin -->
-    <% } else if ( title=="User Manage" ) { %>
+    <% } else if ( 
+        title=="User Manage" ||
+        title=="Product Manage" || 
+        title=="Comment Manage" ) { %>
         <%- include('personalCenter/admin/management') %>
     <% } %>
     </div>

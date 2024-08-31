@@ -577,6 +577,7 @@ app.get("/admin/userManage", (req, res) => {
         }
       })
       .then((jsonData) => {
+        jsonData = jsonData.filter(user => user.role !== "admin");
         res.render("personalCenter", { title: "User Manage", user: jsonData });
         console.log(`[OK] ${req.originalUrl}`);
       })
@@ -585,6 +586,72 @@ app.get("/admin/userManage", (req, res) => {
         res.render("window", {
           title: "Error",
           message: "Failed to get user",
+          linkBtn: "/"
+        });
+      });
+  } else {
+    res.redirect("/login");
+    console.log(`[ERR] Require login account.`);
+  }
+})
+
+app.get("/admin/productManage", (req, res) => {
+  if (req.cookies.accessToken) {
+    const options = {
+      method: "GET",
+      headers: { "content-type": "application/json" }
+    };
+    const url = `${API}/product/get`;
+    fetch(url, options)
+      .then((res) => {
+        if (res.status === status.OK) {
+          return res.json();
+        } else {
+          throw new Error(`Failed to get product`);
+        }
+      })
+      .then((jsonData) => {
+        res.render("personalCenter", { title: "Product Manage", product: jsonData });
+        console.log(`[OK] ${req.originalUrl}`);
+      })
+      .catch((err) => {
+        console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
+        res.render("window", {
+          title: "Error",
+          message: "Failed to get product",
+          linkBtn: "/"
+        });
+      });
+  } else {
+    res.redirect("/login");
+    console.log(`[ERR] Require login account.`);
+  }
+})
+
+app.get("/admin/commentManage", (req, res) => {
+  if (req.cookies.accessToken) {
+    const options = {
+      method: "GET",
+      headers: { "content-type": "application/json" }
+    };
+    const url = `${API}/comment/get`;
+    fetch(url, options)
+      .then((res) => {
+        if (res.status === status.OK) {
+          return res.json();
+        } else {
+          throw new Error(`Failed to get comment`);
+        }
+      })
+      .then((jsonData) => {
+        res.render("personalCenter", { title: "Comment Manage", comment: jsonData });
+        console.log(`[OK] ${req.originalUrl}`);
+      })
+      .catch((err) => {
+        console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
+        res.render("window", {
+          title: "Error",
+          message: "Failed to get comment",
           linkBtn: "/"
         });
       });

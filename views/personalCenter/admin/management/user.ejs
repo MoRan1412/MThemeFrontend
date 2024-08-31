@@ -1,0 +1,16 @@
+<table>
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for( let i=0; i < user.length; i++ ) { %>
+            <tr>
+                <td><%= user[i].username %></td>
+                <td><%= user[i].email %></td>
+            </tr>
+        <% } %>
+    </tbody>
+</table>
