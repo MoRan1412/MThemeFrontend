@@ -11,6 +11,18 @@
     <link rel="stylesheet" type="text/css" href="./css/headerStyle.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="./js/script.js"></script>
+    <script>
+        // 在页面加载时调用
+        window.onload = function() {
+            // 替换当前历史记录条目
+            history.replaceState(null, document.title, location.href);
+        };
+
+        // 监听 popstate 事件以阻止后退
+        window.addEventListener('popstate', function(event) {
+            history.replaceState(null, document.title, location.href);
+        });
+    </script>
 </head>
 
 <body>
