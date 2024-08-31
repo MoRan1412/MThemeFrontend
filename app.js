@@ -561,6 +561,39 @@ app.post("/personalCenter/usernameChangeProcess", (req, res) => {
   }
 })
 
+app.get("/admin/userManage", (req, res) => {
+  if (req.cookies.accessToken) {
+    const options = {
+      method: "GET",
+      headers: { "content-type": "application/json" }
+    };
+    const url = `${API}/user/get`;
+    fetch(url, options)
+      .then((res) => {
+        if (res.status === status.OK) {
+          return res.json();
+        } else {
+          throw new Error(`Failed to get user`);
+        }
+      })
+      .then((jsonData) => {
+        res.render("personalCenter", { title: "User Manage", user: jsonData });
+        console.log(`[OK] ${req.originalUrl}`);
+      })
+      .catch((err) => {
+        console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
+        res.render("window", {
+          title: "Error",
+          message: "Failed to get user",
+          linkBtn: "/"
+        });
+      });
+  } else {
+    res.redirect("/login");
+    console.log(`[ERR] Require login account.`);
+  }
+})
+
 // Page
 app.get("/", (req, res) => {
   if (req.cookies.accessToken) {
