@@ -53,8 +53,12 @@ app.use(setDynamicFavicon);
 
 // Authentication System
 app.get('/login', (req, res) => {
-  res.render("authentication", { title: "Login" })
-  console.log(`[OK] ${req.originalUrl}`)
+  if (req.cookies.accessToken) {
+    res.redirect('/')
+  } else {
+    res.render("authentication", { title: "Login" })
+    console.log(`[OK] ${req.originalUrl}`)
+  }
 })
 
 app.get('/signup', (req, res) => {
@@ -63,7 +67,10 @@ app.get('/signup', (req, res) => {
 })
 
 app.post('/loginProcess', (req, res) => {
-  // 參數
+  if (req.cookies.accessToken) {
+    res.redirect('/')
+  } else {
+    // 參數
   const username = req.body.username
   const password = req.body.password
   const options = {
@@ -115,6 +122,7 @@ app.post('/loginProcess', (req, res) => {
         error: err.message
       });
     });
+  }
 })
 
 app.post('/signup/sendVerifyCode', (req, res) => {
