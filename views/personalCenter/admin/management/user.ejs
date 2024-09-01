@@ -16,7 +16,7 @@
                 <%= user[i].email %>
             </td>
             <td><i class="material-icons">edit</i></td>
-            <td><i class="material-icons">delete</i></td>
+            <td onclick="location.href='/admin/userManage/delete?id=<%= user[i].id %>'"><i class="material-icons">delete</i></td>
         </tr>
     <% } %>
 </tbody>

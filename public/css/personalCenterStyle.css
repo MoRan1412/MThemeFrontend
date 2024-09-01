@@ -23,6 +23,9 @@
     width: 100vw;
     height: calc(100vh - var(--pcHeaderHeight));
     background-color: rgb(240, 240, 240);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     overflow: auto;
 }
 

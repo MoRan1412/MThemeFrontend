@@ -1,7 +1,16 @@
 /* Management Page */
 .manageTable {
-    width: 100%;
-    border-collapse: collapse;
+    width: calc(100% - var(--pcPadding) * 2);
+    border-collapse: separate;
+    border-spacing: 0 var(--pcPadding);
+}
+
+.manageTable td:nth-child(1) {
+    border-radius: 15px 0 0 15px;
+}
+
+.manageTable td:nth-last-child(1) {
+    border-radius: 0 15px 15px 0;
 }
 
 .manageTable td,
@@ -28,6 +37,11 @@
 
 
 @media screen and (max-width: 720px) {
+    .manageTable {
+        width: calc(100% - var(--mobilePadding) * 2);
+        border-spacing: 0 var(--mobilePadding);
+    }
+
     .manageTable td,
     .manageTable th {
         padding: var(--mobilePadding);

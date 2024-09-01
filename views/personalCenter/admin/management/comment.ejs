@@ -16,7 +16,7 @@
                 <%= comment[i].content %>
             </td>
             <td><i class="material-icons">edit</i></td>
-            <td><i class="material-icons">delete</i></td>
+            <td onclick="location.href='/admin/commentManage/delete?id=<%= comment[i].id %>'"><i class="material-icons">delete</i></td>
         </tr>
     <% } %>
 </tbody>

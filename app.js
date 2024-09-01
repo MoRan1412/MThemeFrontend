@@ -265,6 +265,7 @@ app.get('/signout', (req, res) => {
 
 app.get('/passwordChangeConfirm', (req, res) => {
   if (req.cookies.accessToken) {
+    console.log(`[OK] [${req.cookies.username}] ${req.originalUrl}`)
     res.render("window", {
       title: "Change Password",
       message: "Are you sure want to change your password?",
@@ -300,13 +301,13 @@ app.get('/passwordChange', (req, res) => {
         }
       })
       .then((jsonData) => {
-        console.log(`[OK] Verification code has been sent to ${email}.`);
+        console.log(`[OK] [${req.cookies.username}] Verification code has been sent to ${email}.`);
         res.render("authentication", {
           title: "Change Password",
           message: jsonData.message
         })
       }).catch((err) => {
-        console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
+        console.error(`[ERR] [${req.cookies.username}] ${req.originalUrl} \n${err.message}`);
         res.render("window", {
           title: "Error",
           message: err.message,
@@ -347,7 +348,7 @@ app.post('/passwordChangeProcess', (req, res) => {
         }
       })
       .then((jsonData) => {
-        console.log(`[OK] ${email} verification successfull.`);
+        console.log(`[OK] [${req.cookies.username}] ${email} verification successfull.`);
 
         const updateUserOptions = {
           method: "PUT",
@@ -366,7 +367,7 @@ app.post('/passwordChangeProcess', (req, res) => {
             }
           })
           .then((jsonData) => {
-            console.log(`[OK] Password has been updated.`);
+            console.log(`[OK] [${req.cookies.username}] Password has been updated.`);
             req.session.destroy()
             res.render("window", {
               title: "Success",
@@ -375,7 +376,7 @@ app.post('/passwordChangeProcess', (req, res) => {
             })
           })
           .catch((err) => {
-            console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
+            console.error(`[ERR] [${req.cookies.username}] ${req.originalUrl} \n${err.message}`);
             res.render("authentication", {
               title: "Change Password",
               error: err.message,
@@ -384,7 +385,7 @@ app.post('/passwordChangeProcess', (req, res) => {
           });
       })
       .catch((err) => {
-        console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
+        console.error(`[ERR] [${req.cookies.username}] ${req.originalUrl} \n${err.message}`);
         res.render("authentication", {
           title: "Change Password",
           error: err.message,
@@ -415,10 +416,10 @@ app.get("/product", (req, res) => {
       })
       .then((jsonData) => {
         res.render("index", { title: "Product", product: jsonData });
-        console.log(`[OK] ${req.originalUrl}`);
+        console.log(`[OK] [${req.cookies.username}] ${req.originalUrl}`);
       })
       .catch((err) => {
-        console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
+        console.error(`[ERR] [${req.cookies.username}] ${req.originalUrl} \n${err.message}`);
         res.render("window", {
           title: "Error",
           message: "Failed to get product",
@@ -456,10 +457,10 @@ app.get('/product/detail/:id', (req, res) => {
         commentData = commentData.filter(comment => comment.productId === productId);
         commentData = commentData.filter(comment => comment.status === commentStatus.approved);
         res.render("productDetail", { title: productData.name, productData, commentData });
-        console.log(`[OK] ${req.originalUrl}`);
+        console.log(`[OK] [${req.cookies.username}] ${req.originalUrl}`);
       })
       .catch((err) => {
-        console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
+        console.error(`[ERR] [${req.cookies.username}] ${req.originalUrl} \n${err.message}`);
         res.render("window", {
           title: "Error",
           message: err.message,
@@ -482,7 +483,7 @@ app.get("/personalCenter", (req, res) => {
       role: req.cookies.role,
       useravatar: req.cookies.useravatar
     });
-    console.log(`[OK] ${req.originalUrl}`);
+    console.log(`[OK] [${req.cookies.username}] ${req.originalUrl}`);
   } else {
     res.redirect("/login");
     console.log(`[ERR] Require login account.`);
@@ -499,7 +500,7 @@ app.get("/personalCenter/profile", (req, res) => {
       role: req.cookies.role,
       useravatar: req.cookies.useravatar
     });
-    console.log(`[OK] ${req.originalUrl}`);
+    console.log(`[OK] [${req.cookies.username}] ${req.originalUrl}`);
   } else {
     res.redirect("/login");
     console.log(`[ERR] Require login account.`);
@@ -511,7 +512,7 @@ app.get("/personalCenter/usernameChange", (req, res) => {
     res.render("personalCenter", {
       title: "Change Username"
     });
-    console.log(`[OK] ${req.originalUrl}`);
+    console.log(`[OK] [${req.cookies.username}] ${req.originalUrl}`);
   } else {
     res.redirect("/login");
     console.log(`[ERR] Require login account.`);
@@ -539,7 +540,7 @@ app.post("/personalCenter/usernameChangeProcess", (req, res) => {
         }
       })
       .then((jsonData) => {
-        console.log(`[OK] User's username has been updated`);
+        console.log(`[OK] [${req.cookies.username}] User's username has been updated`);
         res.cookie("username", username);
         res.render("window", {
           title: "Success",
@@ -586,6 +587,40 @@ app.get("/admin/userManage", (req, res) => {
         res.render("window", {
           title: "Error",
           message: "Failed to get user",
+          linkBtn: "/"
+        });
+      });
+  } else {
+    res.redirect("/login");
+    console.log(`[ERR] Require login account.`);
+  }
+})
+
+app.get("/admin/userManage/delete", (req, res) => {
+  if (req.cookies.accessToken) {
+    const userId = req.query.id
+    const options = {
+      method: "DELETE",
+      headers: { "content-type": "application/json" }
+    };
+    const url = `${API}/user/delete/${userId}`;
+    fetch(url, options)
+      .then((res) => {
+        if (res.status === status.OK) {
+          return res.json();
+        } else {
+          throw new Error(`Failed to delete user`);
+        }
+      })
+      .then((jsonData) => {
+        console.log(`[OK] [${req.cookies.username}] ${req.originalUrl}`);
+        res.redirect("/admin/userManage");
+      })
+      .catch((err) => {
+        console.error(`[ERR] [${req.cookies.username}] ${req.originalUrl} \n${err.message}`);
+        res.render("window", {
+          title: "Error",
+          message: "Failed to delete user",
           linkBtn: "/"
         });
       });
@@ -665,7 +700,7 @@ app.get("/admin/commentManage", (req, res) => {
 app.get("/", (req, res) => {
   if (req.cookies.accessToken) {
     res.render("index", { title: "Home" });
-    console.log(`[OK] ${req.originalUrl}`);
+    console.log(`[OK] [${req.cookies.username}] ${req.originalUrl}`);
   } else {
     res.redirect("/login");
     console.log(`[ERR] Require login account.`);
@@ -675,7 +710,7 @@ app.get("/", (req, res) => {
 app.get("/help", (req, res) => {
   if (req.cookies.accessToken) {
     res.render("index", { title: "Help" });
-    console.log(`[OK] ${req.originalUrl}`);
+    console.log(`[OK] [${req.cookies.username}] ${req.originalUrl}`);
   } else {
     res.redirect("/login");
     console.log(`[ERR] Require login account.`);
