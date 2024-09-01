@@ -596,6 +596,40 @@ app.get("/admin/userManage", (req, res) => {
   }
 })
 
+app.get("/admin/userManage/:id", (req, res) => {
+  if (req.cookies.accessToken) {
+    const userId = req.params.id
+    const options = {
+      method: "GET",
+      headers: { "content-type": "application/json" }
+    };
+    const url = `${API}/user/get/${userId}`;
+    fetch(url, options)
+      .then((res) => {
+        if (res.status === status.OK) {
+          return res.json();
+        } else {
+          throw new Error(`Failed to get user`);
+        }
+      })
+      .then((jsonData) => {
+        res.render("personalCenter", { title: "User Detail", user: jsonData });
+        console.log(`[OK] [${req.cookies.username}] ${req.originalUrl}`);
+      })
+      .catch((err) => {
+        console.error(`[ERR] [${req.cookies.username}] ${req.originalUrl} \n${err.message}`);
+        res.render("window", {
+          title: "Error",
+          message: "Failed to get user",
+          linkBtn: "/"
+        });
+      });
+  } else {
+    res.redirect("/login");
+    console.log(`[ERR] Require login account.`);
+  }
+})
+
 app.get("/admin/userManage/delete", (req, res) => {
   if (req.cookies.accessToken) {
     const userId = req.query.id
@@ -663,6 +697,40 @@ app.get("/admin/productManage", (req, res) => {
   }
 })
 
+app.get("/admin/productManage/:id", (req, res) => {
+  if(req.cookies.accessToken) {
+    const productId = req.params.id
+    const options = {
+      method: "GET",
+      headers: { "content-type": "application/json" }
+    };
+    const url = `${API}/product/get/${productId}`;
+    fetch(url, options)
+      .then((res) => {
+        if (res.status === status.OK) {
+          return res.json();
+        } else {
+          throw new Error(`Failed to get product`);
+        }
+      })
+      .then((jsonData) => {
+        res.render("personalCenter", { title: "Product Detail", product: jsonData });
+        console.log(`[OK] [${req.cookies.username}] ${req.originalUrl}`);
+      })
+      .catch((err) => {
+        console.error(`[ERR] [${req.cookies.username}] ${req.originalUrl} \n${err.message}`);
+        res.render("window", {
+          title: "Error",
+          message: "Failed to get product",
+          linkBtn: "/"
+        });
+      });
+  } else {
+    res.redirect("/login");
+    console.log(`[ERR] Require login account.`);
+  }
+})
+
 app.get("/admin/commentManage", (req, res) => {
   if (req.cookies.accessToken) {
     const options = {
@@ -680,6 +748,40 @@ app.get("/admin/commentManage", (req, res) => {
       })
       .then((jsonData) => {
         res.render("personalCenter", { title: "Comment Manage", comment: jsonData });
+        console.log(`[OK] [${req.cookies.username}] ${req.originalUrl}`);
+      })
+      .catch((err) => {
+        console.error(`[ERR] [${req.cookies.username}] ${req.originalUrl} \n${err.message}`);
+        res.render("window", {
+          title: "Error",
+          message: "Failed to get comment",
+          linkBtn: "/"
+        });
+      });
+  } else {
+    res.redirect("/login");
+    console.log(`[ERR] Require login account.`);
+  }
+})
+
+app.get("/admin/commentManage/:id", (req, res) => {
+  if (req.cookies.accessToken) {
+    const commentId = req.params.id
+    const options = {
+      method: "GET",
+      headers: { "content-type": "application/json" }
+    };
+    const url = `${API}/comment/get/${commentId}`;
+    fetch(url, options)
+      .then((res) => {
+        if (res.status === status.OK) {
+          return res.json();
+        } else {
+          throw new Error(`Failed to get comment`);
+        }
+      })
+      .then((jsonData) => {
+        res.render("personalCenter", { title: "Comment Detail", comment: jsonData });
         console.log(`[OK] [${req.cookies.username}] ${req.originalUrl}`);
       })
       .catch((err) => {

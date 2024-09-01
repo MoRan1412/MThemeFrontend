@@ -20,6 +20,11 @@
         title == 'Product Manage' ||
         title == 'Comment Manage' ) { %>
         ../js/script.js
+    <% } else if ( 
+        title == 'User Detail' ||
+        title == 'Product Detail' ||
+        title == 'Comment Detail' ) { %>
+        ../../js/script.js
     <% } else { %>
         ./js/script.js
     <% } %>
@@ -43,6 +48,11 @@
         title=="Product Manage" || 
         title=="Comment Manage" ) { %>
         <%- include('personalCenter/admin/management') %>
+    <% } else if (
+        title=="User Detail" ||
+        title=="Product Detail" || 
+        title=="Comment Detail" ) { %>
+        <%- include('personalCenter/admin/management/detailPage') %>
     <% } %>
     </div>
 

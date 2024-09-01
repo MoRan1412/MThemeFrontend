@@ -1,12 +1,11 @@
 <thead>
     <tr>
-        <th colspan="2">Search</th>
-        <th>Add</th>
+        <th colspan="3">Search</th>
     </tr>
 </thead>
 <tbody>
     <% for( let i=0; i < user.length; i++ ) { %>
-        <tr>
+        <tr onclick="location.href='/admin/userManage/<%= user[i].id %>'">
             <td class="userManageTd1">
                 <div class="userManageTd1Avatar" style="background-image: url('<%= user[i].avatar %>');"></div>
                 <%= user[i].username %>

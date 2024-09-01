@@ -1,12 +1,11 @@
 <thead>
     <tr>
-        <th colspan="2">Search</th>
-        <th>Add</th>
+        <th colspan="3">Search</th>
     </tr>
 </thead>
 <tbody>
     <% for( let i=0; i < comment.length; i++ ) { %>
-        <tr>
+        <tr onclick="location.href='/admin/commentManage/<%= comment[i].id %>'">
             <td class="userManageTd1">
                 <div class="userManageTd1Avatar" style="background-image: url('<%= comment[i].avatar %>');"></div>
                 <%= comment[i].username %>
