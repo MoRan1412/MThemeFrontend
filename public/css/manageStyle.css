@@ -1,0 +1,40 @@
+/* Management Page */
+.manageTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.manageTable td,
+.manageTable th {
+    padding: var(--pcPadding);
+    word-break: break-all;
+    border-bottom: solid 1px var(--thirdLevelBackgroundColor);
+    text-align: left;
+    background-color: var(--firstLevelBackgroundColor);
+    font-size: var(--pcTextPSize);
+}
+
+.manageTable td i {
+    font-size: var(--pcTextPSize);
+}
+
+.manageTable td:nth-last-child(1),
+.manageTable td:nth-last-child(2),
+.manageTable th:nth-last-child(1),
+.manageTable th:nth-last-child(2)  {
+    text-align: center;
+}
+
+
+
+@media screen and (max-width: 720px) {
+    .manageTable td,
+    .manageTable th {
+        padding: var(--mobilePadding);
+        font-size: var(--mobileTextPSize);
+    }
+
+    .manageTable td i {
+        font-size: var(--mobileTextPSize);
+    }
+}

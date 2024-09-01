@@ -1,0 +1,22 @@
+<thead>
+    <tr>
+        <th>Username</th>
+        <th>Content</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+</thead>
+<tbody>
+    <% for( let i=0; i < comment.length; i++ ) { %>
+        <tr>
+            <td>
+                <%= comment[i].username %>
+            </td>
+            <td>
+                <%= comment[i].content %>
+            </td>
+            <td><i class="material-icons">edit</i></td>
+            <td><i class="material-icons">delete</i></td>
+        </tr>
+    <% } %>
+</tbody>

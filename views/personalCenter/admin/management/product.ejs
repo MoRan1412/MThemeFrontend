@@ -1,20 +1,30 @@
-<table>
-    <thead>
+<thead>
+    <tr>
+        <th>Name</th>
+        <th>Author</th>
+        <th>Type</th>
+        <th>Price</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+</thead>
+<tbody>
+    <% for( let i=0; i < product.length; i++ ) { %>
         <tr>
-            <th>Name</th>
-            <th>Author</th>
-            <th>Type</th>
-            <th>Price</th>
+            <td>
+                <%= product[i].name %>
+            </td>
+            <td>
+                <%= product[i].author %>
+            </td>
+            <td>
+                <%= product[i].type %>
+            </td>
+            <td>
+                <%= product[i].price %>
+            </td>
+            <td><i class="material-icons">edit</i></td>
+            <td><i class="material-icons">delete</i></td>
         </tr>
-    </thead>
-    <tbody>
-        <% for( let i=0; i < product.length; i++ ) { %>
-            <tr>
-                <td><%= product[i].name %></td>
-                <td><%= product[i].author %></td>
-                <td><%= product[i].type %></td>
-                <td><%= product[i].price %></td>
-            </tr>
-        <% } %>
-    </tbody>
-</table>
+    <% } %>
+</tbody>

@@ -579,10 +579,10 @@ app.get("/admin/userManage", (req, res) => {
       .then((jsonData) => {
         jsonData = jsonData.filter(user => user.role !== "admin");
         res.render("personalCenter", { title: "User Manage", user: jsonData });
-        console.log(`[OK] ${req.originalUrl}`);
+        console.log(`[OK] [${req.cookies.username}] ${req.originalUrl}`);
       })
       .catch((err) => {
-        console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
+        console.error(`[ERR] [${req.cookies.username}] ${req.originalUrl} \n${err.message}`);
         res.render("window", {
           title: "Error",
           message: "Failed to get user",
@@ -612,10 +612,10 @@ app.get("/admin/productManage", (req, res) => {
       })
       .then((jsonData) => {
         res.render("personalCenter", { title: "Product Manage", product: jsonData });
-        console.log(`[OK] ${req.originalUrl}`);
+        console.log(`[OK] [${req.cookies.username}] ${req.originalUrl}`);
       })
       .catch((err) => {
-        console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
+        console.error(`[ERR] [${req.cookies.username}] ${req.originalUrl} \n${err.message}`);
         res.render("window", {
           title: "Error",
           message: "Failed to get product",
@@ -645,10 +645,10 @@ app.get("/admin/commentManage", (req, res) => {
       })
       .then((jsonData) => {
         res.render("personalCenter", { title: "Comment Manage", comment: jsonData });
-        console.log(`[OK] ${req.originalUrl}`);
+        console.log(`[OK] [${req.cookies.username}] ${req.originalUrl}`);
       })
       .catch((err) => {
-        console.error(`[ERR] ${req.originalUrl} \n${err.message}`);
+        console.error(`[ERR] [${req.cookies.username}] ${req.originalUrl} \n${err.message}`);
         res.render("window", {
           title: "Error",
           message: "Failed to get comment",

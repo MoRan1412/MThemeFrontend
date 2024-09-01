@@ -1,16 +1,22 @@
-<table>
-    <thead>
+<thead>
+    <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+</thead>
+<tbody>
+    <% for( let i=0; i < user.length; i++ ) { %>
         <tr>
-            <th>Username</th>
-            <th>Email</th>
+            <td>
+                <%= user[i].username %>
+            </td>
+            <td>
+                <%= user[i].email %>
+            </td>
+            <td><i class="material-icons">edit</i></td>
+            <td><i class="material-icons">delete</i></td>
         </tr>
-    </thead>
-    <tbody>
-        <% for( let i=0; i < user.length; i++ ) { %>
-            <tr>
-                <td><%= user[i].username %></td>
-                <td><%= user[i].email %></td>
-            </tr>
-        <% } %>
-    </tbody>
-</table>
+    <% } %>
+</tbody>
