@@ -21,6 +21,7 @@
     text-align: left;
     background-color: var(--firstLevelBackgroundColor);
     font-size: var(--pcTextPSize);
+    width: 100%;
 }
 
 .manageTable td i {
@@ -28,13 +29,61 @@
 }
 
 .manageTable td:nth-last-child(1),
-.manageTable td:nth-last-child(2),
-.manageTable th:nth-last-child(1),
-.manageTable th:nth-last-child(2)  {
+.manageTable th:nth-last-child(1) {
     text-align: center;
 }
 
+.userManageTd1,
+.productManageTd1 {
+    display: flex;
+    width: calc(50px + var(--pcPadding) * 2);
+    flex-direction: column;
+    align-items: center;
+    gap: calc(var(--pcPadding) * 0.5);
+}
 
+.userManageTd1 .userManageTd1Avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    background-color: var(--secondLevelBackgroundColor);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.productManageTd1 .producttManageTd1Cover {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: var(--secondLevelBackgroundColor);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.manageTable .manageDataContainer {
+    padding: 0;
+}
+
+.manageTable .manageDataContainer .manageData {
+    padding: var(--pcPadding) 0;
+    display: flex;
+    flex-direction: row;
+    gap: var(--pcPadding);
+    align-items: center;
+    text-transform: uppercase;
+}
+
+.manageTable .manageDataContainer span {
+    background-color: var(--secondLevelBackgroundColor);
+    padding: var(--pcPadding);
+    border-radius: 10px;
+    font-size: calc(var(--pcTextSpanSize) * 0.8);
+    font-weight: 500;
+    width: 18vw;
+    text-align: center;
+}
 
 @media screen and (max-width: 720px) {
     .manageTable {
@@ -50,5 +99,21 @@
 
     .manageTable td i {
         font-size: var(--mobileTextPSize);
+    }
+
+    .userManageTd1,
+    .productManageTd1 {
+        width: calc(50px + var(--mobilePadding) * 2);
+        gap: calc(var(--mobilePadding) * 0.5);
+    }
+
+    .manageTable .manageDataContainer .manageData {
+        padding: calc(var(--mobilePadding) * 0.2) 0;
+        gap: calc(var(--mobilePadding) * 0.5);
+    }
+
+    .manageTable .manageDataContainer span {
+        padding: calc(var(--mobilePadding) * 0.3);
+        font-size: calc(var(--mobileTextSpanSize) * 0.8);
     }
 }

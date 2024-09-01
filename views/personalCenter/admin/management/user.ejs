@@ -1,22 +1,21 @@
 <thead>
     <tr>
-        <th>Username</th>
-        <th>Email</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th colspan="2">Search</th>
+        <th>Add</th>
     </tr>
 </thead>
 <tbody>
     <% for( let i=0; i < user.length; i++ ) { %>
         <tr>
-            <td>
+            <td class="userManageTd1">
+                <div class="userManageTd1Avatar" style="background-image: url('<%= user[i].avatar %>');"></div>
                 <%= user[i].username %>
             </td>
-            <td>
-                <%= user[i].email %>
+            <td class="manageDataContainer">
+                <div class="manageData" style="text-transform: none;"><span style="text-transform: uppercase;">Email</span><%= user[i].email %></div>
+                <div class="manageData"><span>Created At</span><%= user[i].createdAt %></div>
             </td>
-            <td><i class="material-icons">edit</i></td>
-            <td onclick="location.href='/admin/userManage/delete?id=<%= user[i].id %>'"><i class="material-icons">delete</i></td>
+            <td><i class="material-icons">arrow_forward_ios</i></td>
         </tr>
     <% } %>
 </tbody>

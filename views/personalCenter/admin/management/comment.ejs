@@ -1,22 +1,21 @@
 <thead>
     <tr>
-        <th>Username</th>
-        <th>Content</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th colspan="2">Search</th>
+        <th>Add</th>
     </tr>
 </thead>
 <tbody>
     <% for( let i=0; i < comment.length; i++ ) { %>
         <tr>
-            <td>
+            <td class="userManageTd1">
+                <div class="userManageTd1Avatar" style="background-image: url('<%= comment[i].avatar %>');"></div>
                 <%= comment[i].username %>
             </td>
-            <td>
-                <%= comment[i].content %>
+            <td class="manageDataContainer">
+                <div class="manageData" style="text-transform: none;"><span style="text-transform: uppercase;">Content</span><%= comment[i].content %></div>
+                <div class="manageData"><span >Status</span><%= comment[i].status %></div>
             </td>
-            <td><i class="material-icons">edit</i></td>
-            <td onclick="location.href='/admin/commentManage/delete?id=<%= comment[i].id %>'"><i class="material-icons">delete</i></td>
+            <td><i class="material-icons">arrow_forward_ios</i></td>
         </tr>
     <% } %>
 </tbody>

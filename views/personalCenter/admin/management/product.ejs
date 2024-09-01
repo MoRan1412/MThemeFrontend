@@ -1,30 +1,21 @@
 <thead>
     <tr>
-        <th>Name</th>
-        <th>Author</th>
-        <th>Type</th>
-        <th>Price</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th colspan="2">Search</th>
+        <th>Add</th>
     </tr>
 </thead>
 <tbody>
     <% for( let i=0; i < product.length; i++ ) { %>
         <tr>
-            <td>
+            <td class="productManageTd1">
+                <div class="producttManageTd1Cover" style="background-image: url('<%= product[i].image[0] %>');"></div>
                 <%= product[i].name %>
             </td>
-            <td>
-                <%= product[i].author %>
+            <td class="manageDataContainer">
+                <div class="manageData"><span>TYPE</span><%= product[i].type %></div>
+                <div class="manageData"><span>PRICE</span>$ <%= product[i].price %></div>
             </td>
-            <td>
-                <%= product[i].type %>
-            </td>
-            <td>
-                <%= product[i].price %>
-            </td>
-            <td><i class="material-icons">edit</i></td>
-            <td><i class="material-icons">delete</i></td>
+            <td><i class="material-icons">arrow_forward_ios</i></td>
         </tr>
     <% } %>
 </tbody>
