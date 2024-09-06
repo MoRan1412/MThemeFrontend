@@ -57,6 +57,8 @@ button {
 
     --inputBackgroundColor: rgba(220, 220, 220);
 
+    --headerBottomLineColor: rgba(0, 0, 0, 0.2);
+
     --pcPadding: 1.5vw;
     --pcHeaderHeight: 80px;
     --pcTextH1Size: 18px;

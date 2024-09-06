@@ -2,22 +2,22 @@
 
 function loadPage(page) {
     // Menu Class Change
-    if ( page == 'home' ) {
+    if (page == 'home') {
         $('#homeBtn').addClass('active');
         $('#productBtn').removeClass('active');
         $('#helpBtn').removeClass('active');
         $('#personalCenterBtn').removeClass('active')
-    } else if ( page == 'product' ) {
+    } else if (page == 'product') {
         $('#homeBtn').removeClass('active');
         $('#productBtn').addClass('active');
         $('#helpBtn').removeClass('active');
         $('#personalCenterBtn').removeClass('active')
-    } else if ( page == 'help' ) {
+    } else if (page == 'help') {
         $('#homeBtn').removeClass('active');
         $('#productBtn').removeClass('active');
         $('#helpBtn').addClass('active');
         $('#personalCenterBtn').removeClass('active')
-    } else if ( page == 'personalCenter' ) {
+    } else if (page == 'personalCenter') {
         $('#homeBtn').removeClass('active');
         $('#productBtn').removeClass('active');
         $('#helpBtn').removeClass('active');
@@ -40,24 +40,19 @@ function loadPage(page) {
         }
     }, 10); // 每 10 毫秒增加1%
 
-    $('#page').load(`/${page}`, function(response, status, xhr) {
+    $('#page').load(`/${page}`, function (response, status, xhr) {
         clearInterval(interval); // 清除进度条定时器
-        if (xhr.status === 401 || xhr.status === 403) {
-            // 如果未授权或禁止访问，重定向到登录页面
-            window.location.href = '/login'; // 这里是登录页面的URL
-        } else {
-            $('#progress-bar').css('width', '100%'); // 填满进度条
-    
-            // 隐藏进度条
-            setTimeout(() => {
-                $('#progress-bar').fadeOut();
-            }, 300); // 300 毫秒后隐藏
-        }
+        $('#progress-bar').css('width', '100%'); // 填满进度条
+
+        // 隐藏进度条
+        setTimeout(() => {
+            $('#progress-bar').fadeOut();
+        }, 300); // 300 毫秒后隐藏
     });
 }
 
 // 初始加载 Home 页面内容
-$(document).ready(function() {
+$(document).ready(function () {
     loadPage('home'); // 可选，直接加载内容
 });
 

@@ -400,7 +400,6 @@ app.post('/passwordChangeProcess', (req, res) => {
 
 // Product System
 app.get("/product", (req, res) => {
-  if (req.cookies.accessToken) {
     const options = {
       method: "GET",
       headers: { "content-type": "application/json" },
@@ -426,10 +425,6 @@ app.get("/product", (req, res) => {
           linkBtn: "/"
         });
       });
-  } else {
-    res.redirect("/login");
-    console.log(`[ERR] Require login account.`);
-  }
 });
 
 app.get('/product/detail/:id', (req, res) => {
@@ -475,7 +470,6 @@ app.get('/product/detail/:id', (req, res) => {
 
 // Personal Center System
 app.get("/personalCenter", (req, res) => {
-  if (req.cookies.accessToken) {
     res.render("personalCenter", {
       title: "Personal Center",
       username: req.cookies.username,
@@ -484,10 +478,6 @@ app.get("/personalCenter", (req, res) => {
       useravatar: req.cookies.useravatar
     });
     console.log(`[OK] [${req.cookies.username}] ${req.originalUrl}`);
-  } else {
-    res.status(status.UNAUTHORIZED).redirect("/login");
-    console.log(`[ERR] Require login account.`);
-  }
 });
 
 app.get("/personalCenter/profile", (req, res) => {
@@ -874,23 +864,13 @@ app.get("/", (req, res) => {
 });
 
 app.get("/home", (req, res) => {
-  if (req.cookies.accessToken) {
     res.render("index/home", { title: "Home" });
     console.log(`[OK] [${req.cookies.username}] ${req.originalUrl}`);
-  } else {
-    res.status(status.UNAUTHORIZED).redirect("/login");
-    console.log(`[ERR] Require login account.`);
-  }
 })
 
 app.get("/help", (req, res) => {
-  if (req.cookies.accessToken) {
     res.render("index/help", { title: "Help" });
     console.log(`[OK] [${req.cookies.username}] ${req.originalUrl}`);
-  } else {
-    res.status(status.UNAUTHORIZED).redirect("/login");
-    console.log(`[ERR] Require login account.`);
-  }
 });
 
 // Test
