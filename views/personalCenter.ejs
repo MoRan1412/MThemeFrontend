@@ -1,62 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>MTheme - <%= title %>
-    </title>
-    <link rel="icon" type="image/x-icon" href="../../<%= faviconPath %>">
-    <link rel="stylesheet" type="text/css" href="../../css/style.css">
-    <link rel="stylesheet" type="text/css" href="../../css/windowStyle.css">
-    <link rel="stylesheet" type="text/css" href="../../css/manageStyle.css">
-    <link rel="stylesheet" type="text/css" href="../../css/personalCenterStyle.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="
-    <% if ( 
-        title == 'Personal Information' ||  
-        title == 'Change Username' || 
-        title == 'User Manage' ||
-        title == 'Product Manage' ||
-        title == 'Comment Manage' ) { %>
-        ../js/script.js
-    <% } else if ( 
-        title == 'User Detail' ||
-        title == 'Product Detail' ||
-        title == 'Comment Detail' ) { %>
-        ../../js/script.js
-    <% } else { %>
-        ./js/script.js
-    <% } %>
-    "></script>
-</head>
-
-<body>
-    <!--  -->
-    <%- include('personalCenter/header') %>
+<!--  -->
     <div class="personalCenterPage">
-    <% if ( title=="Personal Center" ) { %>
-        <%- include('personalCenter/personalCenter') %>
-    <% } else if ( title=="Personal Information" ) { %>
-        <%- include('personalCenter/feature/profile') %>
-    <% } else if ( title=="Change Username" ) { %>
-        <%- include('personalCenter/feature/profile/usernameChange') %>
+        <% if ( title=="Personal Center" ) { %>
+            <%- include('personalCenter/personalCenter') %>
+        <% } else if ( title=="Personal Information" ) { %>
+            <%- include('personalCenter/feature/profile') %>
+        <% } else if ( title=="Change Username" ) { %>
+            <%- include('personalCenter/feature/profile/usernameChange') %>
 
-    <!-- Admin -->
-    <% } else if ( 
-        title=="User Manage" ||
-        title=="Product Manage" || 
-        title=="Comment Manage" ) { %>
-        <%- include('personalCenter/admin/management') %>
-    <% } else if (
-        title=="User Detail" ||
-        title=="Product Detail" || 
-        title=="Comment Detail" ) { %>
-        <%- include('personalCenter/admin/management/detailPage') %>
-    <% } %>
+        <!-- Admin -->
+        <% } else if ( title=="User Manage" || title=="Product Manage" ||
+            title=="Comment Manage" ) { %>
+            <%- include('personalCenter/admin/management') %>
+        <% } else if ( title=="User Detail" || title=="Product Detail" ||
+                    title=="Comment Detail" ) { %>
+            <%- include('personalCenter/admin/management/detailPage') %>
+        <% } %>
     </div>
 
-    <% if ( title == "Change Username" ) { %>
+    <% if ( title=="Change Username" ) { %>
         <div class="alertWindow" id="alertWindow">
             <div class="alertContainer">
                 <h1>Error</h1>
@@ -66,7 +27,4 @@
                 </div>
             </div>
         </div>
-    <% } %>
-</body>
-
-</html>
+        <% } %>
