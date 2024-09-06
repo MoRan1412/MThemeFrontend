@@ -1,4 +1,3 @@
-
 // Sign Up
 function signupValidateForm() {
     const errWindow = document.getElementById("alertWindow")
@@ -144,16 +143,36 @@ function goBack() {
     window.history.back();
 }
 
-// function loadPage(route, loadTarget, TargetEle) {
-//     const xhttp = new XMLHttpRequest();
-//     xhttp.onreadystatechange = function() {
-//         if (this.readyState == 4 && this.status == 200) {
-//             document.getElementById(TargetEle).innerHTML = loadTarget
-//         }
-//     }
-//     xhttp.open("GET", "/" + route, true)
-//     xhttp.send()
-// }
+function loadPage(page) {
+    // 显示进度条
+    $('#progress-bar').show().css('width', '0%');
+
+    // 模拟进度条加载
+    let width = 0;
+    const interval = setInterval(() => {
+        if (width >= 100) {
+            clearInterval(interval);
+        } else {
+            width++;
+            $('#progress-bar').css('width', width + '%');
+        }
+    }, 10); // 每 10 毫秒增加1%
+
+    $('#page').load(`/${page}`, function(response, status, xhr) {
+        clearInterval(interval); // 清除进度条定时器
+        $('#progress-bar').css('width', '100%'); // 填满进度条
+
+        // 隐藏进度条
+        setTimeout(() => {
+            $('#progress-bar').fadeOut();
+        }, 300); // 300 毫秒后隐藏
+    });
+}
+
+// 初始加载 Home 页面内容
+$(document).ready(function() {
+    loadPage('home'); // 可选，直接加载内容
+});
 
 function scrollToSection(id) {
     const element = document.getElementById(id);

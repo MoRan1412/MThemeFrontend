@@ -10,19 +10,14 @@
     <link rel="stylesheet" type="text/css" href="./css/productStyle.css">
     <link rel="stylesheet" type="text/css" href="./css/headerStyle.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./js/script.js"></script>
 </head>
 
 <body>
+    <div id="progress-bar" class="progress-bar" style="width: 0;"></div>
     <%- include('index/header') %>
     <div class="page" id="page">
-        <% if (typeof title !=='undefined' && title == 'Home') { %>
-            <%- include('index/home') %>
-        <% } else if (typeof title !=='undefined' && title == 'Product') { %>
-            <%- include('index/product') %>
-        <% } else if (typeof title !=='undefined' && title == 'Help') { %>
-            <%- include('index/help') %>
-        <% } %>
     </div>
 </body>
 

@@ -82,6 +82,17 @@ button {
     display: none;
 }
 
+.progress-bar {
+    position: fixed;
+    top: var(--pcHeaderHeight);
+    left: 0;
+    height: 4px;
+    background-color: var(--firstLevelColor);
+    width: 0;
+    transition: width 0.2s;
+    z-index: 9999; /* 确保进度条在最上层 */
+}
+
 /* Page */
 .page {
     width: 100vw;
@@ -122,6 +133,10 @@ button {
 @media screen and (max-width: 1324px) {}
 
 @media screen and (max-width: 720px) {
+    .progress-bar {
+        top: var(--mobileTopHeaderHeight);
+    }
+
     .page {
         height: calc(100vh - var(--mobileTopHeaderHeight) - var(--mobileBottomHeaderHeight));
         margin-top: var(--mobileTopHeaderHeight);
