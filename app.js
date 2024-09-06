@@ -398,6 +398,15 @@ app.post('/passwordChangeProcess', (req, res) => {
   }
 })
 
+app.get("/accessTokenAuth", (req, res) => {
+  const token = req.cookies.accessToken; // 服务器端访问 cookie
+  if (token) {
+    res.json({ isAuthenticated: true });
+  } else {
+    res.status(status.UNAUTHORIZED).json({ isAuthenticated: false });
+  }
+})
+
 // Product System
 app.get("/product", (req, res) => {
     const options = {

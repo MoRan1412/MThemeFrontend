@@ -56,6 +56,26 @@ $(document).ready(function () {
     loadPage('home'); // 可选，直接加载内容
 });
 
+// Check AccessToken
+function checkAccessToken() {
+    $.ajax({
+        url: '/accessTokenAuth', // 检查登录状态的接口
+        method: 'GET',
+        success: function(response) {
+            if (!response.isAuthenticated) {
+                // 如果未认证，重定向到登录页面
+                window.location.replace('/login');
+            }
+        },
+        error: function(xhr) {
+            console.error('Check accessToken failed:', xhr);
+        }
+    });
+}
+
+// 每 5 秒检查 accessToken
+setInterval(checkAccessToken, 5000); // 5000 毫秒 = 5 秒
+
 
 // Sign Up Checking
 function signupValidateForm() {
