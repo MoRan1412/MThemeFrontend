@@ -144,6 +144,23 @@ function goBack() {
 }
 
 function loadPage(page) {
+    // Menu Class Change
+    if ( page == 'home' ) {
+        $('#homeBtn').addClass('active');
+        $('#productBtn').removeClass('active');
+        $('#helpBtn').removeClass('active');
+    } else if ( page == 'product' ) {
+        $('#homeBtn').removeClass('active');
+        $('#productBtn').addClass('active');
+        $('#helpBtn').removeClass('active');
+    } else if ( page == 'help' ) {
+        $('#homeBtn').removeClass('active');
+        $('#productBtn').removeClass('active');
+        $('#helpBtn').addClass('active');
+    } else {
+        // Default
+    }
+
     // 显示进度条
     $('#progress-bar').show().css('width', '0%');
 
