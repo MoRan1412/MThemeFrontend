@@ -1,0 +1,16 @@
+<% if ( title=="User Detail" ) { %>
+    <div class="personalCenterProfileAvatarContainer">
+        <div class="personalCenterProfileAvatar" style="background-image: url('../<%= user.avatar %>');"></div>
+        <p>Click here to change</p>
+    </div>
+    <form method="post" action="/admin/userManageUpdate/<%= user.id %>" class="adminUpdateForm">
+        <p>UID: <%= user.id %></p>
+        <input type="text" name="username" id="username" value="<%= user.username %>" placeholder="Username">
+        <input type="email" name="email" id="email" value="<%= user.email %>" placeholder="Email">
+        <input type="submit" value="Save">
+    </form>
+<% } else if ( title=="Product Detail" ) { %>
+
+<% } else if ( title=="Comment Detail" ) { %>
+
+<% } %>

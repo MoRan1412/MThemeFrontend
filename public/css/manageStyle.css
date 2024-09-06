@@ -85,6 +85,37 @@
     text-align: center;
 }
 
+.adminUpdateForm {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: var(--pcPadding);
+    margin-top: var(--pcPadding);
+    gap: var(--pcPadding);
+    background-color: var(--firstLevelBackgroundColor);
+}
+
+.adminUpdateForm p {
+    color: var(--secondLevelColor);
+    font-size: var(--pcTextPSize);
+}
+
+.adminUpdateForm input {
+    border: none;
+    padding: var(--pcPadding);
+    border-radius: 10px;
+}
+
+.adminUpdateForm input[type="text"],
+.adminUpdateForm input[type="email"] {
+    background-color: var(--inputBackgroundColor);
+}
+
+.adminUpdateForm input[type="submit"] {
+    background-color: var(--firstLevelColor);
+    color: var(--firstLevelBackgroundColor);
+}
+
 @media screen and (max-width: 720px) {
     .manageTable {
         width: calc(100% - var(--mobilePadding) * 2);
@@ -115,5 +146,19 @@
     .manageTable .manageDataContainer span {
         padding: calc(var(--mobilePadding) * 0.3);
         font-size: calc(var(--mobileTextSpanSize) * 0.8);
+    }
+
+    .adminUpdateForm {
+        padding: var(--mobilePadding);
+        margin-top: var(--mobilePadding);
+        gap: var(--mobilePadding);
+    }
+
+    .adminUpdateForm p {
+        font-size: var(--mobileTextPSize);
+    }
+
+    .adminUpdateForm input {
+        padding: calc(var(--mobilePadding) * 0.5);
     }
 }

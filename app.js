@@ -630,6 +630,70 @@ app.get("/admin/userManage/:id", (req, res) => {
   }
 })
 
+app.post("/admin/userManageUpdate/:id", (req, res) => {
+  if (req.cookies.accessToken) {
+    const userId = req.params.id
+    const username = req.body.username
+    const email = req.body.email
+    const userOptions = {
+      method: "GET",
+      headers: { "content-type": "application/json" }
+    }
+    const userUrl = `${API}/user/get`;
+    const updateUserOptions = {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        username: username,
+        email: email
+      })
+    }
+    const updateUserUrl = `${API}/user/update/${userId}`;
+    fetch(userUrl, userOptions)
+      .then((res) => {
+        if (res.status === status.OK) {
+          return res.json();
+        } else {
+          throw new Error(`Failed to get user`);
+        }
+      })
+      .then((jsonData) => {
+        const usernameCheck = jsonData.find(user => user.username === username);
+        if (usernameCheck) {
+          throw new Error(`Username already exists`);
+        }
+        const userEmailCheck = jsonData.find(user => user.email === email);
+        if (userEmailCheck) {
+          throw new Error(`Email already exists`);
+        }
+        return fetch(updateUserUrl, updateUserOptions);
+      })
+      .then((res) => {
+        if (res.status === status.OK) {
+          return res.json();
+        } else {
+          throw new Error(`Failed to update user`);
+        }
+      })
+      .then((jsonData) => {
+        console.log(`[OK] [${req.cookies.username}] ${req.originalUrl}`);
+        res.redirect("/admin/userManage");
+      })
+      .catch((err) => {
+        console.error(`[ERR] [${req.cookies.username}] ${req.originalUrl} \n${err.message}`);
+        res.render("window", {
+          title: "Error",
+          message: err.message,
+          linkBtn: "javascript:goBack()",
+          cssPathChangeTitle: "adminUserUpdate"
+        });
+      });
+  } else {
+    res.redirect("/login");
+    console.log(`[ERR] Require login account.`);
+  }
+})
+
 app.get("/admin/userManage/delete", (req, res) => {
   if (req.cookies.accessToken) {
     const userId = req.query.id

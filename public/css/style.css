@@ -55,6 +55,8 @@ button {
     --firstLevelColor: black;
     --secondLevelColor: rgb(100, 100, 100);
 
+    --inputBackgroundColor: rgba(220, 220, 220);
+
     --pcPadding: 1.5vw;
     --pcHeaderHeight: 80px;
     --pcTextH1Size: 18px;

@@ -7,9 +7,34 @@
     <title>MTheme - <%= title %>
     </title>
     <link rel="icon" type="image/x-icon" href="<%= faviconPath %>">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/windowStyle.css">
-    <script src="./js/script.js"></script>
+
+    <link rel="stylesheet" href="
+    <% if (
+        (typeof cssPathChangeTitle !== "undefined" && cssPathChangeTitle == "adminUserUpdate")
+    ) { %>
+        ../../css/style.css
+    <% } else { %>
+        ../css/style.css
+    <% } %>">
+    <link rel="stylesheet" href="
+    <% if (
+        (typeof cssPathChangeTitle !== "undefined" && cssPathChangeTitle == "adminUserUpdate")
+    ) { %>
+        ../../css/windowStyle.css
+    <% } else { %>
+        ../css/windowStyle.css
+    <% } %>">
+
+    <script src="
+    <% if (
+        (typeof cssPathChangeTitle !== "undefined" && cssPathChangeTitle == "adminUserUpdate")
+    ) { %>
+        ../../js/script.js
+    <% } else { %>
+        ../js/script.js
+    <% } %>
+    "></script>
+    
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
