@@ -1,5 +1,6 @@
 'use strict'
 
+// 加载页面
 function loadPage(page) {
     // Menu Class Change
     if (page == 'home') {

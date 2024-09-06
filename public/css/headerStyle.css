@@ -117,6 +117,8 @@ header .headerMenu li .material-icons {
         height: var(--mobileBottomHeaderHeight);
         border-collapse: collapse;
         background-color: white;
+        gap: 10px;
+        padding: 10px;
     }
 
     header .headerIcon {
@@ -135,7 +137,8 @@ header .headerMenu li .material-icons {
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: calc(var(--mobilePadding) * 0.2);
+        gap: calc(var(--mobilePadding) * 0.1);
+        border-radius: 10px;
     }
 
     header .headerIcon li {
