@@ -1,3 +1,4 @@
+'use strict'
 
 function loadPage(page) {
     // Menu Class Change
@@ -41,12 +42,17 @@ function loadPage(page) {
 
     $('#page').load(`/${page}`, function(response, status, xhr) {
         clearInterval(interval); // 清除进度条定时器
-        $('#progress-bar').css('width', '100%'); // 填满进度条
-
-        // 隐藏进度条
-        setTimeout(() => {
-            $('#progress-bar').fadeOut();
-        }, 300); // 300 毫秒后隐藏
+        if (xhr.status === 401 || xhr.status === 403) {
+            // 如果未授权或禁止访问，重定向到登录页面
+            window.location.href = '/login'; // 这里是登录页面的URL
+        } else {
+            $('#progress-bar').css('width', '100%'); // 填满进度条
+    
+            // 隐藏进度条
+            setTimeout(() => {
+                $('#progress-bar').fadeOut();
+            }, 300); // 300 毫秒后隐藏
+        }
     });
 }
 
