@@ -485,7 +485,7 @@ app.get("/personalCenter", (req, res) => {
     });
     console.log(`[OK] [${req.cookies.username}] ${req.originalUrl}`);
   } else {
-    res.redirect("/login");
+    res.status(status.UNAUTHORIZED).redirect("/login");
     console.log(`[ERR] Require login account.`);
   }
 });
@@ -868,7 +868,7 @@ app.get("/", (req, res) => {
     res.render("index", { title: "Home" });
     console.log(`[OK] [${req.cookies.username}] ${req.originalUrl}`);
   } else {
-    res.redirect("/login");
+    res.status(status.UNAUTHORIZED).redirect("/login");
     console.log(`[ERR] Require login account.`);
   }
 });
@@ -878,7 +878,7 @@ app.get("/home", (req, res) => {
     res.render("index/home", { title: "Home" });
     console.log(`[OK] [${req.cookies.username}] ${req.originalUrl}`);
   } else {
-    res.redirect("/login");
+    res.status(status.UNAUTHORIZED).redirect("/login");
     console.log(`[ERR] Require login account.`);
   }
 })
@@ -888,7 +888,7 @@ app.get("/help", (req, res) => {
     res.render("index/help", { title: "Help" });
     console.log(`[OK] [${req.cookies.username}] ${req.originalUrl}`);
   } else {
-    res.redirect("/login");
+    res.status(status.UNAUTHORIZED).redirect("/login");
     console.log(`[ERR] Require login account.`);
   }
 });
