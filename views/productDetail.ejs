@@ -1,42 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
-    <title>MTheme</title>
-    <link rel="icon" type="image/x-icon" href="../../<%= faviconPath %>">
-    <link rel="stylesheet" type="text/css" href="../../css/style.css">
-    <link rel="stylesheet" type="text/css" href="../../css/headerStyle.css">
-    <link rel="stylesheet" type="text/css" href="../../css/productDetailStyle.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="../../js/script.js"></script>
-</head>
-
-<body>
 
     <!--  -->
     <header class="headerDetail">
-        <i class="material-icons" onclick="goBack()">arrow_back_ios</i>
+        <i class="material-icons" onclick="closePage2()">arrow_back_ios</i>
         <h1>
             <%= title %>
         </h1>
     </header>
 
     <!--  -->
-    <div class="page">
         <%- include('productDetail/productDetail') %>
-    </div>
 
     <!--  -->
     <div class="mobileProductDetailFeature" onclick="location.href='<%= productData.link %>'">
         <h1>BUY IT</h1>
         <i class="material-icons">arrow_forward</i>
     </div>
-    
-</body>
-
-</html>

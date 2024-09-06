@@ -891,6 +891,10 @@ app.get('/window', (req, res) => {
   })
 })
 
+app.get("/loading", (req, res) => {
+  res.render("loading", { title: "Loading" });
+});
+
 const port = 3000; // Replit doesn’t matter which port is using
 app.listen(port, () => {
   console.log(`Connected on port ${port}`);

@@ -10,16 +10,26 @@
     <link rel="stylesheet" type="text/css" href="./css/productStyle.css">
     <link rel="stylesheet" type="text/css" href="./css/personalCenterStyle.css">
     <link rel="stylesheet" type="text/css" href="./css/headerStyle.css">
+    <link rel="stylesheet" type="text/css" href="./css/loadingStyle.css">
+    <link rel="stylesheet" type="text/css" href="../../css/productDetailStyle.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./js/script.js"></script>
+    <script>
+        setInterval(checkAccessToken, 5000);
+    </script>
 </head>
 
 <body>
     <div id="progress-bar" class="progress-bar" style="width: 0;"></div>
     <%- include('index/header') %>
-        <div class="page" id="page">
-        </div>
+    <div class="page" id="page">
+    </div>
+    <div class="page2" id="page2">
+
+    </div>
 </body>
 
 </html>

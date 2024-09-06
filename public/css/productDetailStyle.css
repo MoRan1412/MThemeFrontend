@@ -227,6 +227,15 @@
 
 .mobileProductDetailFeature {
     display: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: var(--pcHeaderHeight);
+    padding: 0 var(--pcPadding);
+    position: fixed;
+    bottom: 0;
+    background-color: black;
 }
 
 .productMenuData {
@@ -276,13 +285,6 @@
 
     .mobileProductDetailData {
         padding: 0 var(--mobilePadding);
-        width: 100%;
-        height: 100px;
-        flex-direction: row;
-        justify-content: space-between;
-        display: flex;
-        align-items: center;
-        background-color: white;
     }
 
     .mobileProductDetailData>div {
@@ -349,15 +351,8 @@
 
     .mobileProductDetailFeature {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        height: var(--mobileTopHeaderHeight);
+        height: var(--mobileBottomHeaderHeight);
         padding: 0 var(--mobilePadding);
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        background-color: black;
     }
     
     .mobileProductDetailFeature h1,

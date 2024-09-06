@@ -92,7 +92,7 @@ button {
     background-color: var(--firstLevelColor);
     width: 0;
     transition: width 0.2s;
-    z-index: 9999; /* 确保进度条在最上层 */
+    z-index: 2; 
 }
 
 /* Page */
@@ -102,6 +102,17 @@ button {
     margin-top: var(--pcHeaderHeight);
     overflow: auto;
     background-color: rgb(240, 240, 240);
+}
+
+.page2 {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--firstLevelBackgroundColor);
+    position: absolute;
+    top: 0;
+    left: 100%;
+    z-index: 5;
+    display: none;
 }
 
 /* Home Page */

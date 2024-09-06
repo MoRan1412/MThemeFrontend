@@ -7,7 +7,7 @@ header {
     width: 100vw;
     height: var(--pcHeaderHeight);
     background-color: white;
-    z-index: 100;
+    z-index: 1;
 }
 
 header .headerMenu,

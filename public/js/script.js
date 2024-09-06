@@ -1,6 +1,6 @@
 'use strict'
 
-// 加载页面
+// Index Load Page
 function loadPage(page) {
     // Menu Class Change
     if (page == 'home') {
@@ -52,6 +52,24 @@ function loadPage(page) {
     });
 }
 
+function loadPage2(page) {
+    $('#page2').show().css('left', '100%')
+
+    $('#page2').animate({ left: '0%' }, 300, function() {
+        // 加载新页面
+        $('#page2').load(`/${page}`, function (response, status, xhr) {
+        });
+    });
+
+}
+
+function closePage2() {
+    $('#page2').css('left', '0%')
+    $('#page2').animate({ left: '100%' }, 300, function() {
+        $('#page2').hide()
+    });
+}
+
 // 初始加载 Home 页面内容
 $(document).ready(function () {
     loadPage('home'); // 可选，直接加载内容
@@ -60,22 +78,31 @@ $(document).ready(function () {
 // Check AccessToken
 function checkAccessToken() {
     $.ajax({
-        url: '/accessTokenAuth', // 检查登录状态的接口
+        url: '/accessTokenAuth',
         method: 'GET',
-        success: function(response) {
+        dataType: 'json',
+        success: function(response, status, xhr) {
+            console.log('Check accessToken response:', response);
+            console.log('Status code:', xhr.status);
+            
             if (!response.isAuthenticated) {
-                // 如果未认证，重定向到登录页面
-                window.location.replace('/login');
+                window.location.replace('/login'); // 重定向到登录页面
             }
         },
         error: function(xhr) {
             console.error('Check accessToken failed:', xhr);
+            console.log('Error status code:', xhr.status);
+            
+            // 处理 401 错误
+            if (xhr.status === 401) {
+                console.warn('User is not authenticated, redirecting to login.');
+                window.location.replace('/login'); // 重定向到登录页面
+            } else {
+                console.error('An unexpected error occurred.');
+            }
         }
     });
 }
-
-// 每 5 秒检查 accessToken
-setInterval(checkAccessToken, 5000); // 5000 毫秒 = 5 秒
 
 
 // Sign Up Checking
@@ -239,6 +266,18 @@ function emailValidateForm() {
 
     return true;
 }
+
+// Slide
+// function slideInAndRedirect(url) {
+//     const slide = document.getElementById('slide');
+//     slide.classList.add('show');
+//     setTimeout(() => {
+//         window.location.href = url;
+//     }, 500); // 与动画时间一致
+// }
+
+
+// window.history.pushState(null, null, url);
 
 // Basic Feature
 function goBack() {
