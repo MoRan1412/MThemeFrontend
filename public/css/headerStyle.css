@@ -145,13 +145,21 @@ header .headerMenu li .material-icons {
     header .headerMenu li .material-icons {
         display: block;
         font-size: calc(var(--mobileTextISize) * 1.5);
+        transition-duration: .3s;
+    }
+
+    header .headerMenu li:active .material-icons,
+    header .headerMenu li:active p {
+        transform: scale(0.8);
     }
 
     header .headerIcon li i {
         font-size: calc(var(--mobileTextISize) * 2.6);
     }
 
+
     header .headerMenu li p {
+        transition-duration: .3s;
         font-size: calc(var(--mobileTextPSize) * 0.8);
     }
 }
