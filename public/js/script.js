@@ -58,10 +58,15 @@ function loadPage2(page) {
     $('#page2').animate({ left: '0%' }, 300, function() {
         // 加载新页面
         $('#page2').load(`/${page}`, function (response, status, xhr) {
+            if (status === "success") {
+                // 加入历史记录
+                history.pushState({ page: page }, '', `/${page}`);
+            }
         });
     });
 
 }
+
 
 function closePage2() {
     $('#page2').css('left', '0%')
