@@ -1,6 +1,8 @@
 'use strict'
 
 // Index Load Page
+window.history.replaceState({ page: 'page1' }, '', window.location.pathname);
+
 function loadPage(page) {
     // Menu Class Change
     if (page == 'home') {
@@ -53,27 +55,38 @@ function loadPage(page) {
 }
 
 function loadPage2(page) {
-    $('#page2').show().css('left', '100%')
-
-    $('#page2').animate({ left: '0%' }, 300, function() {
-        // 加载新页面
+    // 显示并移动 page2
+    $('#page2').show().css('left', '100%');
+    $('#page2').animate({ left: '0%' }, 300, function () {
+        // 加载新页面内容
         $('#page2').load(`/${page}`, function (response, status, xhr) {
-            if (status === "success") {
-                // 加入历史记录
-                history.pushState({ page: page }, '', `/${page}`);
-            }
+            history.pushState({ page: 'page2' }, '', `/${page}`);
         });
     });
-
 }
+
+// 监听返回Page1按钮事件
+window.onpopstate = function (event) {
+    // 检查事件状态
+    if (event.state) {
+        if (event.state.page === 'page1') {
+            // 如果状态是page1，执行返回动画，离开该页面
+            closePage2()
+        }
+    } else {
+        // 处理返回时 state 为 null 的情况
+        console.log('State is null, returning to the initial page.');
+        closePage2()
+    }
+};
 
 
 function closePage2() {
-    $('#page2').css('left', '0%')
-    $('#page2').animate({ left: '100%' }, 300, function() {
+    $('#page2').animate({ left: '100%' }, 300, function () {
         $('#page2').hide()
     });
 }
+
 
 // 初始加载 Home 页面内容
 $(document).ready(function () {
@@ -86,18 +99,18 @@ function checkAccessToken() {
         url: '/accessTokenAuth',
         method: 'GET',
         dataType: 'json',
-        success: function(response, status, xhr) {
+        success: function (response, status, xhr) {
             console.log('Check accessToken response:', response);
             console.log('Status code:', xhr.status);
-            
+
             if (!response.isAuthenticated) {
                 window.location.replace('/login'); // 重定向到登录页面
             }
         },
-        error: function(xhr) {
+        error: function (xhr) {
             console.error('Check accessToken failed:', xhr);
             console.log('Error status code:', xhr.status);
-            
+
             // 处理 401 错误
             if (xhr.status === 401) {
                 console.warn('User is not authenticated, redirecting to login.');
