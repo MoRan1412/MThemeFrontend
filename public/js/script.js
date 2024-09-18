@@ -1,7 +1,7 @@
 'use strict'
 
 // Index Load Page
-window.history.replaceState({ page: 'page1' }, '', '/home');
+window.history.replaceState({ page: 'page1' }, '', '/');
 
 function loadPage(page) {
     const pathname = page
