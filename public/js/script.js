@@ -1,30 +1,35 @@
 'use strict'
 
 // Index Load Page
-window.history.replaceState({ page: 'page1' }, '', window.location.pathname);
+window.history.replaceState({ page: 'page1' }, '', '/home');
 
 function loadPage(page) {
+    const pathname = page
     // Menu Class Change
-    if (page == 'home') {
+    if (pathname == 'home') {
         $('#homeBtn').addClass('active');
         $('#productBtn').removeClass('active');
         $('#helpBtn').removeClass('active');
         $('#personalCenterBtn').removeClass('active')
-    } else if (page == 'product') {
+        history.pushState({ page: 'page1' }, '', `/${pathname}`);
+    } else if (pathname == 'product') {
         $('#homeBtn').removeClass('active');
         $('#productBtn').addClass('active');
         $('#helpBtn').removeClass('active');
         $('#personalCenterBtn').removeClass('active')
-    } else if (page == 'help') {
+        history.pushState({ page: 'page1' }, '', `/${pathname}`);
+    } else if (pathname == 'help') {
         $('#homeBtn').removeClass('active');
         $('#productBtn').removeClass('active');
         $('#helpBtn').addClass('active');
         $('#personalCenterBtn').removeClass('active')
-    } else if (page == 'personalCenter') {
+        history.pushState({ page: 'page1' }, '', `/${pathname}`);
+    } else if (pathname == 'personalCenter') {
         $('#homeBtn').removeClass('active');
         $('#productBtn').removeClass('active');
         $('#helpBtn').removeClass('active');
         $('#personalCenterBtn').addClass('active')
+        history.pushState({ page: 'page1' }, '', `/${pathname}`);
     } else {
         // Default
     }
@@ -43,7 +48,7 @@ function loadPage(page) {
         }
     }, 10); // 每 10 毫秒增加1%
 
-    $('#page').load(`/${page}`, function (response, status, xhr) {
+    $('#page').load(`/${pathname}`, function (response, status, xhr) {
         clearInterval(interval); // 清除进度条定时器
         $('#progress-bar').css('width', '100%'); // 填满进度条
 
@@ -65,13 +70,25 @@ function loadPage2(page) {
     });
 }
 
-// 监听返回Page1按钮事件
+function closePage2() {
+    $('#page2').animate({ left: '100%' }, 300, function () {
+        $('#page2').hide()
+    });
+}
+
+// 监听返回前进按钮事件
 window.onpopstate = function (event) {
     // 检查事件状态
+    console.log('onpopstate:', event.state);
+    console.log(window.location.pathname)
+    const page = window.location.pathname.split('/')[1]
     if (event.state) {
         if (event.state.page === 'page1') {
             // 如果状态是page1，执行返回动画，离开该页面
             closePage2()
+            loadPage(page)
+        } else if (event.state.page === 'page2') {
+            loadPage2(page)
         }
     } else {
         // 处理返回时 state 为 null 的情况
@@ -81,11 +98,6 @@ window.onpopstate = function (event) {
 };
 
 
-function closePage2() {
-    $('#page2').animate({ left: '100%' }, 300, function () {
-        $('#page2').hide()
-    });
-}
 
 
 // 初始加载 Home 页面内容
