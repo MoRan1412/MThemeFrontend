@@ -8,7 +8,6 @@ const app = express();
 const crypto = require('crypto');
 const path = require('path');
 const { title } = require("process");
-const e = require("express");
 
 app.use(bodyParser.json()); // Used to parse JSON bodies
 app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded bodies
@@ -561,7 +560,7 @@ app.post("/personalCenter/usernameChangeProcess", (req, res) => {
   }
 })
 
-app.get("/admin/userManage", (req, res) => {
+app.get("/adminUserManage", (req, res) => {
   if (req.cookies.accessToken) {
     const options = {
       method: "GET",
@@ -595,7 +594,7 @@ app.get("/admin/userManage", (req, res) => {
   }
 })
 
-app.get("/admin/userManage/:id", (req, res) => {
+app.get("/adminUserManage/:id", (req, res) => {
   if (req.cookies.accessToken) {
     const userId = req.params.id
     const options = {
@@ -612,7 +611,7 @@ app.get("/admin/userManage/:id", (req, res) => {
         }
       })
       .then((jsonData) => {
-        res.render("personalCenter", { title: "User Detail", user: jsonData });
+        res.render("personalCenter/admin/management/detailPage", { title: "User Detail", user: jsonData });
         console.log(`[OK] [${req.cookies.username}] ${req.originalUrl}`);
       })
       .catch((err) => {
@@ -629,7 +628,7 @@ app.get("/admin/userManage/:id", (req, res) => {
   }
 })
 
-app.post("/admin/userManageUpdate/:id", (req, res) => {
+app.post("/adminUserManageUpdate/:id", (req, res) => {
   if (req.cookies.accessToken) {
     const userId = req.params.id
     const username = req.body.username
@@ -693,7 +692,7 @@ app.post("/admin/userManageUpdate/:id", (req, res) => {
   }
 })
 
-app.get("/admin/userManage/delete", (req, res) => {
+app.get("/adminUserManage/delete", (req, res) => {
   if (req.cookies.accessToken) {
     const userId = req.query.id
     const options = {
@@ -727,7 +726,7 @@ app.get("/admin/userManage/delete", (req, res) => {
   }
 })
 
-app.get("/admin/productManage", (req, res) => {
+app.get("/adminProductManage", (req, res) => {
   if (req.cookies.accessToken) {
     const options = {
       method: "GET",
@@ -760,7 +759,7 @@ app.get("/admin/productManage", (req, res) => {
   }
 })
 
-app.get("/admin/productManage/:id", (req, res) => {
+app.get("/adminProductManage/:id", (req, res) => {
   if(req.cookies.accessToken) {
     const productId = req.params.id
     const options = {
@@ -794,7 +793,7 @@ app.get("/admin/productManage/:id", (req, res) => {
   }
 })
 
-app.get("/admin/commentManage", (req, res) => {
+app.get("/adminCommentManage", (req, res) => {
   if (req.cookies.accessToken) {
     const options = {
       method: "GET",
@@ -827,7 +826,7 @@ app.get("/admin/commentManage", (req, res) => {
   }
 })
 
-app.get("/admin/commentManage/:id", (req, res) => {
+app.get("/adminCommentManage/:id", (req, res) => {
   if (req.cookies.accessToken) {
     const commentId = req.params.id
     const options = {

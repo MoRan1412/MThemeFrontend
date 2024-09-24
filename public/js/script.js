@@ -1,40 +1,14 @@
-'use strict'
+'use strict';
 
-// Index Load Page
-window.history.replaceState({ page: 'page1' }, '', '/');
-
+// 加载页面函数
 function loadPage(page) {
-    const pathname = page
-    // Menu Class Change
-    if (pathname == 'home') {
-        $('#homeBtn').addClass('active');
-        $('#productBtn').removeClass('active');
-        $('#helpBtn').removeClass('active');
-        $('#personalCenterBtn').removeClass('active')
-        history.pushState({ page: 'page1' }, '', `/${pathname}`);
-    } else if (pathname == 'product') {
-        $('#homeBtn').removeClass('active');
-        $('#productBtn').addClass('active');
-        $('#helpBtn').removeClass('active');
-        $('#personalCenterBtn').removeClass('active')
-        history.pushState({ page: 'page1' }, '', `/${pathname}`);
-    } else if (pathname == 'help') {
-        $('#homeBtn').removeClass('active');
-        $('#productBtn').removeClass('active');
-        $('#helpBtn').addClass('active');
-        $('#personalCenterBtn').removeClass('active')
-        history.pushState({ page: 'page1' }, '', `/${pathname}`);
-    } else if (pathname == 'personalCenter') {
-        $('#homeBtn').removeClass('active');
-        $('#productBtn').removeClass('active');
-        $('#helpBtn').removeClass('active');
-        $('#personalCenterBtn').addClass('active')
-        history.pushState({ page: 'page1' }, '', `/${pathname}`);
-    } else {
-        // Default
-    }
+    const pathname = page;
+    
+    // 更新菜单中的激活按钮
+    $('#homeBtn, #productBtn, #helpBtn, #personalCenterBtn').removeClass('active');
+    $(`#${pathname}Btn`).addClass('active');
 
-    // 显示进度条
+    // 显示并重置进度条
     $('#progress-bar').show().css('width', '0%');
 
     // 模拟进度条加载
@@ -46,87 +20,73 @@ function loadPage(page) {
             width++;
             $('#progress-bar').css('width', width + '%');
         }
-    }, 10); // 每 10 毫秒增加1%
+    }, 10); // 每10毫秒增加1%
 
+    // 加载页面内容
     $('#page').load(`/${pathname}`, function (response, status, xhr) {
-        clearInterval(interval); // 清除进度条定时器
+        clearInterval(interval); // 清除定时器
         $('#progress-bar').css('width', '100%'); // 填满进度条
 
         // 隐藏进度条
         setTimeout(() => {
             $('#progress-bar').fadeOut();
-        }, 300); // 300 毫秒后隐藏
+        }, 300); // 300毫秒后隐藏
     });
 }
 
+// 加载第二页内容并显示动画
 function loadPage2(page) {
-    // 显示并移动 page2
     $('#page2').show().css('left', '100%');
     $('#page2').animate({ left: '0%' }, 300, function () {
-        // 加载新页面内容
-        $('#page2').load(`/${page}`, function (response, status, xhr) {
+        $('#page2').load(`/${page}`, function () {
             history.pushState({ page: 'page2' }, '', `/${page}`);
         });
     });
 }
 
+// 关闭第二页
 function closePage2() {
     $('#page2').animate({ left: '100%' }, 300, function () {
-        $('#page2').hide()
+        $('#page2').hide();
     });
 }
 
-// 监听返回前进按钮事件
+// 监听返回按钮事件
 window.onpopstate = function (event) {
-    // 检查事件状态
-    console.log('onpopstate:', event.state);
-    console.log(window.location.pathname)
-    const page = window.location.pathname.split('/')[1]
+    const page = window.location.pathname.split('/')[1];
+    
     if (event.state) {
         if (event.state.page === 'page1') {
-            // 如果状态是page1，执行返回动画，离开该页面
-            closePage2()
-            loadPage(page)
+            closePage2();
+            loadPage(page);
         } else if (event.state.page === 'page2') {
-            loadPage2(page)
+            loadPage2(page);
         }
     } else {
-        // 处理返回时 state 为 null 的情况
         console.log('State is null, returning to the initial page.');
-        closePage2()
+        closePage2();
     }
 };
 
-
-
-
-// 初始加载 Home 页面内容
+// 初始加载首页内容
 $(document).ready(function () {
-    loadPage('home'); // 可选，直接加载内容
+    loadPage('home');
 });
 
-// Check AccessToken
+// 验证 AccessToken
 function checkAccessToken() {
     $.ajax({
         url: '/accessTokenAuth',
         method: 'GET',
         dataType: 'json',
-        success: function (response, status, xhr) {
-            console.log('Check accessToken response:', response);
-            console.log('Status code:', xhr.status);
-
+        success: function (response) {
             if (!response.isAuthenticated) {
-                window.location.replace('/login'); // 重定向到登录页面
+                window.location.replace('/login');
             }
         },
         error: function (xhr) {
-            console.error('Check accessToken failed:', xhr);
-            console.log('Error status code:', xhr.status);
-
-            // 处理 401 错误
             if (xhr.status === 401) {
-                console.warn('User is not authenticated, redirecting to login.');
-                window.location.replace('/login'); // 重定向到登录页面
+                window.location.replace('/login');
             } else {
                 console.error('An unexpected error occurred.');
             }
@@ -134,193 +94,125 @@ function checkAccessToken() {
     });
 }
 
-
-// Sign Up Checking
+// 注册表单验证
 function signupValidateForm() {
-    const errWindow = document.getElementById("alertWindow")
-    const errMessage = document.getElementById("errMessage")
-    const errConfirm = document.getElementById("errConfirm")
+    const errWindow = document.getElementById("alertWindow");
+    const errMessage = document.getElementById("errMessage");
+    const errConfirm = document.getElementById("errConfirm");
 
-    // 
     const username = document.getElementById("username").value;
-    const usernameRequire = `
-    Username Requirement: <br>
-    - At least 3 characters long <br>
-    - Start with a letter <br>
-    - Only contain letters, numbers, underscores, and hyphens.
-    `
     const usernameRegex = /^[a-zA-Z_][a-zA-Z0-9_-]{2,}$/;
+    const usernameRequire = `用户名要求：<br> - 至少 3 个字符<br> - 以字母开头<br> - 仅包含字母、数字、下划线和连字符`;
+
     if (!usernameRegex.test(username)) {
-        errWindow.style.display = "flex"
-        errWindow.style.zIndex = "1"
-        errMessage.innerHTML = usernameRequire;
-        errConfirm.addEventListener("click", function () {
-            errWindow.style.display = "none";
-        });
+        showError(errWindow, errMessage, errConfirm, usernameRequire);
         return false;
     }
 
-    // 
     const password = document.getElementById("password").value;
     const confirm_password = document.getElementById("confirmPassword").value;
-    const passRequire = `
-    Password Requirement: <br>
-    - At least 8 characters long. <br>
-    - At least one digit. <br>
-    - At least one special character (!@#$%^&*).
-    `
-    // 
+    const passRequire = `密码要求：<br> - 至少 8 个字符<br> - 至少包含一个数字<br> - 至少包含一个特殊字符 (!@#$%^&*)`;
+
     if (!/[!@#$%^&*]/.test(password) || !/\d/.test(password) || password.length < 8) {
-        errWindow.style.display = "flex"
-        errWindow.style.zIndex = "1"
-        errMessage.innerHTML = passRequire
-        errConfirm.addEventListener("click", function () {
-            errWindow.style.display = "none";
-        });
-        return false;
-    }
-    // 
-    if (password !== confirm_password) {
-        errWindow.style.display = "flex"
-        errWindow.style.zIndex = "1"
-        errMessage.innerHTML = "Passwords do not match. Please try again."
-        errConfirm.addEventListener("click", function () {
-            errWindow.style.display = "none";
-        });
+        showError(errWindow, errMessage, errConfirm, passRequire);
         return false;
     }
 
-    // 
+    if (password !== confirm_password) {
+        showError(errWindow, errMessage, errConfirm, "密码不一致，请重新输入。");
+        return false;
+    }
+
     const email = document.getElementById("email").value;
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailRegex.test(email)) {
-        errWindow.style.display = "flex"
-        errWindow.style.zIndex = "1"
-        errMessage.innerHTML = "Invalid email format. Please enter a valid email address."
-        errConfirm.addEventListener("click", function () {
-            errWindow.style.display = "none";
-        });
+        showError(errWindow, errMessage, errConfirm, "邮箱格式无效，请输入正确的邮箱地址。");
         return false;
     }
 
-    // 
     return true;
 }
 
-// Password Checking
+// 显示错误提示
+function showError(errWindow, errMessage, errConfirm, message) {
+    errWindow.style.display = "flex";
+    errWindow.style.zIndex = "1";
+    errMessage.innerHTML = message;
+    errConfirm.addEventListener("click", function () {
+        errWindow.style.display = "none";
+    });
+}
+
+// 密码验证表单
 function passwordChangeValidateForm() {
-    const errWindow = document.getElementById("alertWindow")
-    const errMessage = document.getElementById("errMessage")
-    const errConfirm = document.getElementById("errConfirm")
+    const errWindow = document.getElementById("alertWindow");
+    const errMessage = document.getElementById("errMessage");
+    const errConfirm = document.getElementById("errConfirm");
 
-    // 
     const password = document.getElementById("password").value;
     const confirm_password = document.getElementById("confirmPassword").value;
-    const passRequire = `
-    Password Requirement: <br>
-    - At least 8 characters long. <br>
-    - At least one digit. <br>
-    - At least one special character (!@#$%^&*).
-    `
-    // 
+    const passRequire = `密码要求：<br> - 至少 8 个字符<br> - 至少包含一个数字<br> - 至少包含一个特殊字符 (!@#$%^&*)`;
+
     if (!/[!@#$%^&*]/.test(password) || !/\d/.test(password) || password.length < 8) {
-        errWindow.style.display = "flex"
-        errWindow.style.zIndex = "1"
-        errMessage.innerHTML = passRequire
-        errConfirm.addEventListener("click", function () {
-            errWindow.style.display = "none";
-        });
-        console.log(`Invalid password`)
+        showError(errWindow, errMessage, errConfirm, passRequire);
         return false;
     }
-    // 
+
     if (password !== confirm_password) {
-        errWindow.style.display = "flex"
-        errWindow.style.zIndex = "1"
-        errMessage.innerHTML = "Passwords do not match. Please try again."
-        errConfirm.addEventListener("click", function () {
-            errWindow.style.display = "none";
-        });
-        console.log(`Two password not match`)
+        showError(errWindow, errMessage, errConfirm, "密码不一致，请重新输入。");
         return false;
     }
 
     return true;
 }
 
-// Username Checking
+// 用户名验证
 function usernameValidateForm() {
-    const errWindow = document.getElementById("alertWindow")
-    const errMessage = document.getElementById("errMessage")
-    const errConfirm = document.getElementById("errConfirm")
+    const errWindow = document.getElementById("alertWindow");
+    const errMessage = document.getElementById("errMessage");
+    const errConfirm = document.getElementById("errConfirm");
 
-    // 
     const username = document.getElementById("username").value;
-    const usernameRequire = `
-    Username Requirement: <br>
-    - At least 3 characters long <br>
-    - Start with a letter <br>
-    - Only contain letters, numbers, underscores, and hyphens.
-    `
     const usernameRegex = /^[a-zA-Z_][a-zA-Z0-9_-]{2,}$/;
+    const usernameRequire = `用户名要求：<br> - 至少 3 个字符<br> - 以字母开头<br> - 仅包含字母、数字、下划线和连字符`;
+
     if (!usernameRegex.test(username)) {
-        errWindow.style.display = "flex"
-        errWindow.style.zIndex = "1"
-        errMessage.innerHTML = usernameRequire;
-        errConfirm.addEventListener("click", function () {
-            errWindow.style.display = "none";
-        });
+        showError(errWindow, errMessage, errConfirm, usernameRequire);
         return false;
     }
 
     return true;
 }
 
+// 邮箱验证
 function emailValidateForm() {
-    const errWindow = document.getElementById("alertWindow")
-    const errMessage = document.getElementById("errMessage")
-    const errConfirm = document.getElementById("errConfirm")
+    const errWindow = document.getElementById("alertWindow");
+    const errMessage = document.getElementById("errMessage");
+    const errConfirm = document.getElementById("errConfirm");
 
-    //
     const email = document.getElementById("email").value;
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
     if (!emailRegex.test(email)) {
-        errWindow.style.display = "flex"
-        errWindow.style.zIndex = "1"
-        errMessage.innerHTML = "Invalid email format. Please enter a valid email address."
-        errConfirm.addEventListener("click", function () {
-            errWindow.style.display = "none";
-        });
+        showError(errWindow, errMessage, errConfirm, "邮箱格式无效，请输入正确的邮箱地址。");
         return false;
     }
 
     return true;
 }
 
-// Slide
-// function slideInAndRedirect(url) {
-//     const slide = document.getElementById('slide');
-//     slide.classList.add('show');
-//     setTimeout(() => {
-//         window.location.href = url;
-//     }, 500); // 与动画时间一致
-// }
-
-
-// window.history.pushState(null, null, url);
-
-// Basic Feature
+// 返回上一步
 function goBack() {
     window.history.back();
 }
 
+// 滑动到特定页面部分
 function scrollToSection(id) {
     const element = document.getElementById(id);
     const headerElement = document.getElementById("productDetailMenu");
     const headerHeight = headerElement.offsetHeight;
     const elementDistance = element.offsetTop;
     const distance = elementDistance - headerHeight;
-    console.log(distance)
     window.scrollTo({
         top: distance,
         behavior: 'smooth'

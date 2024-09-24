@@ -104,17 +104,6 @@ button {
     background-color: rgb(240, 240, 240);
 }
 
-.page2 {
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--firstLevelBackgroundColor);
-    position: absolute;
-    top: 0;
-    left: 100%;
-    z-index: 5;
-    display: none;
-}
-
 /* Home Page */
 .homePage {
     width: 100%;

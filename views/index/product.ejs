@@ -2,7 +2,7 @@
     <div class="productList">
 
         <% for( let i = 0; i < product.length; i++ ) { %>
-            <div class="productContainer" onclick='loadPage2("product/detail/<%= product[i].id %>")'>
+            <div class="productContainer" onclick='location.href="/product/detail/<%= product[i].id %>"'>
                 <div class="productCover" style='background-image: url("<%= product[i].image[0] %>");'></div>
                 <div class="productContent">
                     <h1><%= product[i].name %></h1>

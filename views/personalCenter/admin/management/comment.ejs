@@ -5,7 +5,7 @@
 </thead>
 <tbody>
     <% for( let i=0; i < comment.length; i++ ) { %>
-        <tr onclick="location.href='/admin/commentManage/<%= comment[i].id %>'">
+        <tr onclick="location.href='/adminCommentManage/<%= comment[i].id %>'">
             <td class="userManageTd1">
                 <div class="userManageTd1Avatar" style="background-image: url('<%= comment[i].avatar %>');"></div>
                 <%= comment[i].username %>
